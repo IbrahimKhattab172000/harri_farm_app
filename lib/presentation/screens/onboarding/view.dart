@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart' as localization;
 import 'package:flutter/material.dart';
 import 'package:harri_farm_app/app/widgets/app_button.dart';
+import 'package:harri_farm_app/app/widgets/app_decorated_background.dart';
 import 'package:harri_farm_app/app/widgets/app_text.dart';
 import 'package:harri_farm_app/business_logic/helpers/colors.dart';
 import 'package:harri_farm_app/business_logic/helpers/dimentions.dart';
@@ -45,75 +46,77 @@ class _OnBoardingViewState extends State<OnBoardingView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Column(
-          children: [
-            Padding(
-              padding: EdgeInsets.only(top: Utils.topDevicePadding + 10),
-              child: Align(
-                alignment: Alignment.topRight,
-                child: AppText(
-                  title: "skip".tr(),
-                  color: AppColors.black,
-                  fontWeight: FontWeight.w700,
-                  fontSize: 16,
+      body: AppDecoratedBackGround(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.only(top: Utils.topDevicePadding + 10),
+                child: Align(
+                  alignment: Alignment.topRight,
+                  child: AppText(
+                    title: "skip".tr(),
+                    color: AppColors.black,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 16,
+                  ),
                 ),
               ),
-            ),
-            SizedBox(height: 50.height),
-            Expanded(
-              child: PageView.builder(
-                physics: const BouncingScrollPhysics(),
+              SizedBox(height: 50.height),
+              Expanded(
+                child: PageView.builder(
+                  physics: const BouncingScrollPhysics(),
+                  controller: boardController,
+                  itemBuilder: ((context, index) => buildBoardingItem(
+                        boarding[index],
+                      )),
+                  itemCount: boarding.length,
+                  onPageChanged: (index) {
+                    if (index == boarding.length - 1) {
+                      setState(() {
+                        isLast = true;
+                      });
+                    } else {
+                      setState(() {
+                        isLast = false;
+                      });
+                    }
+                  },
+                ),
+              ),
+              SizedBox(height: 16.height),
+              SmoothPageIndicator(
+                axisDirection: Axis.horizontal,
                 controller: boardController,
-                itemBuilder: ((context, index) => buildBoardingItem(
-                      boarding[index],
-                    )),
-                itemCount: boarding.length,
-                onPageChanged: (index) {
-                  if (index == boarding.length - 1) {
-                    setState(() {
-                      isLast = true;
-                    });
-                  } else {
-                    setState(() {
-                      isLast = false;
-                    });
-                  }
-                },
+                count: boarding.length,
+                textDirection: TextDirection.ltr,
+                effect: const JumpingDotEffect(
+                  dotHeight: 12,
+                  dotWidth: 12,
+                  dotColor: AppColors.lightGray,
+                  activeDotColor: AppColors.primary,
+                ),
               ),
-            ),
-            SizedBox(height: 16.height),
-            SmoothPageIndicator(
-              axisDirection: Axis.horizontal,
-              controller: boardController,
-              count: boarding.length,
-              textDirection: TextDirection.ltr,
-              effect: const JumpingDotEffect(
-                dotHeight: 12,
-                dotWidth: 12,
-                dotColor: AppColors.lightGray,
-                activeDotColor: AppColors.primary,
-              ),
-            ),
-            SizedBox(height: 48.height),
-            AppButton(
-                title: "next".tr(),
-                color: AppColors.primary,
-                onTap: () {
-                  if (isLast) {
-                    RouteUtils.navigateTo(const LoginView());
-                  } else {
-                    boardController.nextPage(
-                      duration: const Duration(
-                        milliseconds: 750,
-                      ),
-                      curve: Curves.fastOutSlowIn,
-                    );
-                  }
-                }),
-            SizedBox(height: Utils.bottomDevicePadding),
-          ],
+              SizedBox(height: 48.height),
+              AppButton(
+                  title: "next".tr(),
+                  color: AppColors.primary,
+                  onTap: () {
+                    if (isLast) {
+                      RouteUtils.navigateTo(const LoginView());
+                    } else {
+                      boardController.nextPage(
+                        duration: const Duration(
+                          milliseconds: 750,
+                        ),
+                        curve: Curves.fastOutSlowIn,
+                      );
+                    }
+                  }),
+              SizedBox(height: Utils.bottomDevicePadding),
+            ],
+          ),
         ),
       ),
     );

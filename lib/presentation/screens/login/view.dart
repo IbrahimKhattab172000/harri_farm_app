@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:harri_farm_app/app/widgets/app_button.dart';
 import 'package:harri_farm_app/app/widgets/app_cistom_image.dart';
+import 'package:harri_farm_app/app/widgets/app_decorated_background.dart';
 import 'package:harri_farm_app/app/widgets/app_text.dart';
 import 'package:harri_farm_app/app/widgets/app_text_field.dart';
 import 'package:harri_farm_app/business_logic/helpers/colors.dart';
@@ -19,18 +20,20 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Column(
-            children: [
-              SizedBox(height: Utils.topDevicePadding + 64.height),
-              const AppCustomImage(),
-              SizedBox(height: 20.height),
-              const _Body(),
-              SizedBox(height: Utils.bottomDevicePadding),
-            ],
+      body: AppDecoratedBackGround(
+        child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Column(
+              children: [
+                SizedBox(height: Utils.topDevicePadding + 64.height),
+                const AppCustomImage(),
+                SizedBox(height: 20.height),
+                const _Body(),
+                SizedBox(height: Utils.bottomDevicePadding),
+              ],
+            ),
           ),
         ),
       ),

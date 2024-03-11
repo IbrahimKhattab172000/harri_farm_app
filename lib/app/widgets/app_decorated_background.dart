@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:harri_farm_app/business_logic/helpers/colors.dart';
+import 'package:harri_farm_app/business_logic/helpers/utils.dart';
 
 class AppDecoratedBackGround extends StatelessWidget {
   final Widget child;
@@ -10,13 +11,13 @@ class AppDecoratedBackGround extends StatelessWidget {
     return Container(
       height: double.infinity,
       width: double.infinity,
-      decoration: const BoxDecoration(
-        // image: DecorationImage(
-        //   image: AssetImage(
-        //     Utils.getAssetPNGPath('background'),
-        //   ),
-        //   fit: BoxFit.cover,
-        // ),
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage(
+            Utils.getAssetPNGPath('background'),
+          ),
+          fit: BoxFit.cover,
+        ),
         color: AppColors.background,
       ),
       child: child,
