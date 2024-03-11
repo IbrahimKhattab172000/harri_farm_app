@@ -26,9 +26,18 @@
     "i_agree" : "اوافق علي",
     "terms_and_conditions" : "الشروط والاحكام",
     "signup" : "تسجيل الدخول",
-    "have_account" :"لديك حساب ؟"
-    
-
-    
+    "have_account" :"لديك حساب ؟",
+    "forgot_password" : "نسيت كلمة المرور",
+    "forgot_password_note"  : "من فضلك قم بإدخال رقم جوالك لارسال كود مكون من4 أرقام لإعادة ضبط كلمة المرور الخاصة بك",
+    "send_code" : "ارسال الكود",
+    "didnt_recive_the_code" : "لم تستلم الرسالة؟",
+    "resending_in" : "اعادة الارسال بعد",
+    "resend_code": "ارسل",
+    "confirm" : "تأكيد",
+    "new_password" : "كلمة المرور الجديدة",
+    "confirm_new_password" : "تأكيد كلمة المرور الجديدة",
+    "resetting_the_password" :"اعادة ضبط كلمة المرور",
+    "reset_password_note" : "كلمة المرور الجديدة يجب ان تكون مختلفة كليا عن كلمة المرور القديمة",
+    "reset_password" : "استرجاع كلمة المرور"
     
   }
