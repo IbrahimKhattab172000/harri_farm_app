@@ -1,18 +1,13 @@
-import 'dart:async';
+part of '../view.dart';
 
-import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/material.dart';
-import 'package:harri_farm_app/app/widgets/app_text.dart';
-import 'package:harri_farm_app/business_logic/helpers/colors.dart';
-
-class ResendWidget extends StatefulWidget {
-  const ResendWidget({super.key});
+class _ResendWidget extends StatefulWidget {
+  const _ResendWidget();
 
   @override
-  State<ResendWidget> createState() => _ResendWidgetState();
+  State<_ResendWidget> createState() => _ResendWidgetState();
 }
 
-class _ResendWidgetState extends State<ResendWidget> {
+class _ResendWidgetState extends State<_ResendWidget> {
   int counter = 60;
   Timer? timer;
 
