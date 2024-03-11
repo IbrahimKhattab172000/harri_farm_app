@@ -17,7 +17,17 @@
     "email_or_phone" : "رقم الجوال / البريد الالكتروني",
     "no_account" : "ليس لديك حساب ؟",
     "create_new_account" : "إنشاء حساب جديد",
-    "browse_without_logging_in" : "التصفح بدون تسجيل دخول"
+    "browse_without_logging_in" : "التصفح بدون تسجيل دخول",
+    "new_signing" : "تسجيل جديد",
+    "name" : "الاسم",
+    "phone" : "رقم الجوال",
+    "email" : "البريد الالكترونى",
+    "confirm_password" : "تأكيد كلمة المرور",
+    "i_agree" : "اوافق علي",
+    "terms_and_conditions" : "الشروط والاحكام",
+    "signup" : "تسجيل الدخول",
+    "have_account" :"لديك حساب ؟"
+    
 
     
     

@@ -7,10 +7,9 @@ import 'package:harri_farm_app/business_logic/helpers/colors.dart';
 import 'package:harri_farm_app/business_logic/helpers/dimentions.dart';
 import 'package:harri_farm_app/business_logic/helpers/utils.dart';
 import 'package:harri_farm_app/business_logic/routing/routes.dart';
-import 'package:harri_farm_app/presentation/screens/sign_up/view.dart';
 
-class LoginView extends StatelessWidget {
-  const LoginView({super.key});
+class SignUpView extends StatelessWidget {
+  const SignUpView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,13 +28,17 @@ class LoginView extends StatelessWidget {
               ),
               SizedBox(height: 20.height),
               AppText(
-                title: "login".tr(),
+                title: "new_signing".tr(),
                 color: AppColors.black,
                 fontSize: 20,
                 fontWeight: FontWeight.w700,
               ),
               SizedBox(height: 30.height),
-              AppTextField(label: "email_or_phone".tr()),
+              AppTextField(label: "name".tr()),
+              SizedBox(height: 10.height),
+              AppTextField(label: "phone".tr()),
+              SizedBox(height: 10.height),
+              AppTextField(label: "email".tr()),
               SizedBox(height: 10.height),
               AppTextField(
                 label: 'password'.tr(),
@@ -45,32 +48,60 @@ class LoginView extends StatelessWidget {
                   color: AppColors.lightGray,
                 ),
               ),
-              SizedBox(height: 20.height),
-              Align(
-                alignment:
-                    Utils.isAR ? Alignment.centerLeft : Alignment.centerRight,
-                child: AppText(
-                  title: 'forget_password'.tr(),
-                  fontSize: 16,
-                  fontWeight: FontWeight.w700,
-                  color: AppColors.primary,
-                  textAlign: Utils.isAR ? TextAlign.left : TextAlign.right,
-                  onTap: () {
-                    // RouteUtils.navigateTo(ForgotPasswordView());
-                  },
+              SizedBox(height: 10.height),
+              AppTextField(
+                label: 'confirm_password'.tr(),
+                secure: true,
+                trailing: const Icon(
+                  Icons.remove_red_eye_outlined,
+                  color: AppColors.lightGray,
                 ),
               ),
-              SizedBox(height: 14.height),
+              SizedBox(height: 26.height),
+              Row(
+                children: [
+                  GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      width: 16.width,
+                      height: 16.height,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.rectangle,
+                        color: Colors.transparent,
+                        border: Border.all(
+                          color: AppColors.lightGray,
+                          width: 1.width,
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 14.width),
+                  AppText(
+                    title: "i_agree".tr(),
+                    color: AppColors.black,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w700,
+                  ),
+                  SizedBox(width: 4.width),
+                  AppText(
+                    title: "terms_and_conditions".tr(),
+                    color: AppColors.primary,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ],
+              ),
+              SizedBox(height: 44.height),
               AppButton(
-                title: "login".tr(),
+                title: "signup".tr(),
                 onTap: () {},
               ),
-              SizedBox(height: 56.height),
+              SizedBox(height: 8.height),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   AppText(
-                    title: 'no_account'.tr(),
+                    title: 'have_account'.tr(),
                     color: AppColors.black,
                     fontSize: 16,
                     fontWeight: FontWeight.w700,
@@ -81,7 +112,7 @@ class LoginView extends StatelessWidget {
                       RouteUtils.navigateTo(const SignUpView());
                     },
                     child: AppText(
-                      title: 'create_new_account'.tr(),
+                      title: 'login'.tr(),
                       color: AppColors.primary,
                       fontSize: 16,
                       fontWeight: FontWeight.w700,
