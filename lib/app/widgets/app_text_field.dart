@@ -16,8 +16,8 @@ class AppTextField extends StatefulWidget {
     this.leading,
     this.label,
     this.maxLines = 1,
-    this.borderColor = AppColors.lightGray,
-    this.fillColor = AppColors.background,
+    this.borderColor = Colors.transparent,
+    this.fillColor = AppColors.border,
     this.onSaved,
     this.onChanged,
     this.controller,
@@ -59,7 +59,7 @@ class _AppTextFieldState extends State<AppTextField> {
               title: widget.label!,
               color: AppColors.black,
               fontWeight: FontWeight.w700,
-              fontSize: 14,
+              fontSize: 16,
             ),
           ),
         InkWell(
@@ -120,5 +120,5 @@ class _AppTextFieldState extends State<AppTextField> {
     );
   }
 
-  double get _radius => widget.maxLines > 1 ? 16 : 16;
+  double get _radius => widget.maxLines > 1 ? 8 : 10;
 }
