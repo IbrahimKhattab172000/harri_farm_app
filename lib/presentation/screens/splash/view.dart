@@ -17,7 +17,7 @@ class _SplashViewState extends State<SplashView> {
   void initState() {
     Future.delayed(const Duration(seconds: 3), () {
       RouteUtils.navigateAndPopAll(
-        OnBoardingView(),
+        const OnBoardingView(),
       );
     });
     super.initState();

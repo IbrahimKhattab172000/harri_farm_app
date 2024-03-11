@@ -146,6 +146,7 @@ Widget buildBoardingItem(BoardingModel model) => Column(
           fontSize: 16,
           textAlign: TextAlign.center,
           maxLines: 3,
+          overflow: TextOverflow.ellipsis,
         ),
       ],
     );

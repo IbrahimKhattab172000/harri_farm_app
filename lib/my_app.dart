@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:harri_farm_app/business_logic/helpers/colors.dart';
 import 'package:harri_farm_app/business_logic/helpers/pop_scaffold.dart';
 import 'package:harri_farm_app/business_logic/routing/routes.dart';
-import 'package:harri_farm_app/presentation/screens/onboarding/view.dart';
 import 'package:harri_farm_app/presentation/screens/splash/view.dart';
 
 class MyApp extends StatefulWidget {

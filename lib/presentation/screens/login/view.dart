@@ -7,6 +7,7 @@ import 'package:harri_farm_app/business_logic/helpers/colors.dart';
 import 'package:harri_farm_app/business_logic/helpers/dimentions.dart';
 import 'package:harri_farm_app/business_logic/helpers/utils.dart';
 import 'package:harri_farm_app/business_logic/routing/routes.dart';
+import 'package:harri_farm_app/presentation/screens/forget_password/view.dart';
 import 'package:harri_farm_app/presentation/screens/sign_up/view.dart';
 
 class LoginView extends StatelessWidget {
@@ -56,7 +57,7 @@ class LoginView extends StatelessWidget {
                   color: AppColors.primary,
                   textAlign: Utils.isAR ? TextAlign.left : TextAlign.right,
                   onTap: () {
-                    // RouteUtils.navigateTo(ForgotPasswordView());
+                    RouteUtils.navigateTo(const ForgotPasswordView());
                   },
                 ),
               ),
