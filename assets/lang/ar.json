@@ -12,7 +12,9 @@
     "password" : "كلمة المرور",
     "enter_the_password"  : "أدخل كلمة المرور",
     "forget_password" : "نسيت كلمة المرور؟",
-    "pick_up_location"  : "اختر موقعا"
+    "pick_up_location"  : "اختر موقعا",
+    "next"  : "التالي"
+
     
     
   }

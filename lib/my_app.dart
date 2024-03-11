@@ -5,6 +5,7 @@ import 'package:harri_farm_app/business_logic/helpers/colors.dart';
 import 'package:harri_farm_app/business_logic/helpers/pop_scaffold.dart';
 import 'package:harri_farm_app/business_logic/routing/routes.dart';
 import 'package:harri_farm_app/presentation/screens/onboarding/view.dart';
+import 'package:harri_farm_app/presentation/screens/splash/view.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -20,7 +21,7 @@ class _MyAppState extends State<MyApp> {
       designSize: const Size(375, 812),
       minTextAdapt: true,
       splitScreenMode: false,
-      child: const OnboardingView(),
+      child: const SplashView(),
       builder: (_, child) => KeyboardPopScaffold(
         child: MaterialApp(
           title: 'Harri',
