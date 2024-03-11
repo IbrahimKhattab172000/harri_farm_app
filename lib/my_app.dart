@@ -23,12 +23,12 @@ class _MyAppState extends State<MyApp> {
       child: const OnboardingView(),
       builder: (_, child) => KeyboardPopScaffold(
         child: MaterialApp(
-          title: 'Wnes',
+          title: 'Harri',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             hoverColor: Colors.transparent,
             useMaterial3: false,
-            fontFamily: 'Tajawal',
+            fontFamily: 'Cairo',
             scaffoldBackgroundColor: AppColors.background,
             splashColor: Colors.transparent,
             highlightColor: Colors.transparent,

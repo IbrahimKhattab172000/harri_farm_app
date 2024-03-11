@@ -8,9 +8,10 @@ class OnboardingView extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Center(
-            child: AppText(title: "title"),
+            child: AppText(title: "اجود أنواع المنتجات الطازجة"),
           ),
         ],
       ),
