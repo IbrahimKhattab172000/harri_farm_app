@@ -13,7 +13,11 @@
     "enter_the_password"  : "أدخل كلمة المرور",
     "forget_password" : "نسيت كلمة المرور؟",
     "pick_up_location"  : "اختر موقعا",
-    "next"  : "التالي"
+    "next"  : "التالي",
+    "email_or_phone" : "رقم الجوال / البريد الالكتروني",
+    "no_account" : "ليس لديك حساب ؟",
+    "create_new_account" : "إنشاء حساب جديد",
+    "browse_without_logging_in" : "التصفح بدون تسجيل دخول"
 
     
     
