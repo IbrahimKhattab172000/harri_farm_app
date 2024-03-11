@@ -29,7 +29,7 @@ class _SplashViewState extends State<SplashView> {
       body: AppDecoratedBackGround(
         child: Center(
           child: Image.asset(
-            Utils.getAssetPNGPath('splash'),
+            Utils.getAssetPNGPath('logo'),
             width: 240.width,
             height: 240.height,
           ),
