@@ -1,10 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:harri_farm_app/business_logic/helpers/colors.dart';
-import 'package:harri_farm_app/business_logic/helpers/pop_scaffold.dart';
-import 'package:harri_farm_app/business_logic/routing/routes.dart';
-import 'package:harri_farm_app/presentation/screens/splash/view.dart';
+import 'package:harri_farm_app/helpers/colors.dart';
+import 'package:harri_farm_app/helpers/pop_scaffold.dart';
+import 'package:harri_farm_app/helpers/routes.dart';
+import 'package:harri_farm_app/features/splash/view/view.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
