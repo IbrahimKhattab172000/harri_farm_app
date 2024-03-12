@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:harri_farm_app/features/forgot_password/widgets/forgot_password_button.dart';
-import 'package:harri_farm_app/features/forgot_password/widgets/forgot_password_filed.dart';
+import 'package:harri_farm_app/features/forgot_password/widgets/forgot_password_field.dart';
 import 'package:harri_farm_app/features/forgot_password/widgets/forgot_password_note.dart';
 import 'package:harri_farm_app/features/forgot_password/widgets/forgot_password_image.dart';
 import 'package:harri_farm_app/features/forgot_password/widgets/forgot_password_title.dart';
