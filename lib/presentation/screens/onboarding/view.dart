@@ -32,15 +32,20 @@ class _OnBoardingViewState extends State<OnBoardingView> {
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
             children: [
-              Padding(
-                padding: EdgeInsets.only(top: Utils.topDevicePadding + 10),
-                child: Align(
-                  alignment: Alignment.topRight,
-                  child: AppText(
-                    title: "skip".tr(),
-                    color: AppColors.black,
-                    fontWeight: FontWeight.w700,
-                    fontSize: 16,
+              InkWell(
+                onTap: () {
+                  RouteUtils.navigateTo(const LoginView());
+                },
+                child: Padding(
+                  padding: EdgeInsets.only(top: Utils.topDevicePadding + 10),
+                  child: Align(
+                    alignment: Alignment.topRight,
+                    child: AppText(
+                      title: "skip".tr(),
+                      color: AppColors.black,
+                      fontWeight: FontWeight.w700,
+                      fontSize: 16,
+                    ),
                   ),
                 ),
               ),
