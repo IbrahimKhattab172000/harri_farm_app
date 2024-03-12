@@ -3,16 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/widgets/app_text.dart';
 
-class RestTitle extends StatelessWidget {
-  const RestTitle({super.key});
+class ResetPasswordNote extends StatelessWidget {
+  const ResetPasswordNote({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     return AppText(
-      title: "resetting_the_password".tr(),
-      color: AppColors.black,
-      fontWeight: FontWeight.w700,
-      fontSize: 20,
+      title: "reset_password_note".tr(),
+      color: AppColors.gray,
+      fontSize: 16,
+      textAlign: TextAlign.center,
     );
   }
 }

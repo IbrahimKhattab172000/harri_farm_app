@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:harri_farm_app/features/reset_password/widgets/image.dart';
-import 'package:harri_farm_app/features/reset_password/widgets/reset_body.dart';
-import 'package:harri_farm_app/features/reset_password/widgets/title.dart';
+import 'package:harri_farm_app/features/reset_password/widgets/reset_password_button.dart';
+import 'package:harri_farm_app/features/reset_password/widgets/reset_password_fields.dart';
+import 'package:harri_farm_app/features/reset_password/widgets/reset_password_note.dart';
+import 'package:harri_farm_app/features/reset_password/widgets/rest_password_image.dart';
+import 'package:harri_farm_app/features/reset_password/widgets/rest_password_title.dart';
 import 'package:harri_farm_app/widgets/app_decorated_background.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/helpers/utils.dart';
@@ -20,12 +22,15 @@ class ResetPasswordView extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(height: Utils.topDevicePadding + 64.height),
-                const RestImage(),
+                const RestPasswordImage(),
                 SizedBox(height: 40.height),
-                const RestTitle(),
-                const ResetBody(),
-                SizedBox(height: 22.height),
-                SizedBox(height: Utils.bottomDevicePadding),
+                const RestPasswordTitle(),
+                const ResetPasswordNote(),
+                SizedBox(height: 40.height),
+                const ResetPasswordFields(),
+                SizedBox(height: 40.height),
+                const ResetPasswordButton(),
+                SizedBox(height: Utils.bottomDevicePadding + 22.height),
               ],
             ),
           ),
