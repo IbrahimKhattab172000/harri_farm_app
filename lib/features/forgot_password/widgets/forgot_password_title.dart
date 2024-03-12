@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/widgets/app_text.dart';
 
-class ForgotTitle extends StatelessWidget {
-  const ForgotTitle({super.key});
+class ForgotPasswordTitle extends StatelessWidget {
+  const ForgotPasswordTitle({super.key});
 
   @override
   Widget build(BuildContext context) {

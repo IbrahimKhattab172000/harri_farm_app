@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/helpers/utils.dart';
 
-class ForgotImage extends StatelessWidget {
-  const ForgotImage({super.key});
+class ForgotPasswordImage extends StatelessWidget {
+  const ForgotPasswordImage({super.key});
 
   @override
   Widget build(BuildContext context) {
