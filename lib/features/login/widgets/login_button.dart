@@ -1,5 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:harri_farm_app/features/home/view/view.dart';
+import 'package:harri_farm_app/helpers/routes.dart';
 import 'package:harri_farm_app/widgets/app_button.dart';
 
 class LoginButton extends StatelessWidget {
@@ -11,7 +13,9 @@ class LoginButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppButton(
       title: "login".tr(),
-      onTap: () {},
+      onTap: () {
+        RouteUtils.navigateTo(const HomeView());
+      },
     );
   }
 }
