@@ -38,6 +38,16 @@
     "confirm_new_password" : "تأكيد كلمة المرور الجديدة",
     "resetting_the_password" :"اعادة ضبط كلمة المرور",
     "reset_password_note" : "كلمة المرور الجديدة يجب ان تكون مختلفة كليا عن كلمة المرور القديمة",
-    "reset_password" : "استرجاع كلمة المرور"
+    "reset_password" : "استرجاع كلمة المرور",
+    "welcome_again" : ", مرحبا بك من جديد",
+    "all_your_products_are_available" : "جميع منتجاتك متوفرة بأفضل الأسعار",
+    "search_for_product" : "ابحث عن منتج",
+    "sections" : "الأقسام",
+    "meat" :"لحوم",
+    "fish" : "اسماك",
+    "fruit":"فاكهة",
+    "vege" : "خضروات",
+    "offers" : "العروض",
+    "show_more": "عرض المزيد"
     
   }
