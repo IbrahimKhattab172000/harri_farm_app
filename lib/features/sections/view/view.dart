@@ -16,10 +16,10 @@ class SectionsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => TabsCubit(),
-      child: AppDecoratedBackGround(
-        child: Scaffold(
-          appBar: const SectionsAppBar(),
-          body: Padding(
+      child: Scaffold(
+        appBar: const SectionsAppBar(),
+        body: AppDecoratedBackGround(
+          child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
