@@ -25,7 +25,7 @@ class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: AppColors.background,
       elevation: elevation ?? 1,
       iconTheme: const IconThemeData(
-        color: AppColors.secondary,
+        color: AppColors.black,
       ),
       leading: leading,
       centerTitle: true,
@@ -34,7 +34,7 @@ class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: AppText(
         title: title ?? '',
         fontSize: 18,
-        color: AppColors.secondary,
+        color: AppColors.black,
         fontWeight: FontWeight.bold,
       ),
       actions: actions,
