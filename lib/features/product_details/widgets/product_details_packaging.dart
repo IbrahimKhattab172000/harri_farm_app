@@ -5,10 +5,18 @@ import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/widgets/app_text.dart';
 import 'package:harri_farm_app/widgets/app_toggle.dart';
 
-class ProductDetailsPackaging extends StatelessWidget {
+class ProductDetailsPackaging extends StatefulWidget {
   const ProductDetailsPackaging({
     super.key,
   });
+
+  @override
+  State<ProductDetailsPackaging> createState() =>
+      _ProductDetailsPackagingState();
+}
+
+class _ProductDetailsPackagingState extends State<ProductDetailsPackaging> {
+  int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -22,13 +30,27 @@ class ProductDetailsPackaging extends StatelessWidget {
           fontWeight: FontWeight.w700,
         ),
         SizedBox(height: 16.height),
-        const AppToggleCard(
-          title: "اكياس",
-          isSelected: true,
+        GestureDetector(
+          onTap: () {
+            setState(() {
+              selectedIndex = 0;
+            });
+          },
+          child: AppToggleCard(
+            title: "اكياس",
+            isSelected: selectedIndex == 0,
+          ),
         ),
-        const AppToggleCard(
-          title: "كيس واحد",
-          isSelected: false,
+        GestureDetector(
+          onTap: () {
+            setState(() {
+              selectedIndex = 1;
+            });
+          },
+          child: AppToggleCard(
+            title: "كيس واحد",
+            isSelected: selectedIndex == 1,
+          ),
         ),
       ],
     );
