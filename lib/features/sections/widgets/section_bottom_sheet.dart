@@ -1,11 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:harri_farm_app/widgets/app_toggle.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/helpers/routes.dart';
 import 'package:harri_farm_app/helpers/utils.dart';
 import 'package:harri_farm_app/widgets/app_text.dart';
-import 'package:harri_farm_app/widgets/app_toggle.dart';
 
 class SectionBottomSheet extends StatefulWidget {
   const SectionBottomSheet({
@@ -29,10 +29,7 @@ class SectionBottomSheet extends StatefulWidget {
 }
 
 class _SectionBottomSheetState extends State<SectionBottomSheet> {
-  @override
-  void initState() {
-    super.initState();
-  }
+  int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -74,21 +71,49 @@ class _SectionBottomSheetState extends State<SectionBottomSheet> {
                   ],
                 ),
                 SizedBox(height: 24.height),
-                const AppToggleCard(
-                  title: "الاكثر مبيعا",
-                  isSelected: true,
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      selectedIndex = 0;
+                    });
+                  },
+                  child: AppToggleCard(
+                    title: "الاكثر مبيعا",
+                    isSelected: selectedIndex == 0,
+                  ),
                 ),
-                const AppToggleCard(
-                  title: "الاعلى تقيما",
-                  isSelected: false,
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      selectedIndex = 1;
+                    });
+                  },
+                  child: AppToggleCard(
+                    title: "الاعلى تقيما",
+                    isSelected: selectedIndex == 1,
+                  ),
                 ),
-                const AppToggleCard(
-                  title: " من السعر الاعلي الي الاقل",
-                  isSelected: false,
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      selectedIndex = 2;
+                    });
+                  },
+                  child: AppToggleCard(
+                    title: "من السعر الاعلي الي الاقل",
+                    isSelected: selectedIndex == 2,
+                  ),
                 ),
-                const AppToggleCard(
-                  title: " من السعر الاقل الي الاعلى",
-                  isSelected: false,
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      selectedIndex = 3;
+                    });
+                  },
+                  child: AppToggleCard(
+                    title: "من السعر الاقل الي الاعلى",
+                    isSelected: selectedIndex == 3,
+                  ),
                 ),
                 SizedBox(height: 24.height),
               ],
