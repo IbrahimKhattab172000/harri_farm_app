@@ -22,12 +22,21 @@ class ProductDetailsSimilarProducts extends StatelessWidget {
           fontWeight: FontWeight.w700,
         ),
         SizedBox(height: 10.height),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            AppProductCard(onTap: () {}),
-            AppProductCard(onTap: () {}),
-          ],
+        Container(
+          constraints: BoxConstraints(maxHeight: 270.height),
+          child: ListView.separated(
+            physics: const BouncingScrollPhysics(),
+            scrollDirection: Axis.horizontal,
+            itemCount: 5,
+            itemBuilder: (context, index) {
+              return AppProductCard(
+                onTap: () {},
+              );
+            },
+            separatorBuilder: (context, index) {
+              return SizedBox(width: 44.width);
+            },
+          ),
         ),
       ],
     );
