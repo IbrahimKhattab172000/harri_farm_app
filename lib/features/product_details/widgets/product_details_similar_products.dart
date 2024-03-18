@@ -38,6 +38,7 @@ class ProductDetailsSimilarProducts extends StatelessWidget {
             },
           ),
         ),
+        SizedBox(height: 20.height),
       ],
     );
   }

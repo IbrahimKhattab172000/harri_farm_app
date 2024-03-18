@@ -5,7 +5,6 @@ import 'package:harri_farm_app/features/product_details/widgets/product_details_
 import 'package:harri_farm_app/features/product_details/widgets/product_details_info.dart';
 import 'package:harri_farm_app/features/product_details/widgets/product_details_orders_type.dart';
 import 'package:harri_farm_app/features/product_details/widgets/product_details_packaging.dart';
-import 'package:harri_farm_app/features/product_details/widgets/product_details_rating_card.dart';
 import 'package:harri_farm_app/features/product_details/widgets/product_details_shredder.dart';
 import 'package:harri_farm_app/features/product_details/widgets/product_details_similar_products.dart';
 import 'package:harri_farm_app/features/product_details/widgets/products_details_rating_bar.dart';
@@ -19,11 +18,14 @@ class ProductDetailsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: const ProductDetailsAddToCartButton(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       appBar: const ProductDetailsAppBar(),
       body: AppDecoratedBackGround(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -37,16 +39,10 @@ class ProductDetailsView extends StatelessWidget {
                 SizedBox(height: 24.height),
                 const ProductDetailsShredder(),
                 SizedBox(height: 24.height),
-                const ProductDetailsRatingBar(),
-                SizedBox(height: 10.height),
-                const ProductDetailsRatingCard(),
-                SizedBox(height: 10.height),
-                const ProductDetailsRatingCard(),
-                SizedBox(height: 20.height),
-                const ProductDetailsAddToCartButton(),
+                const ProductDetailsRating(),
                 SizedBox(height: 20.height),
                 const ProductDetailsSimilarProducts(),
-                SizedBox(height: Utils.bottomDevicePadding),
+                SizedBox(height: Utils.bottomDevicePadding + 28),
               ],
             ),
           ),

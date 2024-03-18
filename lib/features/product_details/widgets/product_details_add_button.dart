@@ -10,41 +10,44 @@ class ProductDetailsAddToCartButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {},
-      style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.primary,
-        padding: EdgeInsets.zero,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 26, vertical: 18),
+      child: ElevatedButton(
+        onPressed: () {},
+        style: ElevatedButton.styleFrom(
+          backgroundColor: AppColors.primary,
+          padding: EdgeInsets.zero,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
         ),
-      ),
-      child: SizedBox(
-        height: 66.height,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Image.asset(
-                Utils.getAssetPNGPath("shopping_icon"),
-                color: AppColors.white,
-                height: 16,
-                width: 16,
-              ),
-              SizedBox(width: 12.width),
-              AppText(
-                title: "add_to_cart".tr(),
-                fontSize: 16,
-                color: Colors.white,
-              ),
-              const Spacer(),
-              const AppText(
-                title: "150 ر.س",
-                fontSize: 16,
-                color: Colors.white,
-              ),
-            ],
+        child: SizedBox(
+          height: 66.height,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Image.asset(
+                  Utils.getAssetPNGPath("shopping_icon"),
+                  color: AppColors.white,
+                  height: 16,
+                  width: 16,
+                ),
+                SizedBox(width: 12.width),
+                AppText(
+                  title: "add_to_cart".tr(),
+                  fontSize: 16,
+                  color: Colors.white,
+                ),
+                const Spacer(),
+                const AppText(
+                  title: "150 ر.س",
+                  fontSize: 16,
+                  color: Colors.white,
+                ),
+              ],
+            ),
           ),
         ),
       ),
