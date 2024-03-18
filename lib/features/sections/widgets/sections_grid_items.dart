@@ -15,6 +15,7 @@ class SectionGridItems extends StatelessWidget {
       builder: (context, state) {
         return Expanded(
           child: GridView.builder(
+            physics: const BouncingScrollPhysics(),
             shrinkWrap: true,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,

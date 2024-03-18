@@ -42,7 +42,10 @@ class AppText extends StatelessWidget {
         child: Text(
           title,
           textAlign: textAlign ?? TextAlign.start,
+          //To make sure if the setting of the user device fontsize changed out app stay the same
+          // textScaler:  TextScaler.noScaling,
           textScaler: const TextScaler.linear(1),
+
           style: TextStyle(
             color: color,
             fontSize: fontSize,
