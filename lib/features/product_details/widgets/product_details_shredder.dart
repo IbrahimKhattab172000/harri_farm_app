@@ -29,41 +29,35 @@ class _ProductDetailsShredderState extends State<ProductDetailsShredder> {
           fontWeight: FontWeight.w700,
         ),
         SizedBox(height: 16.height),
-        GestureDetector(
+        AppToggleCard(
+          title: "طريقة تقطيع",
+          isSelected: selectedIndex == 0,
+          price: "(+\$ 15)",
           onTap: () {
             setState(() {
               selectedIndex = 0;
             });
           },
-          child: AppToggleCard(
-            title: "طريقة تقطيع",
-            isSelected: selectedIndex == 0,
-            price: "(+\$ 15)",
-          ),
         ),
-        GestureDetector(
+        AppToggleCard(
+          title: "طريقة تقطيع",
+          price: "(+\$ 10)",
+          isSelected: selectedIndex == 1,
           onTap: () {
             setState(() {
               selectedIndex = 1;
             });
           },
-          child: AppToggleCard(
-            title: "طريقة تقطيع",
-            price: "(+\$ 10)",
-            isSelected: selectedIndex == 1,
-          ),
         ),
-        GestureDetector(
+        AppToggleCard(
+          title: "طريقة تقطيع",
+          isSelected: selectedIndex == 2,
+          price: "(+\$ 15)",
           onTap: () {
             setState(() {
               selectedIndex = 2;
             });
           },
-          child: AppToggleCard(
-            title: "طريقة تقطيع",
-            isSelected: selectedIndex == 2,
-            price: "(+\$ 15)",
-          ),
         ),
       ],
     );

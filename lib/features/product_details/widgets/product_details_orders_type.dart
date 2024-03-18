@@ -28,27 +28,23 @@ class _ProductDetailsOrderTypeState extends State<ProductDetailsOrderType> {
           fontWeight: FontWeight.w700,
         ),
         SizedBox(height: 16.height),
-        GestureDetector(
+        AppToggleCard(
+          title: "ذبيحه غير مطبوخه",
+          isSelected: selectedIndex == 0,
           onTap: () {
             setState(() {
               selectedIndex = 0;
             });
           },
-          child: AppToggleCard(
-            title: "ذبيحه غير مطبوخه",
-            isSelected: selectedIndex == 0,
-          ),
         ),
-        GestureDetector(
+        AppToggleCard(
+          title: "لا  شئ",
+          isSelected: selectedIndex == 1,
           onTap: () {
             setState(() {
               selectedIndex = 1;
             });
           },
-          child: AppToggleCard(
-            title: "لا  شئ",
-            isSelected: selectedIndex == 1,
-          ),
         ),
       ],
     );

@@ -71,49 +71,41 @@ class _SectionBottomSheetState extends State<SectionBottomSheet> {
                   ],
                 ),
                 SizedBox(height: 24.height),
-                GestureDetector(
+                AppToggleCard(
+                  title: "الاكثر مبيعا",
+                  isSelected: selectedIndex == 0,
                   onTap: () {
                     setState(() {
                       selectedIndex = 0;
                     });
                   },
-                  child: AppToggleCard(
-                    title: "الاكثر مبيعا",
-                    isSelected: selectedIndex == 0,
-                  ),
                 ),
-                GestureDetector(
+                AppToggleCard(
+                  title: "الاعلى تقيما",
+                  isSelected: selectedIndex == 1,
                   onTap: () {
                     setState(() {
                       selectedIndex = 1;
                     });
                   },
-                  child: AppToggleCard(
-                    title: "الاعلى تقيما",
-                    isSelected: selectedIndex == 1,
-                  ),
                 ),
-                GestureDetector(
+                AppToggleCard(
+                  title: "من السعر الاعلي الي الاقل",
+                  isSelected: selectedIndex == 2,
                   onTap: () {
                     setState(() {
                       selectedIndex = 2;
                     });
                   },
-                  child: AppToggleCard(
-                    title: "من السعر الاعلي الي الاقل",
-                    isSelected: selectedIndex == 2,
-                  ),
                 ),
-                GestureDetector(
+                AppToggleCard(
+                  title: "من السعر الاقل الي الاعلى",
+                  isSelected: selectedIndex == 3,
                   onTap: () {
                     setState(() {
                       selectedIndex = 3;
                     });
                   },
-                  child: AppToggleCard(
-                    title: "من السعر الاقل الي الاعلى",
-                    isSelected: selectedIndex == 3,
-                  ),
                 ),
                 SizedBox(height: 24.height),
               ],

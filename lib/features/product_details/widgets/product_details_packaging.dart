@@ -30,27 +30,23 @@ class _ProductDetailsPackagingState extends State<ProductDetailsPackaging> {
           fontWeight: FontWeight.w700,
         ),
         SizedBox(height: 16.height),
-        GestureDetector(
+        AppToggleCard(
+          title: "اكياس",
+          isSelected: selectedIndex == 0,
           onTap: () {
             setState(() {
               selectedIndex = 0;
             });
           },
-          child: AppToggleCard(
-            title: "اكياس",
-            isSelected: selectedIndex == 0,
-          ),
         ),
-        GestureDetector(
+        AppToggleCard(
+          title: "كيس واحد",
+          isSelected: selectedIndex == 1,
           onTap: () {
             setState(() {
               selectedIndex = 1;
             });
           },
-          child: AppToggleCard(
-            title: "كيس واحد",
-            isSelected: selectedIndex == 1,
-          ),
         ),
       ],
     );
