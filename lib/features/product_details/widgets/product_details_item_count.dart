@@ -1,11 +1,35 @@
-import 'package:easy_localization/easy_localization.dart';
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/widgets/app_text.dart';
 
-class ProductDetailsItemsCount extends StatelessWidget {
-  const ProductDetailsItemsCount({super.key});
+class ProductDetailsItemsCount extends StatefulWidget {
+  const ProductDetailsItemsCount({Key? key}) : super(key: key);
+
+  @override
+  _ProductDetailsItemsCountState createState() =>
+      _ProductDetailsItemsCountState();
+}
+
+class _ProductDetailsItemsCountState extends State<ProductDetailsItemsCount> {
+  int itemCount = 1;
+
+  void incrementCount() {
+    setState(() {
+      itemCount++;
+    });
+  }
+
+  void decrementCount() {
+    setState(() {
+      if (itemCount > 1) {
+        itemCount--;
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,24 +54,24 @@ class ProductDetailsItemsCount extends StatelessWidget {
             const Spacer(),
             Row(
               children: [
-                Container(
-                  height: 32.height,
-                  width: 38.height,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    color: AppColors.background,
-                    border: Border.all(
-                      color: AppColors.primary,
-                      width: 2,
+                GestureDetector(
+                  onTap: incrementCount,
+                  child: Container(
+                    height: 32.height,
+                    width: 38.height,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5),
+                      color: AppColors.background,
+                      border: Border.all(
+                        color: AppColors.primary,
+                        width: 2,
+                      ),
                     ),
-                  ),
-                  child: Center(
-                    child: IconButton(
-                      icon: const Icon(
+                    child: const Center(
+                      child: Icon(
                         Icons.add,
                         size: 14,
                       ),
-                      onPressed: () {},
                     ),
                   ),
                 ),
@@ -59,9 +83,9 @@ class ProductDetailsItemsCount extends StatelessWidget {
                     borderRadius: BorderRadius.circular(5),
                     color: AppColors.primary,
                   ),
-                  child: const Center(
+                  child: Center(
                     child: AppText(
-                      title: "1",
+                      title: itemCount.toString(),
                       color: AppColors.background,
                       fontSize: 16,
                       fontWeight: FontWeight.w700,
@@ -69,24 +93,24 @@ class ProductDetailsItemsCount extends StatelessWidget {
                   ),
                 ),
                 SizedBox(width: 6.width),
-                Container(
-                  height: 32.height,
-                  width: 38.height,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    color: AppColors.background,
-                    border: Border.all(
-                      color: AppColors.primary,
-                      width: 2,
+                GestureDetector(
+                  onTap: decrementCount,
+                  child: Container(
+                    height: 32.height,
+                    width: 38.height,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5),
+                      color: AppColors.background,
+                      border: Border.all(
+                        color: AppColors.primary,
+                        width: 2,
+                      ),
                     ),
-                  ),
-                  child: Center(
-                    child: IconButton(
-                      icon: const Icon(
+                    child: const Center(
+                      child: Icon(
                         Icons.remove,
                         size: 14,
                       ),
-                      onPressed: () {},
                     ),
                   ),
                 ),
