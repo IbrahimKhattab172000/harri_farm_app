@@ -1,18 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:harri_farm_app/features/product_details/widgets/product_details_add_button.dart';
 import 'package:harri_farm_app/features/product_details/widgets/product_details_app_bar.dart';
-import 'package:harri_farm_app/features/product_details/widgets/product_details_describtion.dart';
 import 'package:harri_farm_app/features/product_details/widgets/product_details_extra_service.dart';
-import 'package:harri_farm_app/features/product_details/widgets/product_details_image.dart';
-import 'package:harri_farm_app/features/product_details/widgets/product_details_item_count.dart';
+import 'package:harri_farm_app/features/product_details/widgets/product_details_info.dart';
 import 'package:harri_farm_app/features/product_details/widgets/product_details_orders_type.dart';
 import 'package:harri_farm_app/features/product_details/widgets/product_details_packaging.dart';
-import 'package:harri_farm_app/features/product_details/widgets/product_details_price.dart';
 import 'package:harri_farm_app/features/product_details/widgets/product_details_rating_card.dart';
 import 'package:harri_farm_app/features/product_details/widgets/product_details_shredder.dart';
 import 'package:harri_farm_app/features/product_details/widgets/product_details_similar_products.dart';
-import 'package:harri_farm_app/features/product_details/widgets/product_details_type.dart';
-import 'package:harri_farm_app/features/product_details/widgets/product_details_weight.dart';
 import 'package:harri_farm_app/features/product_details/widgets/products_details_rating_bar.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/helpers/utils.dart';
@@ -32,17 +27,7 @@ class ProductDetailsView extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const ProductDetailsImage(),
-                SizedBox(height: 24.height),
-                const ProductDetailsItemsCount(),
-                SizedBox(height: 14.height),
-                const ProductDetailsPrice(),
-                SizedBox(height: 14.height),
-                const ProductsDetailsType(),
-                SizedBox(height: 14.height),
-                const ProductDetailsWeight(),
-                SizedBox(height: 24.height),
-                const ProductDetailsDescribtion(),
+                const ProductDetailsInfo(),
                 SizedBox(height: 24.height),
                 const ProductDetailsOrderType(),
                 SizedBox(height: 24.height),
