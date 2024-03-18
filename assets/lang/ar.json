@@ -54,6 +54,17 @@
     "kofta" : "كفتة",
     "arrange_by" : "ترتيب بواسطة",
     "search" : "البحث",
-    "search_for_your_products_here" : "ابحث عن منتجاتك هنا"
-    
+    "search_for_your_products_here" : "ابحث عن منتجاتك هنا",
+    "product_details" : "تفاصيل المنتج",
+    "type" : "النوع",
+    "weight" :"الوزن التقريبي",
+    "describtion" : "الوصف",
+    "order_type" : "نوع الطلب",
+    "extra_service" : "خدمات اضافيه",
+    "packaging"  :"التغليف",
+    "shredder_type"  : "نوع التقطيع",
+    "ratings" : "التقيمات",
+    "show_all" : "عرض الكل",
+    "add_to_cart" : "اضف للسله",
+    "similar_products": "منتجات مشابهة"
   }
