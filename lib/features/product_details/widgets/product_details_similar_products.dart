@@ -22,11 +22,11 @@ class ProductDetailsSimilarProducts extends StatelessWidget {
           fontWeight: FontWeight.w700,
         ),
         SizedBox(height: 10.height),
-        const Row(
+        Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            AppProductCard(),
-            AppProductCard(),
+            AppProductCard(onTap: () {}),
+            AppProductCard(onTap: () {}),
           ],
         ),
       ],

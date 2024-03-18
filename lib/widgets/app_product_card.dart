@@ -1,23 +1,21 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:harri_farm_app/features/product_details/view/view.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
-import 'package:harri_farm_app/helpers/routes.dart';
 import 'package:harri_farm_app/helpers/utils.dart';
 import 'package:harri_farm_app/widgets/app_text.dart';
 
 class AppProductCard extends StatelessWidget {
+  final VoidCallback onTap;
   const AppProductCard({
     super.key,
+    required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        RouteUtils.navigateTo(const ProductDetailsView());
-      },
+      onTap: onTap,
       child: Container(
         // height: 240.height,
         width: 146.width,
