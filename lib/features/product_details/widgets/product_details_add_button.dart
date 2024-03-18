@@ -16,14 +16,11 @@ class ProductDetailsAddToCartButton extends StatelessWidget {
         backgroundColor: AppColors.primary,
         padding: EdgeInsets.zero,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(16),
         ),
       ),
-      child: Ink(
+      child: SizedBox(
         height: 66.height,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-        ),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Row(
