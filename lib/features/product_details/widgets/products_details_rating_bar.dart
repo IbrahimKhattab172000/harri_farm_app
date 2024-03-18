@@ -14,7 +14,6 @@ class ProductDetailsRating extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(height: 20.height),
         Row(
           children: [
             AppText(
@@ -36,7 +35,7 @@ class ProductDetailsRating extends StatelessWidget {
           ],
         ),
         Container(
-          constraints: BoxConstraints(maxHeight: 350.height),
+          constraints: BoxConstraints(maxHeight: 360.height),
           child: ListView.separated(
             padding: const EdgeInsets.only(top: 10, bottom: 10),
             physics: const NeverScrollableScrollPhysics(),
