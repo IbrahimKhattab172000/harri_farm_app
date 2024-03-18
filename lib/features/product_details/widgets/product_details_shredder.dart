@@ -5,10 +5,17 @@ import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/widgets/app_text.dart';
 import 'package:harri_farm_app/widgets/app_toggle.dart';
 
-class ProductDetailsShredder extends StatelessWidget {
+class ProductDetailsShredder extends StatefulWidget {
   const ProductDetailsShredder({
     super.key,
   });
+
+  @override
+  State<ProductDetailsShredder> createState() => _ProductDetailsShredderState();
+}
+
+class _ProductDetailsShredderState extends State<ProductDetailsShredder> {
+  int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -22,20 +29,41 @@ class ProductDetailsShredder extends StatelessWidget {
           fontWeight: FontWeight.w700,
         ),
         SizedBox(height: 16.height),
-        const AppToggleCard(
-          title: "طريقة تقطيع",
-          isSelected: true,
-          price: "(+\$ 15)",
+        GestureDetector(
+          onTap: () {
+            setState(() {
+              selectedIndex = 0;
+            });
+          },
+          child: AppToggleCard(
+            title: "طريقة تقطيع",
+            isSelected: selectedIndex == 0,
+            price: "(+\$ 15)",
+          ),
         ),
-        const AppToggleCard(
-          title: "طريقة تقطيع",
-          price: "(+\$ 10)",
-          isSelected: false,
+        GestureDetector(
+          onTap: () {
+            setState(() {
+              selectedIndex = 1;
+            });
+          },
+          child: AppToggleCard(
+            title: "طريقة تقطيع",
+            price: "(+\$ 10)",
+            isSelected: selectedIndex == 1,
+          ),
         ),
-        const AppToggleCard(
-          title: "طريقة تقطيع",
-          isSelected: false,
-          price: "(+\$ 15)",
+        GestureDetector(
+          onTap: () {
+            setState(() {
+              selectedIndex = 2;
+            });
+          },
+          child: AppToggleCard(
+            title: "طريقة تقطيع",
+            isSelected: selectedIndex == 2,
+            price: "(+\$ 15)",
+          ),
         ),
       ],
     );
