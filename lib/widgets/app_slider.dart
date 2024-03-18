@@ -1,6 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:harri_farm_app/features/home/widgets/home_dot_indicator.dart';
+import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/widgets/app_top_view_card.dart';
 
@@ -46,6 +46,25 @@ class _AppSliderState extends State<AppSlider> {
           ),
         ),
       ],
+    );
+  }
+}
+
+class HomeDotIndicator extends StatelessWidget {
+  final bool isActive;
+
+  const HomeDotIndicator({super.key, required this.isActive});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 5),
+      width: 16.width,
+      height: 6.width,
+      decoration: BoxDecoration(
+        color: isActive ? AppColors.primary : AppColors.lightGray,
+        borderRadius: BorderRadius.circular(45),
+      ),
     );
   }
 }
