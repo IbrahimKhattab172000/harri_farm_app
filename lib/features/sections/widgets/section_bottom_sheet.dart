@@ -5,6 +5,7 @@ import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/helpers/routes.dart';
 import 'package:harri_farm_app/helpers/utils.dart';
 import 'package:harri_farm_app/widgets/app_text.dart';
+import 'package:harri_farm_app/widgets/app_toggle.dart';
 
 class SectionBottomSheet extends StatefulWidget {
   const SectionBottomSheet({
@@ -73,24 +74,20 @@ class _SectionBottomSheetState extends State<SectionBottomSheet> {
                   ],
                 ),
                 SizedBox(height: 24.height),
-                const SectionArrangingToggle(
+                const AppToggleCard(
                   title: "الاكثر مبيعا",
-                  color: AppColors.primary,
                   isSelected: true,
                 ),
-                const SectionArrangingToggle(
+                const AppToggleCard(
                   title: "الاعلى تقيما",
-                  color: AppColors.black,
                   isSelected: false,
                 ),
-                const SectionArrangingToggle(
+                const AppToggleCard(
                   title: " من السعر الاعلي الي الاقل",
-                  color: AppColors.black,
                   isSelected: false,
                 ),
-                const SectionArrangingToggle(
+                const AppToggleCard(
                   title: " من السعر الاقل الي الاعلى",
-                  color: AppColors.black,
                   isSelected: false,
                 ),
                 SizedBox(height: 24.height),
@@ -98,48 +95,6 @@ class _SectionBottomSheetState extends State<SectionBottomSheet> {
             ),
           );
         },
-      ),
-    );
-  }
-}
-
-class SectionArrangingToggle extends StatelessWidget {
-  final String title;
-  final Color color;
-  final bool isSelected;
-  const SectionArrangingToggle({
-    super.key,
-    required this.title,
-    required this.color,
-    required this.isSelected,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 20),
-      child: Row(
-        children: [
-          Container(
-            width: 24.width,
-            height: 24.height,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: AppColors.background,
-              border: Border.all(
-                color: isSelected ? AppColors.primary : AppColors.lightGray,
-                width: isSelected ? 5 : 1,
-              ),
-            ),
-          ),
-          SizedBox(width: 10.width),
-          AppText(
-            title: title,
-            color: color,
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
-          ),
-        ],
       ),
     );
   }
