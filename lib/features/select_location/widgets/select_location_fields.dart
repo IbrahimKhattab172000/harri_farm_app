@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:harri_farm_app/features/product_details/models/selection.dart';
 import 'package:harri_farm_app/features/select_location/widgets/select_location_pick_location.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
@@ -10,10 +11,17 @@ import 'package:harri_farm_app/widgets/app_drop_down_menu.dart';
 import 'package:harri_farm_app/widgets/app_text.dart';
 import 'package:harri_farm_app/widgets/app_text_field.dart';
 
-class SelectLocationFields extends StatelessWidget {
+class SelectLocationFields extends StatefulWidget {
   const SelectLocationFields({
     super.key,
   });
+
+  @override
+  State<SelectLocationFields> createState() => _SelectLocationFieldsState();
+}
+
+class _SelectLocationFieldsState extends State<SelectLocationFields> {
+  LatLng? selectedLocation;
 
   @override
   Widget build(BuildContext context) {
@@ -53,17 +61,30 @@ class SelectLocationFields extends StatelessWidget {
         AppTextField(label: "residential_number".tr()),
         SizedBox(height: 8.height),
         AppTextField(
-            label: "pick_location_on_map".tr(),
-            onTap: () {
-              RouteUtils.navigateTo(const SelectLocationPickLocation());
-            },
-            trailing: IconButton(
-              icon: const Icon(
-                FontAwesomeIcons.locationArrow,
-                color: AppColors.gray,
+          label: "pick_location_on_map".tr(),
+          controller: TextEditingController(
+              text: selectedLocation != null
+                  ? "${selectedLocation!.latitude}, ${selectedLocation!.longitude}"
+                  : ""),
+          onTap: () async {
+            RouteUtils.navigateTo(
+              SelectLocationPickLocation(
+                onSelectLocation: (location) {
+                  setState(() {
+                    selectedLocation = location;
+                  });
+                },
               ),
-              onPressed: () {},
-            )),
+            );
+          },
+          trailing: IconButton(
+            icon: const Icon(
+              FontAwesomeIcons.locationArrow,
+              color: AppColors.gray,
+            ),
+            onPressed: () {},
+          ),
+        ),
         SizedBox(height: 8.height),
         AppTextField(
           label: "add_extra_info".tr(),

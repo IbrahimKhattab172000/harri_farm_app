@@ -1,13 +1,15 @@
-// ignore_for_file: avoid_print
-
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:harri_farm_app/helpers/routes.dart';
 import 'package:harri_farm_app/widgets/app_appbar.dart';
 import 'package:harri_farm_app/widgets/app_button.dart';
 
 class SelectLocationPickLocation extends StatefulWidget {
-  const SelectLocationPickLocation({super.key});
+  final void Function(LatLng) onSelectLocation;
+
+  const SelectLocationPickLocation({Key? key, required this.onSelectLocation})
+      : super(key: key);
 
   @override
   State<SelectLocationPickLocation> createState() =>
@@ -19,6 +21,7 @@ class _SelectLocationPickLocationState
   late CameraPosition initialCameraPosition;
   late LatLng selectedLocation;
   BitmapDescriptor? markerIcon;
+  String placeName = '';
 
   @override
   void initState() {
@@ -37,26 +40,28 @@ class _SelectLocationPickLocationState
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
         child: AppButton(
           title: "next".tr(),
-          onTap: () {},
+          onTap: () {
+            RouteUtils.pop();
+          },
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       appBar: AppAppBar(
         title: "pick_up_location".tr(),
+        elevation: 0,
       ),
       body: GoogleMap(
         initialCameraPosition: initialCameraPosition,
-        onTap: (LatLng latLng) {
+        onTap: (LatLng latLng) async {
           setState(() {
             selectedLocation = latLng;
           });
           print('Selected Location: $selectedLocation');
+          widget.onSelectLocation(selectedLocation);
         },
         markers: {
           Marker(
-            markerId: const MarkerId(
-              'selectedLocation',
-            ),
+            markerId: const MarkerId('selectedLocation'),
             position: selectedLocation,
           ),
         },
