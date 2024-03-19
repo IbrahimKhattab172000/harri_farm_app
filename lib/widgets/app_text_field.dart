@@ -23,6 +23,7 @@ class AppTextField extends StatefulWidget {
     this.controller,
     this.secure = false,
     this.hintColor,
+    this.transperent,
   });
 
   final String? hint;
@@ -41,6 +42,7 @@ class AppTextField extends StatefulWidget {
   final void Function(String?)? onSaved;
   final TextEditingController? controller;
   final Color? hintColor;
+  final bool? transperent;
 
   @override
   State<AppTextField> createState() => _AppTextFieldState();
@@ -97,11 +99,25 @@ class _AppTextFieldState extends State<AppTextField> {
                 prefixIcon: widget.leading,
                 contentPadding: EdgeInsets.symmetric(
                     horizontal: 12.width, vertical: 8.height),
-                border: _border(widget.borderColor),
-                enabledBorder: _border(widget.borderColor),
-                focusedBorder: _border(AppColors.primary, width: 1),
-                errorBorder: _border(AppColors.red),
-                focusedErrorBorder: _border(AppColors.background, width: 1),
+                border: _border((widget.transperent ?? false)
+                    ? Colors.transparent
+                    : widget.borderColor),
+                enabledBorder: _border((widget.transperent ?? false)
+                    ? Colors.transparent
+                    : widget.borderColor),
+                focusedBorder: _border(
+                    (widget.transperent ?? false)
+                        ? Colors.transparent
+                        : AppColors.primary,
+                    width: 1),
+                errorBorder: _border((widget.transperent ?? false)
+                    ? Colors.transparent
+                    : AppColors.red),
+                focusedErrorBorder: _border(
+                    (widget.transperent ?? false)
+                        ? Colors.transparent
+                        : AppColors.background,
+                    width: 1),
               ),
             ),
           ),

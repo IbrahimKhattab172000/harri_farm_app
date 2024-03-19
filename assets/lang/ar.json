@@ -66,5 +66,20 @@
     "ratings" : "التقيمات",
     "show_all" : "عرض الكل",
     "add_to_cart" : "اضف للسله",
-    "similar_products": "منتجات مشابهة"
+    "similar_products": "منتجات مشابهة",
+    "products" : "منتجات",
+    "delete_cart"  : "حذف السلة",
+    "add_discount_coupon" : "اضف كوبون خصم",
+    "activate" : "تفعيل",
+    "cart" : "السله",
+    "enter_the_discount_code" :"اضف كوبون خصم",
+    "order_summary" : "ملخص الطلب",
+    "secondary_sum"  :"المجموع الفرعى",
+    "discount" : "الخصم",
+    "service_fees" : "رسوم الخدمة",
+    "extra_tax_value" :"قيمه الضريبه المضافة",
+    "total_sum" : "المجموع الكلى",
+    "back_to_shopping" :"الرجوع للتسوق",
+    "confirm_order" : "اتمام الطلب"
+
   }
