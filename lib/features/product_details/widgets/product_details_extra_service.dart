@@ -21,7 +21,7 @@ class ProductDetailsExtraService extends StatelessWidget {
           fontWeight: FontWeight.w700,
         ),
         SizedBox(height: 16.height),
-        DropDownSelection.single(
+        AppDropDownSelection.single(
           initialItem: SelectionItem(
             label: "تجريد من العظم ",
             value: "0",

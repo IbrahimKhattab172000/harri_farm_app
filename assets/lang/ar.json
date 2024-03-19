@@ -8,6 +8,7 @@
     "continue" : "متابعة",
     "or" : "أو",
     "phone_number" : "رقم الجوال",
+    "additional_phone_number" : "رقم جوال اضافى",
     "enter_the_number" : "أدخل الرقم",
     "password" : "كلمة المرور",
     "enter_the_password"  : "أدخل كلمة المرور",
@@ -80,6 +81,15 @@
     "extra_tax_value" :"قيمه الضريبه المضافة",
     "total_sum" : "المجموع الكلى",
     "back_to_shopping" :"الرجوع للتسوق",
-    "confirm_order" : "اتمام الطلب"
+    "confirm_order" : "اتمام الطلب",
+    "location" :"العنوان",
+    "exact_location" :"العنوان بالتفصيل",
+    "city":"المدينة",
+    "neighborhood" : "الحى",
+    "st_name" : "اسم الشارع",
+    "residential_number" :"رقم السكن",
+    "pick_location_on_map" : "تحديد موقع الاستلام على الخريطة",
+    "add_extra_info":"اضف ملاحظات على الطلب"
+
 
   }

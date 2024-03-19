@@ -9,7 +9,7 @@ import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/widgets/app_text.dart';
 
 // ignore: must_be_immutable
-class DropDownSelection extends StatelessWidget {
+class AppDropDownSelection extends StatelessWidget {
   final List<SelectionItem> items;
   List<SelectionItem>? initialItems;
   final String hint;
@@ -19,7 +19,7 @@ class DropDownSelection extends StatelessWidget {
   Function(SelectionItem? value)? onChangeSingle;
   SelectionItem? initialItem;
 
-  DropDownSelection.single({
+  AppDropDownSelection.single({
     Key? key,
     required this.items,
     required this.initialItem,
@@ -29,7 +29,7 @@ class DropDownSelection extends StatelessWidget {
     this.multiSelection = false,
   }) : super(key: key);
 
-  DropDownSelection.multi({
+  AppDropDownSelection.multi({
     Key? key,
     required this.items,
     required this.initialItems,
