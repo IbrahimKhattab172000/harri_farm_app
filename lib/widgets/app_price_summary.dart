@@ -5,8 +5,8 @@ import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/widgets/app_text.dart';
 
-class CartPriceSummary extends StatelessWidget {
-  const CartPriceSummary({
+class AppPriceSummary extends StatelessWidget {
+  const AppPriceSummary({
     super.key,
   });
 

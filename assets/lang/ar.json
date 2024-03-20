@@ -89,7 +89,18 @@
     "st_name" : "اسم الشارع",
     "residential_number" :"رقم السكن",
     "pick_location_on_map" : "تحديد موقع الاستلام على الخريطة",
-    "add_extra_info":"اضف ملاحظات على الطلب"
+    "add_extra_info":"اضف ملاحظات على الطلب",
+    "payment"  :"الدفع",
+    "shipping_details" : "بيانات التوصيل",
+    "add_location" : "أضف عنوان",
+    "select_the_payment_method" :"قم باختيار طريقة الدفع",
+    "payment_in_cash" : "الدفع كاش",
+    "payment_via_visa" : "الدفع عن طريق الفيزا",
+    "card_name"  : "رقم البطاقة",
+    "month_year" :"شهر/ سنة",
+    "card_holder_name" : "اسم حامل البطاقة",
+    "expiry_date":"تاريخ الانتهاء",
+    "security_code" : "رمز الامان",
 
 
   }

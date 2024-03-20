@@ -3,13 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:harri_farm_app/features/cart/widgets/cart_buttons.dart';
 
 import 'package:harri_farm_app/features/cart/widgets/cart_coupon_field.dart';
-import 'package:harri_farm_app/features/cart/widgets/cart_price_summary.dart';
+import 'package:harri_farm_app/widgets/app_price_summary.dart';
 import 'package:harri_farm_app/features/cart/widgets/cart_products.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/helpers/routes.dart';
 import 'package:harri_farm_app/helpers/utils.dart';
 import 'package:harri_farm_app/widgets/app_appbar.dart';
-import 'package:harri_farm_app/widgets/app_decorated_background.dart';
 
 class CartView extends StatelessWidget {
   const CartView({super.key});
@@ -40,7 +39,7 @@ class CartView extends StatelessWidget {
               SizedBox(height: 16.height),
               const CartCouponField(),
               SizedBox(height: 24.height),
-              const CartPriceSummary(),
+              const AppPriceSummary(),
               SizedBox(height: 80.height),
               const CartButtons(),
               SizedBox(height: Utils.bottomDevicePadding + 28),

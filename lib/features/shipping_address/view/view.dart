@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:harri_farm_app/features/payment/view/view.dart';
 import 'package:harri_farm_app/features/shipping_address/widgets/shipping_address_fields.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/helpers/routes.dart';
@@ -36,7 +37,9 @@ class ShippingAddressView extends StatelessWidget {
               SizedBox(height: 40.height),
               AppButton(
                 title: "next".tr(),
-                onTap: () {},
+                onTap: () {
+                  RouteUtils.navigateTo(const PaymentView());
+                },
               ),
               SizedBox(height: Utils.bottomDevicePadding + 28),
             ],
