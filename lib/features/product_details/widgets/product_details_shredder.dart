@@ -19,47 +19,50 @@ class _ProductDetailsShredderState extends State<ProductDetailsShredder> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        AppText(
-          title: "shredder_type".tr(),
-          fontSize: 16,
-          color: AppColors.black,
-          fontWeight: FontWeight.w700,
-        ),
-        SizedBox(height: 16.height),
-        AppToggleCard(
-          title: "طريقة تقطيع",
-          isSelected: selectedIndex == 0,
-          price: "(+\$ 15)",
-          onTap: () {
-            setState(() {
-              selectedIndex = 0;
-            });
-          },
-        ),
-        AppToggleCard(
-          title: "طريقة تقطيع",
-          price: "(+\$ 10)",
-          isSelected: selectedIndex == 1,
-          onTap: () {
-            setState(() {
-              selectedIndex = 1;
-            });
-          },
-        ),
-        AppToggleCard(
-          title: "طريقة تقطيع",
-          isSelected: selectedIndex == 2,
-          price: "(+\$ 15)",
-          onTap: () {
-            setState(() {
-              selectedIndex = 2;
-            });
-          },
-        ),
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          AppText(
+            title: "shredder_type".tr(),
+            fontSize: 16,
+            color: AppColors.black,
+            fontWeight: FontWeight.w700,
+          ),
+          SizedBox(height: 16.height),
+          AppToggleCard(
+            title: "طريقة تقطيع",
+            isSelected: selectedIndex == 0,
+            price: "(+\$ 15)",
+            onTap: () {
+              setState(() {
+                selectedIndex = 0;
+              });
+            },
+          ),
+          AppToggleCard(
+            title: "طريقة تقطيع",
+            price: "(+\$ 10)",
+            isSelected: selectedIndex == 1,
+            onTap: () {
+              setState(() {
+                selectedIndex = 1;
+              });
+            },
+          ),
+          AppToggleCard(
+            title: "طريقة تقطيع",
+            isSelected: selectedIndex == 2,
+            price: "(+\$ 15)",
+            onTap: () {
+              setState(() {
+                selectedIndex = 2;
+              });
+            },
+          ),
+        ],
+      ),
     );
   }
 }

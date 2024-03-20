@@ -20,35 +20,38 @@ class _ProductDetailsPackagingState extends State<ProductDetailsPackaging> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        AppText(
-          title: "packaging".tr(),
-          fontSize: 16,
-          color: AppColors.black,
-          fontWeight: FontWeight.w700,
-        ),
-        SizedBox(height: 16.height),
-        AppToggleCard(
-          title: "اكياس",
-          isSelected: selectedIndex == 0,
-          onTap: () {
-            setState(() {
-              selectedIndex = 0;
-            });
-          },
-        ),
-        AppToggleCard(
-          title: "كيس واحد",
-          isSelected: selectedIndex == 1,
-          onTap: () {
-            setState(() {
-              selectedIndex = 1;
-            });
-          },
-        ),
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          AppText(
+            title: "packaging".tr(),
+            fontSize: 16,
+            color: AppColors.black,
+            fontWeight: FontWeight.w700,
+          ),
+          SizedBox(height: 16.height),
+          AppToggleCard(
+            title: "اكياس",
+            isSelected: selectedIndex == 0,
+            onTap: () {
+              setState(() {
+                selectedIndex = 0;
+              });
+            },
+          ),
+          AppToggleCard(
+            title: "كيس واحد",
+            isSelected: selectedIndex == 1,
+            onTap: () {
+              setState(() {
+                selectedIndex = 1;
+              });
+            },
+          ),
+        ],
+      ),
     );
   }
 }

@@ -12,43 +12,46 @@ class ProductDetailsRating extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Row(
-          children: [
-            AppText(
-              title: "ratings".tr(),
-              fontSize: 16,
-              color: AppColors.black,
-              fontWeight: FontWeight.w700,
-            ),
-            const Spacer(),
-            InkWell(
-              onTap: () {},
-              child: AppText(
-                title: "show_all".tr(),
-                fontSize: 12,
-                color: AppColors.primary,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Column(
+        children: [
+          Row(
+            children: [
+              AppText(
+                title: "ratings".tr(),
+                fontSize: 16,
+                color: AppColors.black,
                 fontWeight: FontWeight.w700,
               ),
-            ),
-          ],
-        ),
-        Container(
-          constraints: BoxConstraints(maxHeight: 360.height),
-          child: ListView.separated(
-            padding: const EdgeInsets.only(top: 10, bottom: 10),
-            physics: const NeverScrollableScrollPhysics(),
-            itemCount: 2,
-            itemBuilder: (context, index) {
-              return const ProductDetailsRatingCard();
-            },
-            separatorBuilder: (context, index) {
-              return SizedBox(height: 10.height);
-            },
+              const Spacer(),
+              InkWell(
+                onTap: () {},
+                child: AppText(
+                  title: "show_all".tr(),
+                  fontSize: 12,
+                  color: AppColors.primary,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ],
           ),
-        ),
-      ],
+          Container(
+            constraints: BoxConstraints(maxHeight: 360.height),
+            child: ListView.separated(
+              padding: const EdgeInsets.only(top: 10, bottom: 10),
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: 2,
+              itemBuilder: (context, index) {
+                return const ProductDetailsRatingCard();
+              },
+              separatorBuilder: (context, index) {
+                return SizedBox(height: 10.height);
+              },
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

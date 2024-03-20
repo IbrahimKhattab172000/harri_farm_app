@@ -18,12 +18,15 @@ class HomeOffersCards extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemCount: 5,
         itemBuilder: (context, index) {
-          return AppProductCard(
-            onTap: () => RouteUtils.navigateTo(const ProductDetailsView()),
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: AppProductCard(
+              onTap: () => RouteUtils.navigateTo(const ProductDetailsView()),
+            ),
           );
         },
         separatorBuilder: (context, index) {
-          return SizedBox(width: 54.width);
+          return SizedBox(width: 24.width);
         },
       ),
     );

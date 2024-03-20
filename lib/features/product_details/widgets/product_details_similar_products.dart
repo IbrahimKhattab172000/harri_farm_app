@@ -15,11 +15,14 @@ class ProductDetailsSimilarProducts extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        AppText(
-          title: "similar_products".tr(),
-          fontSize: 16,
-          color: AppColors.black,
-          fontWeight: FontWeight.w700,
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: AppText(
+            title: "similar_products".tr(),
+            fontSize: 16,
+            color: AppColors.black,
+            fontWeight: FontWeight.w700,
+          ),
         ),
         SizedBox(height: 10.height),
         Container(
@@ -29,12 +32,15 @@ class ProductDetailsSimilarProducts extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             itemCount: 5,
             itemBuilder: (context, index) {
-              return AppProductCard(
-                onTap: () {},
+              return Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: AppProductCard(
+                  onTap: () {},
+                ),
               );
             },
             separatorBuilder: (context, index) {
-              return SizedBox(width: 44.width);
+              return SizedBox(width: 24.width);
             },
           ),
         ),
