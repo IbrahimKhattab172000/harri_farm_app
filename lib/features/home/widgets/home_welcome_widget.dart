@@ -12,30 +12,33 @@ class HomeWelcomeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Image.asset(
-          Utils.getAssetPNGPath("hand"),
-          width: 20.width,
-          height: 20.height,
-        ),
-        SizedBox(width: 16.width),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            AppText(
-              title: "welcome_again".tr(),
-              fontSize: 20,
-              color: AppColors.black,
-              fontWeight: FontWeight.w700,
-            ),
-            AppText(
-              title: "all_your_products_are_available".tr(),
-              fontSize: 14,
-            ),
-          ],
-        ),
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Row(
+        children: [
+          Image.asset(
+            Utils.getAssetPNGPath("hand"),
+            width: 20.width,
+            height: 20.height,
+          ),
+          SizedBox(width: 16.width),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              AppText(
+                title: "welcome_again".tr(),
+                fontSize: 20,
+                color: AppColors.black,
+                fontWeight: FontWeight.w700,
+              ),
+              AppText(
+                title: "all_your_products_are_available".tr(),
+                fontSize: 14,
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

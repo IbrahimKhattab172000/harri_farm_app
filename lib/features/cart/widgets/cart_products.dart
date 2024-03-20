@@ -31,20 +31,18 @@ class CartProudcts extends StatelessWidget {
             ),
           ],
         ),
-        Container(
-          constraints: BoxConstraints(maxHeight: 410.height),
-          child: ListView.separated(
-            physics: const BouncingScrollPhysics(),
-            itemCount: 3,
-            itemBuilder: (context, index) {
-              return CartCard(
-                onCountChanged: (int count) {},
-              );
-            },
-            separatorBuilder: (context, index) {
-              return SizedBox(height: 10.height);
-            },
-          ),
+        ListView.separated(
+          physics: const BouncingScrollPhysics(),
+          itemCount: 10,
+          shrinkWrap: true,
+          itemBuilder: (context, index) {
+            return CartCard(
+              onCountChanged: (int count) {},
+            );
+          },
+          separatorBuilder: (context, index) {
+            return SizedBox(height: 10.height);
+          },
         ),
       ],
     );

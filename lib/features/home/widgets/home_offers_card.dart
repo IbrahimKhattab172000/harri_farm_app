@@ -23,7 +23,7 @@ class HomeOffersCards extends StatelessWidget {
           );
         },
         separatorBuilder: (context, index) {
-          return SizedBox(width: 44.width);
+          return SizedBox(width: 54.width);
         },
       ),
     );

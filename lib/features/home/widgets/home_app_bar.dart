@@ -13,67 +13,70 @@ class HomeAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        InkWell(
-          onTap: () {},
-          child: Image.asset(
-            Utils.getAssetPNGPath("menu_icon"),
-            width: 22.width,
-          ),
-        ),
-        const Spacer(),
-        Stack(
-          clipBehavior: Clip.none,
-          children: [
-            InkWell(
-              onTap: () {
-                RouteUtils.navigateTo(const CartView());
-              },
-              child: Image.asset(
-                Utils.getAssetPNGPath("shopping_icon"),
-                width: 22.width,
-              ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Row(
+        children: [
+          InkWell(
+            onTap: () {},
+            child: Image.asset(
+              Utils.getAssetPNGPath("menu_icon"),
+              width: 22.width,
             ),
-            const Positioned(
-              top: -5,
-              right: -8,
-              child: CircleAvatar(
-                backgroundColor: AppColors.red,
-                radius: 10,
-                child: Center(
-                  child: AppText(
-                    textAlign: TextAlign.center,
-                    title: "2",
-                    fontSize: 10,
-                    color: AppColors.white,
+          ),
+          const Spacer(),
+          Stack(
+            clipBehavior: Clip.none,
+            children: [
+              InkWell(
+                onTap: () {
+                  RouteUtils.navigateTo(const CartView());
+                },
+                child: Image.asset(
+                  Utils.getAssetPNGPath("shopping_icon"),
+                  width: 22.width,
+                ),
+              ),
+              const Positioned(
+                top: -5,
+                right: -8,
+                child: CircleAvatar(
+                  backgroundColor: AppColors.red,
+                  radius: 10,
+                  child: Center(
+                    child: AppText(
+                      textAlign: TextAlign.center,
+                      title: "2",
+                      fontSize: 10,
+                      color: AppColors.white,
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
-        ),
-        SizedBox(width: 15.width),
-        Stack(
-          children: [
-            InkWell(
-              onTap: () {},
-              child: Image.asset(
-                Utils.getAssetPNGPath("bell_icon"),
-                width: 22.width,
+            ],
+          ),
+          SizedBox(width: 15.width),
+          Stack(
+            children: [
+              InkWell(
+                onTap: () {},
+                child: Image.asset(
+                  Utils.getAssetPNGPath("bell_icon"),
+                  width: 22.width,
+                ),
               ),
-            ),
-            const Positioned(
-              top: 0,
-              right: 0,
-              child: CircleAvatar(
-                backgroundColor: AppColors.primary,
-                radius: 5,
+              const Positioned(
+                top: 0,
+                right: 0,
+                child: CircleAvatar(
+                  backgroundColor: AppColors.primary,
+                  radius: 5,
+                ),
               ),
-            ),
-          ],
-        ),
-      ],
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

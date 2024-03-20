@@ -17,7 +17,7 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //I left if here for now cuz it will be replaced by the data coming to us from the backend
+    //I left iف here for now cuz it will be replaced by the data coming to us from the backend
     final homeSectionsList = [
       {
         'color': AppColors.section1,
@@ -44,32 +44,29 @@ class HomeView extends StatelessWidget {
     return Scaffold(
       body: AppDecoratedBackGround(
         child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SizedBox(height: Utils.topDevicePadding + 16.height),
-                const HomeAppBar(),
-                SizedBox(height: 24.height),
-                const HomeWelcomeWidget(),
-                SizedBox(height: 22.height),
-                const HomeSearchField(),
-                SizedBox(height: 16.height),
-                const AppSlider(),
-                SizedBox(height: 16.height),
-                HomeSections(homeSectionsList: homeSectionsList),
-                SizedBox(height: 16.height),
-                const HomeOffersBar(),
-                SizedBox(height: 16.height),
-                const HomeOffersCards(),
-                SizedBox(height: 16.height),
-                const AppSlider(),
-                SizedBox(height: 32.height),
-                const HomeLogo(),
-                SizedBox(height: Utils.bottomDevicePadding),
-              ],
-            ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(height: Utils.topDevicePadding + 16.height),
+              const HomeAppBar(),
+              SizedBox(height: 24.height),
+              const HomeWelcomeWidget(),
+              SizedBox(height: 22.height),
+              const HomeSearchField(),
+              SizedBox(height: 16.height),
+              const AppSlider(),
+              SizedBox(height: 16.height),
+              HomeSections(homeSectionsList: homeSectionsList),
+              SizedBox(height: 16.height),
+              const HomeOffersBar(),
+              SizedBox(height: 16.height),
+              const HomeOffersCards(),
+              SizedBox(height: 16.height),
+              const AppSlider(),
+              SizedBox(height: 32.height),
+              const HomeLogo(),
+              SizedBox(height: Utils.bottomDevicePadding),
+            ],
           ),
         ),
       ),

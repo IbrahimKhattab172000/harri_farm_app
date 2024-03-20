@@ -12,27 +12,30 @@ class HomeOffersBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        AppText(
-          title: "offers".tr(),
-          fontSize: 14,
-          color: AppColors.black,
-          fontWeight: FontWeight.w700,
-        ),
-        const Spacer(),
-        InkWell(
-          onTap: () {
-            RouteUtils.navigateTo(const OffersView());
-          },
-          child: AppText(
-            title: "show_more".tr(),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Row(
+        children: [
+          AppText(
+            title: "offers".tr(),
             fontSize: 14,
-            color: AppColors.primary,
+            color: AppColors.black,
             fontWeight: FontWeight.w700,
           ),
-        ),
-      ],
+          const Spacer(),
+          InkWell(
+            onTap: () {
+              RouteUtils.navigateTo(const OffersView());
+            },
+            child: AppText(
+              title: "show_more".tr(),
+              fontSize: 14,
+              color: AppColors.primary,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

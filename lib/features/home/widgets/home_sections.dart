@@ -15,35 +15,38 @@ class HomeSections extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        AppText(
-          title: "sections".tr(),
-          fontSize: 14,
-          color: AppColors.black,
-          fontWeight: FontWeight.w700,
-        ),
-        SizedBox(height: 16.height),
-        SizedBox(
-          height: 88.height,
-          child: ListView.separated(
-            scrollDirection: Axis.horizontal,
-            itemCount: homeSectionsList.length,
-            itemBuilder: (context, index) {
-              final section = homeSectionsList[index];
-              return HomeSectionCard(
-                color: section['color'] as Color,
-                imagePath: section['imagePath'] as String,
-                name: section['name'] as String,
-              );
-            },
-            separatorBuilder: (BuildContext context, int index) {
-              return SizedBox(width: 16.width);
-            },
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          AppText(
+            title: "sections".tr(),
+            fontSize: 14,
+            color: AppColors.black,
+            fontWeight: FontWeight.w700,
           ),
-        ),
-      ],
+          SizedBox(height: 16.height),
+          SizedBox(
+            height: 88.height,
+            child: ListView.separated(
+              scrollDirection: Axis.horizontal,
+              itemCount: homeSectionsList.length,
+              itemBuilder: (context, index) {
+                final section = homeSectionsList[index];
+                return HomeSectionCard(
+                  color: section['color'] as Color,
+                  imagePath: section['imagePath'] as String,
+                  name: section['name'] as String,
+                );
+              },
+              separatorBuilder: (BuildContext context, int index) {
+                return SizedBox(width: 16.width);
+              },
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -12,15 +12,18 @@ class HomeSearchField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppTextField(
-      leading: const Icon(
-        Icons.search,
-        color: AppColors.lightGray,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: AppTextField(
+        leading: const Icon(
+          Icons.search,
+          color: AppColors.lightGray,
+        ),
+        hint: "search_for_product".tr(),
+        onTap: () {
+          RouteUtils.navigateTo(const SearchView());
+        },
       ),
-      hint: "search_for_product".tr(),
-      onTap: () {
-        RouteUtils.navigateTo(const SearchView());
-      },
     );
   }
 }
