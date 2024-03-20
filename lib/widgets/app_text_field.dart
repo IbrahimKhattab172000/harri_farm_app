@@ -78,7 +78,7 @@ class _AppTextFieldState extends State<AppTextField> {
             child: TextFormField(
               controller: widget.controller,
               cursorColor: AppColors.black,
-              cursorHeight: 20,
+              // cursorHeight: double.infinity,
               validator: widget.validator,
               onChanged: widget.onChanged,
               textInputAction: TextInputAction.done,

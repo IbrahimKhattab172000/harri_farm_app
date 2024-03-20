@@ -34,7 +34,7 @@ class CartCouponField extends StatelessWidget {
               fillColor: Colors.transparent,
             ),
           ),
-          const Spacer(),
+          SizedBox(width: 8.width),
           AppText(
             title: "activate".tr(),
             color: AppColors.primary,
