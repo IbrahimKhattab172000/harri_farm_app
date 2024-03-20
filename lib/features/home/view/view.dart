@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:harri_farm_app/features/drawer/view/view.dart';
 import 'package:harri_farm_app/features/home/widgets/home_app_bar.dart';
 import 'package:harri_farm_app/features/home/widgets/home_logo.dart';
 import 'package:harri_farm_app/features/home/widgets/home_offers_bar.dart';
@@ -52,6 +53,7 @@ class HomeView extends StatelessWidget {
     ];
 
     return Scaffold(
+      drawer: const AppDrawerView(),
       body: AppDecoratedBackGround(
         child: SingleChildScrollView(
           child: Column(

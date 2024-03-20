@@ -18,7 +18,9 @@ class HomeAppBar extends StatelessWidget {
       child: Row(
         children: [
           InkWell(
-            onTap: () {},
+            onTap: () {
+              Scaffold.of(context).openDrawer();
+            },
             child: Image.asset(
               Utils.getAssetPNGPath("menu_icon"),
               width: 22.width,

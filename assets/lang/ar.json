@@ -103,7 +103,19 @@
     "security_code" : "رمز الامان",
     "your_order_sent_correctly" : "تم ارسال طلبك بنجاح",
     "home" : "الرئيسية",
-    "my_orders" :"طلباتي"
-
+    "my_orders" :"طلباتي",
+    "account_settings" :"إعدادات الحساب",
+    "favorite" :"المفضلة",
+    "locations"  :"العناوين",
+    "notifications" :"الاشعارات",
+    "language" :"اللغة",
+    "us" :"من نحن",
+    "contact_us" :"تواصل معنا",
+    "policy" : "سياسة الخصوصية",
+    "term_and_conditions" : "الشروط والاحكام",
+    "return_and_exchange_policy" :"سياسة الاسترجاع والاستبدال",
+    "shipping_and_delivery_policy" :"سياسه الشحن والتوصيل",
+    "faq" : "الاسئلة الشائعة",
+    "logout" :"تسجيل الخروج"
 
   }
