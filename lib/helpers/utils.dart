@@ -10,7 +10,7 @@ class Utils {
   static const String dummyProductImage =
       "https://img.freepik.com/free-vector/realistic-vector-icon-plastic-bottle-water-isolated-white-background-beverage-drink-mockup_134830-1356.jpg?size=626&ext=jpg&ga=GA1.1.1412446893.1704758400&semt=ais";
 
-  static const String mapAPIKey = 'AIzaSyDDE5HAogSmn1mfQfqrS2yr6czG5oQCAoE';
+  static const String mapAPIKey = 'AIzaSyCH4zUtX7UgQU2cBbMVAYLCHQJEQR3vY_M';
 
   static Color getColor(String color) {
     final myColor = "0xff${color.replaceFirst("#", "")}";

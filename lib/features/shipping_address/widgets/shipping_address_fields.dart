@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:harri_farm_app/features/product_details/models/selection.dart';
-import 'package:harri_farm_app/features/shipping_address/widgets/shipping_address_pick_location.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
-import 'package:harri_farm_app/helpers/routes.dart';
+import 'package:harri_farm_app/helpers/utils.dart';
 import 'package:harri_farm_app/widgets/app_drop_down_menu.dart';
 import 'package:harri_farm_app/widgets/app_text.dart';
 import 'package:harri_farm_app/widgets/app_text_field.dart';
+import 'package:google_maps_place_picker_mb/google_maps_place_picker.dart';
 
 class ShippingAddressFields extends StatefulWidget {
   const ShippingAddressFields({
@@ -67,15 +67,33 @@ class _ShippingAddressFieldsState extends State<ShippingAddressFields> {
                   ? "${selectedLocation!.latitude}, ${selectedLocation!.longitude}"
                   : ""),
           onTap: () async {
-            RouteUtils.navigateTo(
-              ShippingAddressPickLocation(
-                onSelectLocation: (location) {
-                  setState(() {
-                    selectedLocation = location;
-                  });
-                },
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => PlacePicker(
+                  //Just change the apikey in the utils and the manifest with another one that i authorized to use this functionality.
+                  apiKey: Utils.mapAPIKey,
+                  onPlacePicked: (result) {
+                    print(result.formattedAddress);
+                    Navigator.of(context).pop();
+                  },
+                  initialPosition:
+                      const LatLng(31.056458878848574, 31.366789128616503),
+                  useCurrentLocation: true,
+                  resizeToAvoidBottomInset: false,
+                ),
               ),
             );
+            //Old way of picking
+            // RouteUtils.navigateTo(
+            //   ShippingAddressPickLocation(
+            //     onSelectLocation: (location) {
+            //       setState(() {
+            //         selectedLocation = location;
+            //       });
+            //     },
+            //   ),
+            // );
           },
           trailing: IconButton(
             icon: const Icon(
