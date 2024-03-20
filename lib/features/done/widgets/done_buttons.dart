@@ -1,7 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:harri_farm_app/features/cart/view/view.dart';
+import 'package:harri_farm_app/features/home/view/view.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
+import 'package:harri_farm_app/helpers/routes.dart';
 import 'package:harri_farm_app/widgets/app_button.dart';
 
 class DoneButtons extends StatelessWidget {
@@ -18,7 +21,9 @@ class DoneButtons extends StatelessWidget {
             title: "home".tr(),
             color: AppColors.lightGray,
             titleColor: AppColors.black,
-            onTap: () {},
+            onTap: () {
+              RouteUtils.navigateTo(const HomeView());
+            },
             padding: const EdgeInsets.symmetric(horizontal: 10),
           ),
         ),
@@ -29,7 +34,9 @@ class DoneButtons extends StatelessWidget {
             color: AppColors.primary,
             titleColor: AppColors.white,
             padding: const EdgeInsets.symmetric(horizontal: 10),
-            onTap: () {},
+            onTap: () {
+              RouteUtils.navigateTo(const CartView());
+            },
           ),
         ),
       ],
