@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -74,7 +76,7 @@ class _ShippingAddressFieldsState extends State<ShippingAddressFields> {
                   //Just change the apikey in the utils and the manifest with another one that i authorized to use this functionality.
                   apiKey: Utils.mapAPIKey,
                   onPlacePicked: (result) {
-                    print(result.formattedAddress);
+                    log(result.formattedAddress ?? "null");
                     Navigator.of(context).pop();
                   },
                   initialPosition:

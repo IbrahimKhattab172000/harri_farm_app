@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -56,7 +58,7 @@ class _ShippingAddressPickLocationState
           setState(() {
             selectedLocation = latLng;
           });
-          print('Selected Location: $selectedLocation');
+          log('Selected Location: $selectedLocation');
           widget.onSelectLocation(selectedLocation);
         },
         markers: {

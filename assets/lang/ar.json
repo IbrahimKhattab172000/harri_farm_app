@@ -101,6 +101,9 @@
     "card_holder_name" : "اسم حامل البطاقة",
     "expiry_date":"تاريخ الانتهاء",
     "security_code" : "رمز الامان",
+    "your_order_sent_correctly" : "تم ارسال طلبك بنجاح",
+    "home" : "الرئيسية",
+    "my_orders" :"طلباتي"
 
 
   }
