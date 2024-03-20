@@ -25,55 +25,55 @@ class HomeAppBar extends StatelessWidget {
             ),
           ),
           const Spacer(),
-          Stack(
-            clipBehavior: Clip.none,
-            children: [
-              InkWell(
-                onTap: () {
-                  RouteUtils.navigateTo(const CartView());
-                },
-                child: Image.asset(
+          InkWell(
+            onTap: () {
+              RouteUtils.navigateTo(const CartView());
+            },
+            child: Stack(
+              clipBehavior: Clip.none,
+              children: [
+                Image.asset(
                   Utils.getAssetPNGPath("shopping_icon"),
                   width: 22.width,
                 ),
-              ),
-              const Positioned(
-                top: -5,
-                right: -8,
-                child: CircleAvatar(
-                  backgroundColor: AppColors.red,
-                  radius: 10,
-                  child: Center(
-                    child: AppText(
-                      textAlign: TextAlign.center,
-                      title: "2",
-                      fontSize: 10,
-                      color: AppColors.white,
+                const Positioned(
+                  top: -5,
+                  right: -8,
+                  child: CircleAvatar(
+                    backgroundColor: AppColors.red,
+                    radius: 10,
+                    child: Center(
+                      child: AppText(
+                        textAlign: TextAlign.center,
+                        title: "2",
+                        fontSize: 10,
+                        color: AppColors.white,
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
           SizedBox(width: 15.width),
-          Stack(
-            children: [
-              InkWell(
-                onTap: () {},
-                child: Image.asset(
+          InkWell(
+            onTap: () {},
+            child: Stack(
+              children: [
+                Image.asset(
                   Utils.getAssetPNGPath("bell_icon"),
                   width: 22.width,
                 ),
-              ),
-              const Positioned(
-                top: 0,
-                right: 0,
-                child: CircleAvatar(
-                  backgroundColor: AppColors.primary,
-                  radius: 5,
+                const Positioned(
+                  top: 0,
+                  right: 0,
+                  child: CircleAvatar(
+                    backgroundColor: AppColors.primary,
+                    radius: 5,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ],
       ),
