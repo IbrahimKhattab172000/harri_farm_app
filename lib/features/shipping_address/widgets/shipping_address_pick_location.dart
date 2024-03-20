@@ -5,19 +5,19 @@ import 'package:harri_farm_app/helpers/routes.dart';
 import 'package:harri_farm_app/widgets/app_appbar.dart';
 import 'package:harri_farm_app/widgets/app_button.dart';
 
-class SelectLocationPickLocation extends StatefulWidget {
+class ShippingAddressPickLocation extends StatefulWidget {
   final void Function(LatLng) onSelectLocation;
 
-  const SelectLocationPickLocation({Key? key, required this.onSelectLocation})
+  const ShippingAddressPickLocation({Key? key, required this.onSelectLocation})
       : super(key: key);
 
   @override
-  State<SelectLocationPickLocation> createState() =>
-      _SelectLocationPickLocationState();
+  State<ShippingAddressPickLocation> createState() =>
+      _ShippingAddressPickLocationState();
 }
 
-class _SelectLocationPickLocationState
-    extends State<SelectLocationPickLocation> {
+class _ShippingAddressPickLocationState
+    extends State<ShippingAddressPickLocation> {
   late CameraPosition initialCameraPosition;
   late LatLng selectedLocation;
   BitmapDescriptor? markerIcon;
