@@ -33,7 +33,7 @@ class CartProudcts extends StatelessWidget {
         ),
         ListView.separated(
           physics: const BouncingScrollPhysics(),
-          itemCount: 10,
+          itemCount: 3,
           shrinkWrap: true,
           itemBuilder: (context, index) {
             return CartCard(

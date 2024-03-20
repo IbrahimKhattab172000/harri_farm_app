@@ -30,6 +30,16 @@ class HomeView extends StatelessWidget {
         'name': 'fish',
       },
       {
+        'color': AppColors.section1,
+        'imagePath': 'meat',
+        'name': 'meat',
+      },
+      {
+        'color': AppColors.section2,
+        'imagePath': 'fish',
+        'name': 'fish',
+      },
+      {
         'color': AppColors.section3,
         'imagePath': 'fruit',
         'name': 'fruit',
