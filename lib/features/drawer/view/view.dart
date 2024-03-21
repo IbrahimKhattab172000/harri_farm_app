@@ -14,6 +14,7 @@ class AppDrawerView extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: ListView(
           padding: EdgeInsets.zero,
+          physics: const BouncingScrollPhysics(),
           children: [
             SizedBox(height: Utils.topDevicePadding + 40),
             const AppDrawerImage(),
