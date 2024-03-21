@@ -8,23 +8,25 @@ class MyOrdersDoneItemsTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      physics: const BouncingScrollPhysics(),
-      itemCount: 2,
-      shrinkWrap: true,
-      padding: EdgeInsets.only(top: 16.height),
-      itemBuilder: (context, index) {
-        return MyOrdersCard(
-          onCountChanged: (int count) {},
-          orderType: "delivered",
-        );
-      },
-      separatorBuilder: (context, index) {
-        return const Divider(
-          thickness: 1,
-          color: AppColors.lightGray,
-        );
-      },
+    return Expanded(
+      child: ListView.separated(
+        physics: const BouncingScrollPhysics(),
+        itemCount: 2,
+        shrinkWrap: true,
+        padding: EdgeInsets.only(top: 16.height),
+        itemBuilder: (context, index) {
+          return MyOrdersCard(
+            onCountChanged: (int count) {},
+            orderType: "delivered",
+          );
+        },
+        separatorBuilder: (context, index) {
+          return const Divider(
+            thickness: 1,
+            color: AppColors.lightGray,
+          );
+        },
+      ),
     );
   }
 }

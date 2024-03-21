@@ -37,7 +37,7 @@ class MyOrdersView extends StatelessWidget {
 
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: ListView(
+              child: Column(
                 children: [
                   SizedBox(height: 44.height),
                   const MyOrdersTabBar(),
