@@ -6,10 +6,12 @@ import 'package:harri_farm_app/helpers/utils.dart';
 import 'package:harri_farm_app/widgets/app_text.dart';
 
 class AppProductCard extends StatelessWidget {
+  final bool isFavorite;
   final VoidCallback onTap;
   const AppProductCard({
     super.key,
     required this.onTap,
+    this.isFavorite = false,
   });
 
   @override
@@ -106,6 +108,15 @@ class AppProductCard extends StatelessWidget {
                 ),
               ),
             ),
+            isFavorite
+                ? const Positioned(
+                    right: 0,
+                    child: Icon(
+                      Icons.favorite,
+                      color: AppColors.primary,
+                    ),
+                  )
+                : const SizedBox(),
           ],
         ),
       ),
