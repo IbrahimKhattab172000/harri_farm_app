@@ -122,6 +122,10 @@
     "in_delivery" : "قيد التوصيل",
     "rejected" : "طلب مرفوض",
     "delivered" : "تم التسليم",
-    "new_order" : " طلب جديد"
+    "new_order" : " طلب جديد",
+    "order_details"  : "تفاصيل الطلب",
+    "rate_service" :"تقييم الخدمة",
+    "re_order" : "اعادة الطلب مرة اخري",
+    "rejection_reason"  : "سبب الرفض"
 
   }

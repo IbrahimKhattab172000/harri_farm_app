@@ -43,8 +43,8 @@ class MyOrdersView extends StatelessWidget {
                   const MyOrdersTabBar(),
                   SizedBox(height: 24.height),
                   [
-                    const MyOrdersCurrentItemsTab(),
-                    const MyOrdersDoneItemsTab(),
+                    MyOrdersCurrentItemsTab(),
+                    MyOrdersDoneItemsTab(),
                   ][cubit.currentViewIndex],
                   SizedBox(height: Utils.bottomDevicePadding),
                 ],
