@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:harri_farm_app/features/drawer/widgets/app_drawer_tile.dart';
+import 'package:harri_farm_app/features/my_orders/view/view.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
+import 'package:harri_farm_app/helpers/routes.dart';
 
 class AppDrawerItems extends StatelessWidget {
   final List<Map<String, dynamic>> drawerItems = [
@@ -12,7 +14,9 @@ class AppDrawerItems extends StatelessWidget {
     {
       "imagePath": "shopping_bag",
       "title": "my_orders",
-      "onTap": () {},
+      "onTap": () {
+        RouteUtils.navigateTo(const MyOrdersView());
+      },
     },
     {
       "imagePath": "heart",

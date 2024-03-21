@@ -116,6 +116,12 @@
     "return_and_exchange_policy" :"سياسة الاسترجاع والاستبدال",
     "shipping_and_delivery_policy" :"سياسه الشحن والتوصيل",
     "faq" : "الاسئلة الشائعة",
-    "logout" :"تسجيل الخروج"
+    "logout" :"تسجيل الخروج",
+    "current" :"الحالية",
+    "done" : "المنتهية",
+    "in_delivery" : "قيد التوصيل",
+    "rejected" : "طلب مرفوض",
+    "delivered" : "تم التسليم",
+    "new_order" : " طلب جديد"
 
   }
