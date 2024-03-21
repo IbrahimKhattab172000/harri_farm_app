@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:harri_farm_app/features/my_orders/bloc/tab_cubit/cubit.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/widgets/app_text.dart';
@@ -32,7 +34,7 @@ class MyOrdersCustomTab extends StatelessWidget {
               maxLines: 1,
             ),
             SizedBox(height: 4.height),
-            isEnabled
+            isEnabled == true
                 ? Container(
                     width: lineWidth,
                     height: 2,
