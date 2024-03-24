@@ -33,7 +33,7 @@ class ShippingAddressView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: 12.height),
-              const ShippingAddressFields(),
+              const ShippingAddressForms(),
               SizedBox(height: 40.height),
               AppButton(
                 title: "next".tr(),

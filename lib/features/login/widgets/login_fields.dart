@@ -4,8 +4,8 @@ import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/widgets/app_text_field.dart';
 
-class LoginFields extends StatelessWidget {
-  const LoginFields({super.key});
+class LoginForms extends StatelessWidget {
+  const LoginForms({super.key});
 
   @override
   Widget build(BuildContext context) {

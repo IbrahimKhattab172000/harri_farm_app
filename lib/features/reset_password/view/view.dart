@@ -27,7 +27,7 @@ class ResetPasswordView extends StatelessWidget {
                 const RestPasswordTitle(),
                 const ResetPasswordNote(),
                 SizedBox(height: 40.height),
-                const ResetPasswordFields(),
+                const ResetPasswordForms(),
                 SizedBox(height: 40.height),
                 const ResetPasswordButton(),
                 SizedBox(height: Utils.bottomDevicePadding + 22.height),

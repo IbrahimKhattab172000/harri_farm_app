@@ -13,7 +13,7 @@ class AddressesAddBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: () {
         RouteUtils.navigateTo(const AddAddressView());
       },

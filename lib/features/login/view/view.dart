@@ -28,7 +28,7 @@ class LoginView extends StatelessWidget {
                 SizedBox(height: 20.height),
                 const LoginTitle(),
                 SizedBox(height: 30.height),
-                const LoginFields(),
+                const LoginForms(),
                 SizedBox(height: 20.height),
                 const LoginForgetPassword(),
                 SizedBox(height: 14.height),

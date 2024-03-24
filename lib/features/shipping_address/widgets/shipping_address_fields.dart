@@ -13,16 +13,16 @@ import 'package:harri_farm_app/widgets/app_text.dart';
 import 'package:harri_farm_app/widgets/app_text_field.dart';
 import 'package:google_maps_place_picker_mb/google_maps_place_picker.dart';
 
-class ShippingAddressFields extends StatefulWidget {
-  const ShippingAddressFields({
+class ShippingAddressForms extends StatefulWidget {
+  const ShippingAddressForms({
     super.key,
   });
 
   @override
-  State<ShippingAddressFields> createState() => _ShippingAddressFieldsState();
+  State<ShippingAddressForms> createState() => _ShippingAddressFormsState();
 }
 
-class _ShippingAddressFieldsState extends State<ShippingAddressFields> {
+class _ShippingAddressFormsState extends State<ShippingAddressForms> {
   LatLng? selectedLocation;
 
   @override
