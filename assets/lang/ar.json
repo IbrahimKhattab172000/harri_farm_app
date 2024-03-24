@@ -137,5 +137,7 @@
      "adding_address" :"اضافة عنوان",
      "area" :"المنطقة",
      "notes":"ملاحظات",
-     "save" : "حفظ"
+     "save" : "حفظ",
+     "no_notifications_start_using_the_app" :"لا توجد اشعارات ابدأ باستخدام التطبيق",
+     "your_order_has_been_accepted_and_in_process" :"تم قبول طلبك وجارى التجهيز "
   }
