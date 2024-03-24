@@ -21,6 +21,7 @@ class NotificationCard extends StatelessWidget {
         ),
         SizedBox(width: 14.width),
         Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             AppText(
               title: "your_order_has_been_accepted_and_in_process".tr(),
