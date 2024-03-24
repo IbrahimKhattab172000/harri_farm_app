@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:harri_farm_app/features/signup/widgets/signup_button.dart';
 import 'package:harri_farm_app/features/signup/widgets/signup_check_without_signing.dart';
-import 'package:harri_farm_app/features/signup/widgets/signup_fields.dart';
+import 'package:harri_farm_app/features/signup/widgets/signup_forms.dart';
 import 'package:harri_farm_app/features/signup/widgets/signup_have_account.dart';
 import 'package:harri_farm_app/features/signup/widgets/signup_terms_conditions.dart';
 import 'package:harri_farm_app/features/signup/widgets/signup_title.dart';
@@ -28,7 +28,7 @@ class SignUpView extends StatelessWidget {
                 SizedBox(height: 20.height),
                 const SignUpTitle(),
                 SizedBox(height: 30.height),
-                const SignUpFields(),
+                const SignUpForms(),
                 SizedBox(height: 26.height),
                 const SignUpTermAndConditions(),
                 SizedBox(height: 44.height),

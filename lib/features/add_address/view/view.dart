@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:harri_farm_app/features/add_address/widgets/add_address_button.dart';
-import 'package:harri_farm_app/features/add_address/widgets/add_address_fields.dart';
+import 'package:harri_farm_app/features/add_address/widgets/add_address_forms.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/widgets/app_appbar.dart';
 

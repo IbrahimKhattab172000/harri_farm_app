@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:harri_farm_app/features/reset_password/widgets/reset_password_button.dart';
-import 'package:harri_farm_app/features/reset_password/widgets/reset_password_fields.dart';
+import 'package:harri_farm_app/features/reset_password/widgets/reset_password_forms.dart';
 import 'package:harri_farm_app/features/reset_password/widgets/reset_password_note.dart';
 import 'package:harri_farm_app/features/reset_password/widgets/rest_password_image.dart';
 import 'package:harri_farm_app/features/reset_password/widgets/rest_password_title.dart';

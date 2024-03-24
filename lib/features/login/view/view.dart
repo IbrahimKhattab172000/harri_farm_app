@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:harri_farm_app/features/login/widgets/login_button.dart';
 import 'package:harri_farm_app/features/login/widgets/login_check_without_logging.dart';
-import 'package:harri_farm_app/features/login/widgets/login_fields.dart';
+import 'package:harri_farm_app/features/login/widgets/login_form.dart';
 import 'package:harri_farm_app/features/login/widgets/login_forget_password.dart';
 import 'package:harri_farm_app/features/login/widgets/login_no_account.dart';
 import 'package:harri_farm_app/features/login/widgets/login_title.dart';
