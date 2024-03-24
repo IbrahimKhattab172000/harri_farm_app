@@ -29,16 +29,7 @@ class FavoriteView extends StatelessWidget {
           ),
           elevation: 0,
         ),
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Column(
-            children: [
-              SizedBox(height: 40.height),
-              const FavoriteGridItems(),
-              SizedBox(height: Utils.bottomDevicePadding),
-            ],
-          ),
-        ),
+        body: const SafeArea(child: FavoriteGridItems()),
       ),
     );
   }
