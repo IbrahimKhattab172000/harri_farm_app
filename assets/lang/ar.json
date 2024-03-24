@@ -133,6 +133,9 @@
      "your_satisfaction_level" :"مامدى شعورك بالرضا",
      "add_your_notes_here" : "اضف ملاحظاتك هنا",
      "addresses" : "العناوين",
-     "add_new_address":"اضافة عنوان اخر"
-    
+     "add_new_address":"اضافة عنوان اخر",
+     "adding_address" :"اضافة عنوان",
+     "area" :"المنطقة",
+     "notes":"ملاحظات",
+     "save" : "حفظ"
   }

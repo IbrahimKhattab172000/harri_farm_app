@@ -20,7 +20,7 @@ class AddressesView extends StatelessWidget {
           children: [
             const AddressesList(),
             SizedBox(height: 24.height),
-            const AddressesAddAddressBar(),
+            const AddressesAddBar(),
           ],
         ),
       ),
