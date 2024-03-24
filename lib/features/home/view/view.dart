@@ -53,15 +53,15 @@ class HomeView extends StatelessWidget {
     ];
 
     return Scaffold(
+      appBar: const HomeAppBar(),
       drawer: const AppDrawerView(),
       body: AppDecoratedBackGround(
         child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(height: Utils.topDevicePadding + 16.height),
-              const HomeAppBar(),
-              SizedBox(height: 24.height),
+              SizedBox(height: 22.height),
               const HomeWelcomeWidget(),
               SizedBox(height: 22.height),
               const HomeSearchField(),
