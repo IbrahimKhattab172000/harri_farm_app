@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:harri_farm_app/features/cart/view/view.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
+import 'package:harri_farm_app/helpers/routes.dart';
 import 'package:harri_farm_app/helpers/utils.dart';
 import 'package:harri_farm_app/widgets/app_text.dart';
 
@@ -85,10 +87,15 @@ class _AppProductCardState extends State<AppProductCard> {
                         ],
                       ),
                       const Spacer(),
-                      Image.asset(
-                        Utils.getAssetPNGPath("shopping_icon"),
-                        width: 20.width,
-                        height: 20.height,
+                      GestureDetector(
+                        onTap: () {
+                          RouteUtils.navigateTo(const CartView());
+                        },
+                        child: Image.asset(
+                          Utils.getAssetPNGPath("shopping_icon"),
+                          width: 20.width,
+                          height: 20.height,
+                        ),
                       ),
                     ],
                   ),
@@ -124,7 +131,7 @@ class _AppProductCardState extends State<AppProductCard> {
               ),
             ),
             Positioned(
-              right: -10,
+              right: 0,
               top: -10,
               child: IconButton(
                 icon: Icon(
