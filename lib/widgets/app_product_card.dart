@@ -1,5 +1,5 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/helpers/utils.dart';
@@ -8,23 +8,32 @@ import 'package:harri_farm_app/widgets/app_text.dart';
 class AppProductCard extends StatefulWidget {
   final bool isFavorite;
   final VoidCallback onTap;
+  final Function(bool)? onFavoriteChanged;
   const AppProductCard({
-    super.key,
+    Key? key,
     required this.onTap,
     this.isFavorite = false,
-  });
+    this.onFavoriteChanged,
+  }) : super(key: key);
 
   @override
   State<AppProductCard> createState() => _AppProductCardState();
 }
 
 class _AppProductCardState extends State<AppProductCard> {
+  bool _isFavorite = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _isFavorite = widget.isFavorite;
+  }
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: widget.onTap,
       child: Container(
-        // height: 240.height,
         width: 146.width,
         color: AppColors.background,
         child: Stack(
@@ -88,6 +97,7 @@ class _AppProductCardState extends State<AppProductCard> {
             ),
             Positioned(
               left: 0,
+              top: 0,
               child: Container(
                 height: 35.height,
                 width: 35.height,
@@ -114,10 +124,23 @@ class _AppProductCardState extends State<AppProductCard> {
               ),
             ),
             Positioned(
-              right: 0,
-              child: Icon(
-                widget.isFavorite ? Icons.favorite : Icons.favorite_border,
-                color: AppColors.primary,
+              right: -10,
+              top: -10,
+              child: IconButton(
+                icon: Icon(
+                  _isFavorite ? Icons.favorite : Icons.favorite_border,
+                  color: AppColors.primary,
+                  size: 28,
+                ),
+                onPressed: () {
+                  setState(() {
+                    _isFavorite = !_isFavorite;
+
+                    if (widget.onFavoriteChanged != null) {
+                      widget.onFavoriteChanged!(_isFavorite);
+                    }
+                  });
+                },
               ),
             )
           ],
