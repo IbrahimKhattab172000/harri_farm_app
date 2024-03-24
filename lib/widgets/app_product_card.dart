@@ -93,8 +93,8 @@ class _AppProductCardState extends State<AppProductCard> {
                         },
                         child: Image.asset(
                           Utils.getAssetPNGPath("shopping_icon"),
-                          width: 20.width,
-                          height: 20.height,
+                          width: 22.width,
+                          height: 22.height,
                         ),
                       ),
                     ],
