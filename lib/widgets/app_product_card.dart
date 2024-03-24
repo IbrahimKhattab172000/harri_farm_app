@@ -5,7 +5,7 @@ import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/helpers/utils.dart';
 import 'package:harri_farm_app/widgets/app_text.dart';
 
-class AppProductCard extends StatelessWidget {
+class AppProductCard extends StatefulWidget {
   final bool isFavorite;
   final VoidCallback onTap;
   const AppProductCard({
@@ -15,9 +15,14 @@ class AppProductCard extends StatelessWidget {
   });
 
   @override
+  State<AppProductCard> createState() => _AppProductCardState();
+}
+
+class _AppProductCardState extends State<AppProductCard> {
+  @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onTap,
+      onTap: widget.onTap,
       child: Container(
         // height: 240.height,
         width: 146.width,
@@ -108,15 +113,13 @@ class AppProductCard extends StatelessWidget {
                 ),
               ),
             ),
-            isFavorite
-                ? const Positioned(
-                    right: 0,
-                    child: Icon(
-                      Icons.favorite,
-                      color: AppColors.primary,
-                    ),
-                  )
-                : const SizedBox(),
+            Positioned(
+              right: 0,
+              child: Icon(
+                widget.isFavorite ? Icons.favorite : Icons.favorite_border,
+                color: AppColors.primary,
+              ),
+            )
           ],
         ),
       ),

@@ -17,9 +17,9 @@ class FavoriteGridItems extends StatelessWidget {
           shrinkWrap: true,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            mainAxisSpacing: 8.width,
-            crossAxisSpacing: 8.height,
-            childAspectRatio: 2 / 3.4,
+            mainAxisSpacing: 8.height,
+            crossAxisSpacing: 32.width,
+            childAspectRatio: 2 / 3.6,
           ),
           itemCount: 10,
           itemBuilder: (context, index) {
