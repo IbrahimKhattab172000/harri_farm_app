@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart' hide TextDirection;
 import 'package:flutter/material.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
+import 'package:harri_farm_app/helpers/utils.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 class AppPinCodeField extends StatelessWidget {
@@ -15,7 +16,7 @@ class AppPinCodeField extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 16.width),
       child: Directionality(
-        textDirection: TextDirection.ltr,
+        textDirection: Utils.isAR ? TextDirection.rtl : TextDirection.ltr,
         child: PinCodeTextField(
           key: UniqueKey(),
           validator: (value) {

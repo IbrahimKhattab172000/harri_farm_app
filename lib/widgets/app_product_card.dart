@@ -104,7 +104,8 @@ class _AppProductCardState extends State<AppProductCard> {
               ),
             ),
             Positioned(
-              left: 0,
+              left: Utils.isAR ? 0 : null,
+              right: Utils.isAR ? null : 0,
               top: 0,
               child: Container(
                 height: 35.height,
@@ -132,7 +133,8 @@ class _AppProductCardState extends State<AppProductCard> {
               ),
             ),
             Positioned(
-              right: 0,
+              left: Utils.isAR ? null : 0,
+              right: Utils.isAR ? 0 : null,
               top: -10,
               child: IconButton(
                 icon: Icon(

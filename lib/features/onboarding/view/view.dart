@@ -76,7 +76,8 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                 axisDirection: Axis.horizontal,
                 controller: boardController,
                 count: boarding.length,
-                textDirection: TextDirection.ltr,
+                textDirection:
+                    Utils.isAR ? TextDirection.rtl : TextDirection.ltr,
                 effect: const JumpingDotEffect(
                   dotHeight: 12,
                   dotWidth: 12,

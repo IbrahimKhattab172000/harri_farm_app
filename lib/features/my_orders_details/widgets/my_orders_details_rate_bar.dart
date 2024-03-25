@@ -14,8 +14,8 @@ class MyOrderDetailsRateBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const AppText(
-          title: "رقم الطلب # 28102022",
+        AppText(
+          title: "${"order_number".tr()}  #28102022",
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
           color: AppColors.black,

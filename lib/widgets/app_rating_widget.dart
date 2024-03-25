@@ -40,7 +40,7 @@ class AppRatingWidget extends StatelessWidget {
             initialRating: rate,
             direction: Axis.horizontal,
             allowHalfRating: false,
-            textDirection: TextDirection.rtl,
+            textDirection: Utils.isAR ? TextDirection.rtl : TextDirection.ltr,
             itemCount: 5,
             itemSize: itemSize,
             ignoreGestures: onRate == null,
