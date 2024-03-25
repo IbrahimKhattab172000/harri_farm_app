@@ -110,7 +110,7 @@
     "locations"  :"العناوين",
     "notifications" :"الاشعارات",
     "language" :"اللغة",
-    "us" :"من نحن",
+    "about_us" :"من نحن",
     "contact_us" :"تواصل معنا",
     "policy" : "سياسة الخصوصية",
     "term_and_conditions" : "الشروط والاحكام",
@@ -150,5 +150,8 @@
      "dummy_product_name" : "فريش بيف استربس",
      "a_discount" : "خصم",
      "save_changes" :"حفظ التعديلات",
-     "delete_account" : "حذف الحساب"
+     "delete_account" : "حذف الحساب",
+     "our_view" : "رؤيتنا",
+     "our_mission" : "رسالتنا",
+     "our_values" : "قيمنا"
     }

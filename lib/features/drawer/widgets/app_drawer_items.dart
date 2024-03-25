@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:harri_farm_app/features/about_us/view/view.dart';
 import 'package:harri_farm_app/features/account/view/view.dart';
 import 'package:harri_farm_app/features/addresses/view/view.dart';
 import 'package:harri_farm_app/features/change_language/view/view.dart';
@@ -58,8 +59,10 @@ class AppDrawerItems extends StatelessWidget {
     },
     {
       "imagePath": "info",
-      "title": "us",
-      "onTap": () {},
+      "title": "about_us",
+      "onTap": () {
+        RouteUtils.navigateTo(const AboutUsView());
+      },
     },
     {
       "imagePath": "headphones",
