@@ -148,6 +148,7 @@
      "home_delivery_service" : "خدمة التوصيل لباب المنزل",
      "order_number"  : "رقم الطلب",
      "dummy_product_name" : "فريش بيف استربس",
-     "a_discount" : "خصم"
-
+     "a_discount" : "خصم",
+     "save_changes" :"حفظ التعديلات",
+     "delete_account" : "حذف الحساب"
     }

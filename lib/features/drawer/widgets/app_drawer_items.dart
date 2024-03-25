@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:harri_farm_app/features/account/view/view.dart';
 import 'package:harri_farm_app/features/addresses/view/view.dart';
 import 'package:harri_farm_app/features/change_language/view/view.dart';
 import 'package:harri_farm_app/features/drawer/widgets/app_drawer_tile.dart';
@@ -13,7 +14,9 @@ class AppDrawerItems extends StatelessWidget {
     {
       "imagePath": "setting",
       "title": "account_settings",
-      "onTap": () {},
+      "onTap": () {
+        RouteUtils.navigateTo(const AccountSettingsView());
+      },
     },
     {
       "imagePath": "shopping_bag",
