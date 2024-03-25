@@ -95,7 +95,7 @@ class AppDrawerItems extends StatelessWidget {
       "imagePath": "refresh_right_square",
       "title": "return_and_exchange_policy",
       "onTap": () {
-        RouteUtils.navigateTo(const ReturnAndExchangePolicyView());
+        RouteUtils.navigateTo(ReturnAndExchangePolicyView());
       },
     },
     {
@@ -109,7 +109,7 @@ class AppDrawerItems extends StatelessWidget {
       "imagePath": "help_circle",
       "title": "faq",
       "onTap": () {
-        RouteUtils.navigateTo(const FaqView());
+        RouteUtils.navigateTo(FaqView());
       },
     },
     {
