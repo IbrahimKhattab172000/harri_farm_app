@@ -158,5 +158,9 @@
      "send" : "إرسال",
      "contact_us_also"  :"تواصل معنا ايضاً",
      "when_is_the_exchange_and_return_available" : "متي يكون الاستبدال والاسترجاع",
-     "what_is_harri_store_all_about" : "ماهو متجر حري الأغنام ؟"
+     "what_is_harri_store_all_about" : "ماهو متجر حري الأغنام ؟",
+     "sold_the_most" : "الأكثر مبيعا",
+     "highest_in_price": "الاعلى تقيما",
+     "from_highest_to_lowest" :  "من السعر الاعلي الي الاقل",
+     "from_lowest_to_highest": "من السعر الاقل الي الاعلى"
     }

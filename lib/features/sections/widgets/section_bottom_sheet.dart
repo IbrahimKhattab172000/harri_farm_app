@@ -72,7 +72,7 @@ class _SectionBottomSheetState extends State<SectionBottomSheet> {
                 ),
                 SizedBox(height: 24.height),
                 AppToggleCard(
-                  title: "الاكثر مبيعا",
+                  title: "sold_the_most".tr(),
                   isSelected: selectedIndex == 0,
                   onTap: () {
                     setState(() {
@@ -81,7 +81,7 @@ class _SectionBottomSheetState extends State<SectionBottomSheet> {
                   },
                 ),
                 AppToggleCard(
-                  title: "الاعلى تقيما",
+                  title: "highest_in_price".tr(),
                   isSelected: selectedIndex == 1,
                   onTap: () {
                     setState(() {
@@ -90,7 +90,7 @@ class _SectionBottomSheetState extends State<SectionBottomSheet> {
                   },
                 ),
                 AppToggleCard(
-                  title: "من السعر الاعلي الي الاقل",
+                  title: "from_highest_to_lowest".tr(),
                   isSelected: selectedIndex == 2,
                   onTap: () {
                     setState(() {
@@ -99,7 +99,7 @@ class _SectionBottomSheetState extends State<SectionBottomSheet> {
                   },
                 ),
                 AppToggleCard(
-                  title: "من السعر الاقل الي الاعلى",
+                  title: "from_lowest_to_highest".tr(),
                   isSelected: selectedIndex == 3,
                   onTap: () {
                     setState(() {
