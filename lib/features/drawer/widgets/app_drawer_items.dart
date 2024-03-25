@@ -5,6 +5,7 @@ import 'package:harri_farm_app/features/addresses/view/view.dart';
 import 'package:harri_farm_app/features/change_language/view/view.dart';
 import 'package:harri_farm_app/features/contact_us/view/view.dart';
 import 'package:harri_farm_app/features/drawer/widgets/app_drawer_tile.dart';
+import 'package:harri_farm_app/features/faq/view/view.dart';
 import 'package:harri_farm_app/features/favorite/view/view.dart';
 import 'package:harri_farm_app/features/my_orders/view/view.dart';
 import 'package:harri_farm_app/features/notifications/view/view.dart';
@@ -107,7 +108,9 @@ class AppDrawerItems extends StatelessWidget {
     {
       "imagePath": "help_circle",
       "title": "faq",
-      "onTap": () {},
+      "onTap": () {
+        RouteUtils.navigateTo(const FaqView());
+      },
     },
     {
       "imagePath": "log_out",
