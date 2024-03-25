@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:harri_farm_app/features/about_us/widgets/about_us_brief.dart';
 import 'package:harri_farm_app/features/about_us/widgets/about_us_card.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
+import 'package:harri_farm_app/helpers/utils.dart';
 import 'package:harri_farm_app/widgets/app_appbar.dart';
 
 class AboutUsView extends StatelessWidget {
@@ -29,6 +30,7 @@ class AboutUsView extends StatelessWidget {
               const AboutUsCard(title: "our_mission"),
               SizedBox(height: 24.height),
               const AboutUsCard(title: "our_values"),
+              SizedBox(height: Utils.bottomDevicePadding),
             ],
           ),
         ),
