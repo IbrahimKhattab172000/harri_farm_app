@@ -162,5 +162,8 @@
      "sold_the_most" : "الأكثر مبيعا",
      "highest_in_price": "الاعلى تقيما",
      "from_highest_to_lowest" :  "من السعر الاعلي الي الاقل",
-     "from_lowest_to_highest": "من السعر الاقل الي الاعلى"
+     "from_lowest_to_highest": "من السعر الاقل الي الاعلى",
+     "kilo" :"كيلو",
+     "uncooked" :"ذبيحه غير مطبوخه",
+     "nothing" :"لا  شئ"
     }

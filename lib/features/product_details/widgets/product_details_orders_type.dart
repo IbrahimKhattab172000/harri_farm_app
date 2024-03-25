@@ -31,7 +31,7 @@ class _ProductDetailsOrderTypeState extends State<ProductDetailsOrderType> {
           ),
           SizedBox(height: 16.height),
           AppToggleCard(
-            title: "ذبيحه غير مطبوخه",
+            title: "uncooked".tr(),
             isSelected: selectedIndex == 0,
             onTap: () {
               setState(() {
@@ -40,7 +40,7 @@ class _ProductDetailsOrderTypeState extends State<ProductDetailsOrderType> {
             },
           ),
           AppToggleCard(
-            title: "لا  شئ",
+            title: "nothing".tr(),
             isSelected: selectedIndex == 1,
             onTap: () {
               setState(() {

@@ -187,8 +187,8 @@ class _ProductDetailsInfoState extends State<ProductDetailsInfo> {
                 fontWeight: FontWeight.w700,
               ),
               SizedBox(width: 4.width),
-              const AppText(
-                title: " 60 كيلو",
+              AppText(
+                title: " 60 ${"kilo".tr()}",
                 fontSize: 16,
                 color: AppColors.black,
                 fontWeight: FontWeight.w700,
