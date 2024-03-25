@@ -5,14 +5,14 @@ import 'package:harri_farm_app/helpers/utils.dart';
 import 'package:harri_farm_app/widgets/app_appbar.dart';
 import 'package:harri_farm_app/widgets/app_text.dart';
 
-class PrivacyPolicyView extends StatelessWidget {
-  const PrivacyPolicyView({super.key});
+class TermsAndConditionsView extends StatelessWidget {
+  const TermsAndConditionsView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppAppBar(
-        title: "policy".tr(),
+        title: "terms_and_conditions".tr(),
         elevation: 0,
       ),
       body: SingleChildScrollView(

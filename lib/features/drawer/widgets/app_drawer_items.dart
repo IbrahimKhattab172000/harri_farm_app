@@ -9,6 +9,7 @@ import 'package:harri_farm_app/features/favorite/view/view.dart';
 import 'package:harri_farm_app/features/my_orders/view/view.dart';
 import 'package:harri_farm_app/features/notifications/view/view.dart';
 import 'package:harri_farm_app/features/privacy_policy/view/view.dart';
+import 'package:harri_farm_app/features/terms_and_conditions/view/view.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/helpers/routes.dart';
 
@@ -82,8 +83,10 @@ class AppDrawerItems extends StatelessWidget {
     },
     {
       "imagePath": "file",
-      "title": "term_and_conditions",
-      "onTap": () {},
+      "title": "terms_and_conditions",
+      "onTap": () {
+        RouteUtils.navigateTo(const TermsAndConditionsView());
+      },
     },
     {
       "imagePath": "refresh_right_square",
