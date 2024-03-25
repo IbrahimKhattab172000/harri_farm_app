@@ -9,6 +9,8 @@ import 'package:harri_farm_app/features/favorite/view/view.dart';
 import 'package:harri_farm_app/features/my_orders/view/view.dart';
 import 'package:harri_farm_app/features/notifications/view/view.dart';
 import 'package:harri_farm_app/features/privacy_policy/view/view.dart';
+import 'package:harri_farm_app/features/return_and_exchange_policy/view/view.dart';
+import 'package:harri_farm_app/features/shipping_and_delivery_policy/view/view.dart';
 import 'package:harri_farm_app/features/terms_and_conditions/view/view.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/helpers/routes.dart';
@@ -91,12 +93,16 @@ class AppDrawerItems extends StatelessWidget {
     {
       "imagePath": "refresh_right_square",
       "title": "return_and_exchange_policy",
-      "onTap": () {},
+      "onTap": () {
+        RouteUtils.navigateTo(const ReturnAndExchangePolicyView());
+      },
     },
     {
       "imagePath": "truck_fast",
       "title": "shipping_and_delivery_policy",
-      "onTap": () {},
+      "onTap": () {
+        RouteUtils.navigateTo(const ShippingAndDeliveryPolicyView());
+      },
     },
     {
       "imagePath": "help_circle",
