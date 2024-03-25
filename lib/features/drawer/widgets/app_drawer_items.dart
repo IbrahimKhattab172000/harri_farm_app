@@ -8,6 +8,7 @@ import 'package:harri_farm_app/features/drawer/widgets/app_drawer_tile.dart';
 import 'package:harri_farm_app/features/favorite/view/view.dart';
 import 'package:harri_farm_app/features/my_orders/view/view.dart';
 import 'package:harri_farm_app/features/notifications/view/view.dart';
+import 'package:harri_farm_app/features/privacy_policy/view/view.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/helpers/routes.dart';
 
@@ -75,7 +76,9 @@ class AppDrawerItems extends StatelessWidget {
     {
       "imagePath": "lock",
       "title": "policy",
-      "onTap": () {},
+      "onTap": () {
+        RouteUtils.navigateTo(const PrivacyPolicyView());
+      },
     },
     {
       "imagePath": "file",
