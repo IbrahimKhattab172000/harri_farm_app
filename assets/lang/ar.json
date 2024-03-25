@@ -153,5 +153,9 @@
      "delete_account" : "حذف الحساب",
      "our_view" : "رؤيتنا",
      "our_mission" : "رسالتنا",
-     "our_values" : "قيمنا"
+     "our_values" : "قيمنا",
+     "message_body" : "نص الرسالة",
+     "leave_the_message_here" : "اترك رسالتك هنا",
+     "send" : "إرسال",
+     "contact_us_also"  :"تواصل معنا ايضاً"
     }

@@ -3,6 +3,7 @@ import 'package:harri_farm_app/features/about_us/view/view.dart';
 import 'package:harri_farm_app/features/account/view/view.dart';
 import 'package:harri_farm_app/features/addresses/view/view.dart';
 import 'package:harri_farm_app/features/change_language/view/view.dart';
+import 'package:harri_farm_app/features/contact_us/view/view.dart';
 import 'package:harri_farm_app/features/drawer/widgets/app_drawer_tile.dart';
 import 'package:harri_farm_app/features/favorite/view/view.dart';
 import 'package:harri_farm_app/features/my_orders/view/view.dart';
@@ -67,7 +68,9 @@ class AppDrawerItems extends StatelessWidget {
     {
       "imagePath": "headphones",
       "title": "contact_us",
-      "onTap": () {},
+      "onTap": () {
+        RouteUtils.navigateTo(const ContactUsView());
+      },
     },
     {
       "imagePath": "lock",
