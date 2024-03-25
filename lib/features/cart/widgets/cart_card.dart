@@ -64,7 +64,7 @@ class __ProductCard extends State<CartCard> {
                     SizedBox(height: 4.height),
                     AppText(
                       title: "dummy_text".tr(),
-                      maxLines: 2,
+                      maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       color: AppColors.gray,
                       fontSize: 12,
