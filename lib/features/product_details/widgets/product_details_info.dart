@@ -62,8 +62,9 @@ class _ProductDetailsInfoState extends State<ProductDetailsInfo> {
               SizedBox(height: 8.height),
               Row(
                 children: [
-                  const AppText(
-                    title: "فريش بيف استربس",
+                  AppText(
+                    title: "dummy_product_name".tr(),
+                    maxLines: 1,
                     fontSize: 16,
                     color: AppColors.black,
                     fontWeight: FontWeight.w700,
@@ -207,9 +208,8 @@ class _ProductDetailsInfoState extends State<ProductDetailsInfo> {
                 fontWeight: FontWeight.w700,
               ),
               SizedBox(height: 16.height),
-              const AppText(
-                title:
-                    "هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى أيضا",
+              AppText(
+                title: "dummy_text".tr(),
                 fontSize: 16,
                 color: AppColors.gray,
                 fontWeight: FontWeight.w500,

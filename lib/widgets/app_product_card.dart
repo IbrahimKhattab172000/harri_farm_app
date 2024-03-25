@@ -59,8 +59,9 @@ class _AppProductCardState extends State<AppProductCard> {
                     fontSize: 14,
                   ),
                   SizedBox(height: 10.height),
-                  const AppText(
-                    title: "فريش بيف استربس",
+                  AppText(
+                    title: "dummy_product_name".tr(),
+                    maxLines: 1,
                     fontSize: 14,
                     color: AppColors.black,
                     fontWeight: FontWeight.w600,

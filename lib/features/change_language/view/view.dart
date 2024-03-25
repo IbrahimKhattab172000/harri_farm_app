@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:harri_farm_app/features/change_language/widgets/select_language_toggle_card.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
+import 'package:harri_farm_app/helpers/utils.dart';
 import 'package:harri_farm_app/widgets/app_appbar.dart';
 import 'package:harri_farm_app/widgets/app_button.dart';
 
@@ -18,7 +19,7 @@ class _ChangeLanguageViewState extends State<ChangeLanguageView> {
   @override
   void initState() {
     super.initState();
-    _selectedLanguage = "arabic";
+    _selectedLanguage = Utils.isAR ? "ar" : "en";
   }
 
   @override
@@ -34,27 +35,32 @@ class _ChangeLanguageViewState extends State<ChangeLanguageView> {
           children: [
             SelectLanguageToggleCard(
               title: 'arabic',
-              isSelected: _selectedLanguage == 'arabic',
+              isSelected: _selectedLanguage == 'ar',
               onTap: () {
                 setState(() {
-                  _selectedLanguage = 'arabic';
+                  _selectedLanguage = 'ar';
                 });
               },
             ),
             SizedBox(height: 16.height),
             SelectLanguageToggleCard(
               title: 'english',
-              isSelected: _selectedLanguage == 'english',
+              isSelected: _selectedLanguage == 'en',
               onTap: () {
                 setState(() {
-                  _selectedLanguage = 'english';
+                  _selectedLanguage = 'en';
                 });
               },
             ),
             SizedBox(height: 44.height),
             AppButton(
               title: "confirm".tr(),
-              onTap: () {},
+              onTap: () {
+                context.setLocale(Locale(_selectedLanguage));
+                final rootElement =
+                    WidgetsFlutterBinding.ensureInitialized().rootElement!;
+                WidgetsBinding.instance.buildOwner!.reassemble(rootElement);
+              },
             ),
           ],
         ),

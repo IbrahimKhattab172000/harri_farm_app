@@ -1,3 +1,5 @@
+import 'package:easy_localization/easy_localization.dart';
+
 class BoardingModel {
   final String imagePath;
   final String title;
@@ -12,20 +14,16 @@ class BoardingModel {
 List<BoardingModel> boarding = [
   BoardingModel(
     imagePath: "onboarding1",
-    title: "اجود أنواع المنتجات الطازجة",
-    body:
-        "هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى ",
+    title: "the_finest_fresh_produce".tr(),
+    body: "dummy_text".tr(),
   ),
   BoardingModel(
-    imagePath: "onboarding2",
-    title: "اطلب من اى مكان نصلك اينما كنت",
-    body:
-        "هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى ",
-  ),
+      imagePath: "onboarding2",
+      title: "order_from_anywhere_and_we_will_reach_you_wherever_you_are".tr(),
+      body: "dummy_text".tr()),
   BoardingModel(
     imagePath: "onboarding3",
-    title: "خدمة التوصيل لباب المنزل",
-    body:
-        "هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضا",
-  ),
+    title: "home_delivery_service".tr(),
+    body: "dummy_text".tr(),
+  )
 ];

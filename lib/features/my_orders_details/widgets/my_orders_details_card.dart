@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import 'package:harri_farm_app/helpers/colors.dart';
@@ -36,8 +37,8 @@ class MyOrdersDetailsCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const AppText(
-                  title: 'فريش بيق استربس',
+                AppText(
+                  title: "dummy_product_name".tr(),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   color: AppColors.darkGray,

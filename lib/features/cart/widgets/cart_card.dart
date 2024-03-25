@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
@@ -46,11 +47,11 @@ class __ProductCard extends State<CartCard> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Row(
+                    Row(
                       children: [
                         Expanded(
                           child: AppText(
-                            title: 'فريش بيف استربس',
+                            title: "dummy_product_name".tr(),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             color: AppColors.black,
@@ -61,8 +62,8 @@ class __ProductCard extends State<CartCard> {
                       ],
                     ),
                     SizedBox(height: 4.height),
-                    const AppText(
-                      title: 'هذا النص هو مثال لنص يمكن أن يستبدل في ',
+                    AppText(
+                      title: "dummy_text".tr(),
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       color: AppColors.gray,

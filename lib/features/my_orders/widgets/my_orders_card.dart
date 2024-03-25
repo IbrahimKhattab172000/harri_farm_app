@@ -45,18 +45,31 @@ class MyOrdersCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const AppText(
-                    title: "رقم الطلب # 28102022",
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    color: AppColors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 14,
+                  Row(
+                    children: [
+                      AppText(
+                        title: "order_number".tr(),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        color: AppColors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14,
+                      ),
+                      SizedBox(width: 4.width),
+                      const AppText(
+                        title: "# 28102022",
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        color: AppColors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14,
+                      ),
+                    ],
                   ),
                   SizedBox(height: 4.height),
-                  const AppText(
-                    title: 'فريش بيق استربس',
-                    maxLines: 2,
+                  AppText(
+                    title: "dummy_product_name".tr(),
+                    maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     color: AppColors.gray,
                     fontSize: 12,

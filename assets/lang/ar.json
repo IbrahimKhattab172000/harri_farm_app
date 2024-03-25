@@ -6,6 +6,7 @@
     "login" : "تسجيل الدخول",
     "skip": "تخطي",
     "continue" : "متابعة",
+    "the_finest_fresh_produce" : "اجود أنواع المنتجات الطازجة",
     "or" : "أو",
     "phone_number" : "رقم الجوال",
     "additional_phone_number" : "رقم جوال اضافى",
@@ -141,5 +142,12 @@
      "no_notifications_start_using_the_app" :"لا توجد اشعارات ابدأ باستخدام التطبيق",
      "your_order_has_been_accepted_and_in_process" :"تم قبول طلبك وجارى التجهيز ",
      "arabic" : "العربية",
-     "english" : "الانجليزية"
-  }
+     "english" : "الانجليزية",
+     "order_from_anywhere_and_we_will_reach_you_wherever_you_are" :"اطلب من اى مكان نصلك اينما كنت",
+     "dummy_text"  :"هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى ",
+     "home_delivery_service" : "خدمة التوصيل لباب المنزل",
+     "order_number"  : "رقم الطلب",
+     "dummy_product_name" : "فريش بيف استربس",
+     "a_discount" : "خصم"
+
+    }

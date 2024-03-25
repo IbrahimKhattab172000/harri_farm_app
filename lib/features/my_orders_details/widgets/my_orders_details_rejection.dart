@@ -23,9 +23,8 @@ class MyOrdersDetailsRejection extends StatelessWidget {
         SizedBox(height: 8.height),
         const Divider(thickness: 1, color: AppColors.lightGray),
         SizedBox(height: 8.height),
-        const AppText(
-          title:
-              "هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى اضافة الى زيادة عدد الحروف التى يولدها التطبيق.",
+        AppText(
+          title: "dummy_text".tr(),
           maxLines: 5,
           color: AppColors.black,
         ),

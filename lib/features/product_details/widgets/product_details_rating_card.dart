@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
@@ -71,9 +72,8 @@ class ProductDetailsRatingCard extends StatelessWidget {
               ],
             ),
             SizedBox(height: 16.height),
-            const AppText(
-              title:
-                  "هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص ",
+            AppText(
+              title: "dummy_text".tr(),
               fontSize: 14,
               color: Colors.black,
               maxLines: 2,
