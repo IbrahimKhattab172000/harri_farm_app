@@ -3,8 +3,8 @@ import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/helpers/utils.dart';
 
-class AccountSettingsProfileImage extends StatelessWidget {
-  const AccountSettingsProfileImage({
+class UpdateProfileProfileImage extends StatelessWidget {
+  const UpdateProfileProfileImage({
     super.key,
   });
 

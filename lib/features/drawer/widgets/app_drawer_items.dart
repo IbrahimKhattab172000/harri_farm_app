@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:harri_farm_app/features/about_us/view/view.dart';
-import 'package:harri_farm_app/features/account/view/view.dart';
+import 'package:harri_farm_app/features/update_profile/view/view.dart';
 import 'package:harri_farm_app/features/addresses/view/view.dart';
 import 'package:harri_farm_app/features/change_language/view/view.dart';
 import 'package:harri_farm_app/features/contact_us/view/view.dart';
@@ -22,7 +22,7 @@ class AppDrawerItems extends StatelessWidget {
       "imagePath": "setting",
       "title": "account_settings",
       "onTap": () {
-        RouteUtils.navigateTo(const AccountSettingsView());
+        RouteUtils.navigateTo(const UpdateProfileView());
       },
     },
     {

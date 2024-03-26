@@ -4,8 +4,8 @@ import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/widgets/app_button.dart';
 
-class AccountSettingsButtons extends StatelessWidget {
-  const AccountSettingsButtons({
+class UpdateProfileButtons extends StatelessWidget {
+  const UpdateProfileButtons({
     super.key,
   });
 

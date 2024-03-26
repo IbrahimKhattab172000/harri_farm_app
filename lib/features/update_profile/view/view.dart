@@ -1,14 +1,14 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:harri_farm_app/features/account/widgets/account_settings_buttons.dart';
-import 'package:harri_farm_app/features/account/widgets/account_settings_forms.dart';
-import 'package:harri_farm_app/features/account/widgets/account_settings_profile_image.dart';
+import 'package:harri_farm_app/features/update_profile/widgets/update_profile_buttons.dart';
+import 'package:harri_farm_app/features/update_profile/widgets/update_profile_forms.dart';
+import 'package:harri_farm_app/features/update_profile/widgets/update_profile_image.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/helpers/utils.dart';
 import 'package:harri_farm_app/widgets/app_appbar.dart';
 
-class AccountSettingsView extends StatelessWidget {
-  const AccountSettingsView({super.key});
+class UpdateProfileView extends StatelessWidget {
+  const UpdateProfileView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,11 +25,11 @@ class AccountSettingsView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(height: 18.height),
-              const AccountSettingsProfileImage(),
+              const UpdateProfileProfileImage(),
               SizedBox(height: 8.height),
-              const AccountSettingsForms(),
+              const UpdateProfileForms(),
               SizedBox(height: 44.height),
-              const AccountSettingsButtons(),
+              const UpdateProfileButtons(),
               SizedBox(height: Utils.bottomDevicePadding),
             ],
           ),

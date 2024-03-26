@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/widgets/app_text_field.dart';
 
-class AccountSettingsForms extends StatelessWidget {
-  const AccountSettingsForms({
+class UpdateProfileForms extends StatelessWidget {
+  const UpdateProfileForms({
     super.key,
   });
 
