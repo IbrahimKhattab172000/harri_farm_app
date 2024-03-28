@@ -1,13 +1,13 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:harri_farm_app/features/signup/view/view.dart';
+import 'package:harri_farm_app/features/register/view/register_view.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/helpers/routes.dart';
 import 'package:harri_farm_app/widgets/app_text.dart';
 
-class SignupHaveAccount extends StatelessWidget {
-  const SignupHaveAccount({
+class RegisterHaveAccount extends StatelessWidget {
+  const RegisterHaveAccount({
     super.key,
   });
 
@@ -25,7 +25,7 @@ class SignupHaveAccount extends StatelessWidget {
         SizedBox(width: 5.width),
         GestureDetector(
           onTap: () {
-            RouteUtils.navigateTo(const SignUpView());
+            RouteUtils.navigateTo(const RegisterView());
           },
           child: AppText(
             title: 'login'.tr(),

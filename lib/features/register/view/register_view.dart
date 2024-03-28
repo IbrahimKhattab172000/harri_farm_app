@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:harri_farm_app/features/signup/widgets/signup_button.dart';
-import 'package:harri_farm_app/features/signup/widgets/signup_check_without_signing.dart';
-import 'package:harri_farm_app/features/signup/widgets/signup_forms.dart';
-import 'package:harri_farm_app/features/signup/widgets/signup_have_account.dart';
-import 'package:harri_farm_app/features/signup/widgets/signup_terms_conditions.dart';
-import 'package:harri_farm_app/features/signup/widgets/signup_title.dart';
+import 'package:harri_farm_app/features/register/widgets/register_button.dart';
+import 'package:harri_farm_app/features/register/widgets/register_check_without_signing.dart';
+import 'package:harri_farm_app/features/register/widgets/register_forms.dart';
+import 'package:harri_farm_app/features/register/widgets/register_have_account.dart';
+import 'package:harri_farm_app/features/register/widgets/register_terms_conditions.dart';
+import 'package:harri_farm_app/features/register/widgets/register_title.dart';
 import 'package:harri_farm_app/widgets/app_cistom_image.dart';
 import 'package:harri_farm_app/widgets/app_decorated_background.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/helpers/utils.dart';
 
-class SignUpView extends StatelessWidget {
-  const SignUpView({super.key});
+class RegisterView extends StatelessWidget {
+  const RegisterView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,17 +26,17 @@ class SignUpView extends StatelessWidget {
                 SizedBox(height: Utils.topDevicePadding + 64.height),
                 const AppCustomImage(),
                 SizedBox(height: 20.height),
-                const SignUpTitle(),
+                const RegisterTitle(),
                 SizedBox(height: 30.height),
-                const SignUpForms(),
+                const RegisterForms(),
                 SizedBox(height: 26.height),
-                const SignUpTermAndConditions(),
+                const RegisterTermAndConditions(),
                 SizedBox(height: 44.height),
-                const SignUpButton(),
+                const RegisterButton(),
                 SizedBox(height: 8.height),
-                const SignupHaveAccount(),
+                const RegisterHaveAccount(),
                 SizedBox(height: 14.height),
-                const SignUpCheckWithoutSigning(),
+                const RegisterCheckWithoutSigning(),
                 SizedBox(height: Utils.bottomDevicePadding),
               ],
             ),

@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:harri_farm_app/my_app.dart';
 
 void main() async {
@@ -7,6 +8,7 @@ void main() async {
 
   await Future.value([
     await EasyLocalization.ensureInitialized(),
+    await GetStorage.init(),
     // await Firebase.initializeApp(),
   ]);
 

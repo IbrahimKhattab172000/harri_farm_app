@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:harri_farm_app/features/signup/view/view.dart';
+import 'package:harri_farm_app/features/register/view/register_view.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/helpers/routes.dart';
@@ -25,7 +25,7 @@ class LoginNoAccount extends StatelessWidget {
         SizedBox(width: 5.width),
         GestureDetector(
           onTap: () {
-            RouteUtils.navigateTo(const SignUpView());
+            RouteUtils.navigateTo(const RegisterView());
           },
           child: AppText(
             title: 'create_new_account'.tr(),

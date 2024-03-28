@@ -4,8 +4,8 @@ import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/widgets/app_text.dart';
 
-class SignUpTermAndConditions extends StatelessWidget {
-  const SignUpTermAndConditions({
+class RegisterTermAndConditions extends StatelessWidget {
+  const RegisterTermAndConditions({
     super.key,
   });
 

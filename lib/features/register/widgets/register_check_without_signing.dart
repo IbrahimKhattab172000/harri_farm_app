@@ -3,17 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/widgets/app_text.dart';
 
-class SignUpTitle extends StatelessWidget {
-  const SignUpTitle({
+class RegisterCheckWithoutSigning extends StatelessWidget {
+  const RegisterCheckWithoutSigning({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return AppText(
-      title: "new_signing".tr(),
-      color: AppColors.black,
-      fontSize: 20,
+      title: 'browse_without_logging_in'.tr(),
+      color: AppColors.primary,
+      fontSize: 16,
       fontWeight: FontWeight.w700,
     );
   }

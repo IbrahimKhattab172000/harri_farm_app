@@ -1,6 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:harri_farm_app/features/register/bloc/register_bloc.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/pop_scaffold.dart';
 import 'package:harri_farm_app/helpers/routes.dart';
@@ -22,28 +24,36 @@ class _MyAppState extends State<MyApp> {
       splitScreenMode: false,
       child: const SplashView(),
       builder: (_, child) => KeyboardPopScaffold(
-        child: MaterialApp(
-          title: 'Harri',
-          debugShowCheckedModeBanner: false,
-          theme: ThemeData(
-            hoverColor: Colors.transparent,
-            useMaterial3: false,
-            fontFamily: 'Cairo',
-            scaffoldBackgroundColor: AppColors.background,
-            splashColor: Colors.transparent,
-            highlightColor: Colors.transparent,
-            focusColor: Colors.transparent,
-            primaryColor: AppColors.primary,
-          ),
-          onGenerateRoute: onGenerateRoute,
-          navigatorKey: navigatorKey,
-          home: child,
-          localizationsDelegates: context.localizationDelegates,
-          supportedLocales: const [
-            Locale('ar'),
-            Locale('en'),
+        //TODO: Transform to using the app providers
+        child: MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (context) => RegisterBloc(),
+            ),
           ],
-          locale: context.locale,
+          child: MaterialApp(
+            title: 'Harri',
+            debugShowCheckedModeBanner: false,
+            theme: ThemeData(
+              hoverColor: Colors.transparent,
+              useMaterial3: false,
+              fontFamily: 'Cairo',
+              scaffoldBackgroundColor: AppColors.background,
+              splashColor: Colors.transparent,
+              highlightColor: Colors.transparent,
+              focusColor: Colors.transparent,
+              primaryColor: AppColors.primary,
+            ),
+            onGenerateRoute: onGenerateRoute,
+            navigatorKey: navigatorKey,
+            home: child,
+            localizationsDelegates: context.localizationDelegates,
+            supportedLocales: const [
+              Locale('ar'),
+              Locale('en'),
+            ],
+            locale: context.locale,
+          ),
         ),
       ),
     );
