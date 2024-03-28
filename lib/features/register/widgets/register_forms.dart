@@ -1,6 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:harri_farm_app/features/register/bloc/register_bloc.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
@@ -20,7 +19,7 @@ class _RegisterFormsState extends State<RegisterForms> {
 
   @override
   Widget build(BuildContext context) {
-    RegisterBloc bloc = context.read<RegisterBloc>();
+    final bloc = RegisterBloc.of(context);
     //TODO: Check if it's important to use the Blocbuilder here
     return Form(
       key: bloc.formkey,
