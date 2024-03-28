@@ -12,8 +12,7 @@ class RegisterBloc extends Bloc<AppEvent, AppState> {
     on<Click>(_addUser);
   }
 
-  // static SignupBloc get instance =>
-  //     BlocProvider.of<SignupBloc>(RouteUtils.context);
+  static RegisterBloc of(context) => BlocProvider.of(context);
 
   TextEditingController name = TextEditingController();
   TextEditingController phone = TextEditingController();

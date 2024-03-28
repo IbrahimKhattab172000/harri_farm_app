@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:harri_farm_app/features/login/bloc/login_bloc.dart';
 import 'package:harri_farm_app/features/register/bloc/register_bloc.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/pop_scaffold.dart';
@@ -29,6 +30,9 @@ class _MyAppState extends State<MyApp> {
           providers: [
             BlocProvider(
               create: (context) => RegisterBloc(),
+            ),
+            BlocProvider(
+              create: (context) => LoginBloc(),
             ),
           ],
           child: MaterialApp(
