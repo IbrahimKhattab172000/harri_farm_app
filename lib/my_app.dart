@@ -2,8 +2,11 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:harri_farm_app/features/forgot_password/bloc/forget_password_bloc.dart';
 import 'package:harri_farm_app/features/login/bloc/login_bloc.dart';
 import 'package:harri_farm_app/features/register/bloc/register_bloc.dart';
+import 'package:harri_farm_app/features/reset_password/bloc/reset_password_bloc.dart';
+import 'package:harri_farm_app/features/verification/bloc/verification_bloc.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/pop_scaffold.dart';
 import 'package:harri_farm_app/helpers/routes.dart';
@@ -33,6 +36,15 @@ class _MyAppState extends State<MyApp> {
             ),
             BlocProvider(
               create: (context) => LoginBloc(),
+            ),
+            BlocProvider(
+              create: (context) => ForgetPasswordBloc(),
+            ),
+            BlocProvider(
+              create: (context) => VerificationBloc(),
+            ),
+            BlocProvider(
+              create: (context) => ResetPasswordBloc(),
             ),
           ],
           child: MaterialApp(

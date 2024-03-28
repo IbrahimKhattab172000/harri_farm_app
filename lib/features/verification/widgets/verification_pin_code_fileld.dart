@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:harri_farm_app/features/verification/bloc/verification_bloc.dart';
 import 'package:harri_farm_app/widgets/app_pin_code_field.dart';
 
 class VerificationPinCodeField extends StatelessWidget {
@@ -8,8 +9,13 @@ class VerificationPinCodeField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppPinCodeField(
-      onChanged: (code) {},
+    final bloc = VerificationBloc.of(context);
+    return Form(
+      key: bloc.formKey,
+      child: AppPinCodeField(
+        controller: bloc.codeController,
+        onChanged: (code) {},
+      ),
     );
   }
 }
