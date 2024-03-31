@@ -5,7 +5,9 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:harri_farm_app/core/app_event.dart';
 import 'package:harri_farm_app/core/app_state.dart';
+import 'package:harri_farm_app/features/home/view/home_view.dart';
 import 'package:harri_farm_app/features/login/repository/login_repository.dart';
+import 'package:harri_farm_app/helpers/routes.dart';
 import 'package:harri_farm_app/widgets/app_snack_bar.dart';
 
 class LoginBloc extends Bloc<AppEvent, AppState> {
@@ -21,6 +23,8 @@ class LoginBloc extends Bloc<AppEvent, AppState> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   _login(AppEvent event, Emitter<AppState> emit) async {
+    if (!formKey.currentState!.validate()) return;
+
     emit(Loading());
 
     Map<String, dynamic> body = {
@@ -32,11 +36,11 @@ class LoginBloc extends Bloc<AppEvent, AppState> {
 
       if (response.statusCode == 200) {
         log("Done ${response.statusCode}");
-
+        RouteUtils.navigateTo(const HomeView());
         emit(Done());
       } else {
         log("Error ${response.statusCode}");
-        showSnackBar(response.data['message'], errorMessage: true);
+        showSnackBar(response.statusMessage.toString(), errorMessage: true);
 
         emit(Error());
       }

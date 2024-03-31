@@ -5,7 +5,9 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:harri_farm_app/core/app_event.dart';
 import 'package:harri_farm_app/core/app_state.dart';
+import 'package:harri_farm_app/features/reset_password/view/reset_password_view.dart';
 import 'package:harri_farm_app/features/verification/repository/verification_repository.dart';
+import 'package:harri_farm_app/helpers/routes.dart';
 import 'package:harri_farm_app/widgets/app_snack_bar.dart';
 
 class VerificationBloc extends Bloc<AppEvent, AppState> {
@@ -19,6 +21,8 @@ class VerificationBloc extends Bloc<AppEvent, AppState> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   _verifyCode(AppEvent event, Emitter<AppState> emit) async {
+    if (!formKey.currentState!.validate()) return;
+
     emit(Loading());
     Map<String, dynamic> body = {
       "user_id": "119",
@@ -29,9 +33,10 @@ class VerificationBloc extends Bloc<AppEvent, AppState> {
       if (response.statusCode == 200) {
         log("Done ${response.statusCode}");
         emit(Done());
+        RouteUtils.navigateTo(const ResetPasswordView());
       } else {
         log("Error ${response.statusCode}");
-        showSnackBar(response.data['message'], errorMessage: true);
+        showSnackBar(response.statusMessage.toString(), errorMessage: true);
 
         emit(Error());
       }

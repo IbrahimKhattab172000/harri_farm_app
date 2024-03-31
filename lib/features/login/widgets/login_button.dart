@@ -1,7 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:harri_farm_app/core/app_event.dart';
+import 'package:harri_farm_app/core/app_state.dart';
 import 'package:harri_farm_app/features/login/bloc/login_bloc.dart';
+import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/widgets/app_button.dart';
 
 class LoginButton extends StatelessWidget {
@@ -12,13 +15,22 @@ class LoginButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bloc = LoginBloc.of(context);
-    return AppButton(
-      title: "login".tr(),
-      onTap: () {
-        if (bloc.formKey.currentState!.validate()) {
-          bloc.add(Click());
-          // RouteUtils.navigateTo(const HomeView());
-        } else {}
+    return BlocBuilder<LoginBloc, AppState>(
+      builder: (context, state) {
+        if (state is Loading) {
+          return const Center(
+            child: CircularProgressIndicator(
+              color: AppColors.primary,
+            ),
+          );
+        } else {
+          return AppButton(
+            title: "login".tr(),
+            onTap: () {
+              bloc.add(Click());
+            },
+          );
+        }
       },
     );
   }

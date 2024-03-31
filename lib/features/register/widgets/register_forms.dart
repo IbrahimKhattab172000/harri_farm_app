@@ -22,7 +22,7 @@ class _RegisterFormsState extends State<RegisterForms> {
     final bloc = RegisterBloc.of(context);
     //TODO: Check if it's important to use the Blocbuilder here
     return Form(
-      key: bloc.formkey,
+      key: bloc.formKey,
       child: Column(
         children: [
           AppTextField(
@@ -35,6 +35,7 @@ class _RegisterFormsState extends State<RegisterForms> {
             label: "phone".tr(),
             controller: bloc.phone,
             validator: Validator.phone,
+            inputType: TextInputType.number,
           ),
           SizedBox(height: 10.height),
           AppTextField(

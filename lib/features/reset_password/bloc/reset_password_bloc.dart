@@ -5,6 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:harri_farm_app/core/app_event.dart';
 import 'package:harri_farm_app/core/app_state.dart';
+import 'package:harri_farm_app/features/home/view/home_view.dart';
 import 'package:harri_farm_app/features/reset_password/repository/reset_password_repository.dart';
 import 'package:harri_farm_app/features/verification/bloc/verification_bloc.dart';
 import 'package:harri_farm_app/helpers/routes.dart';
@@ -21,6 +22,8 @@ class ResetPasswordBloc extends Bloc<AppEvent, AppState> {
 
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   _resetPassword(AppEvent event, Emitter<AppState> emit) async {
+    if (!formKey.currentState!.validate()) return;
+
     final code = VerificationBloc.of(RouteUtils.context).codeController.text;
     emit(Loading());
     Map<String, dynamic> body = {
@@ -35,9 +38,10 @@ class ResetPasswordBloc extends Bloc<AppEvent, AppState> {
       if (response.statusCode == 200) {
         log("Done ${response.statusCode}");
         emit(Done());
+        RouteUtils.navigateTo(const HomeView());
       } else {
         log("Error ${response.statusCode}");
-        showSnackBar(response.data['message'], errorMessage: true);
+        showSnackBar(response.statusMessage.toString(), errorMessage: true);
 
         emit(Error());
       }

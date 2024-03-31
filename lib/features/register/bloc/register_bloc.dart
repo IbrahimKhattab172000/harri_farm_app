@@ -5,7 +5,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:harri_farm_app/core/app_event.dart';
 import 'package:harri_farm_app/core/app_state.dart';
+import 'package:harri_farm_app/features/home/view/home_view.dart';
 import 'package:harri_farm_app/features/register/repository/register_repository.dart';
+import 'package:harri_farm_app/helpers/routes.dart';
+import 'package:harri_farm_app/widgets/app_snack_bar.dart';
 
 class RegisterBloc extends Bloc<AppEvent, AppState> {
   RegisterBloc() : super(Start()) {
@@ -20,13 +23,15 @@ class RegisterBloc extends Bloc<AppEvent, AppState> {
   TextEditingController password = TextEditingController();
   TextEditingController passwordConfirmation = TextEditingController();
 
-  GlobalKey<FormState> formkey = GlobalKey<FormState>();
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   //============================================================================
   //============================================================================  Functions
   //============================================================================
 
   _addUser(AppEvent event, Emitter<AppState> emit) async {
+    if (!formKey.currentState!.validate()) return;
+
     emit(Loading());
     Map<String, dynamic> body = {
       "name": name.text,
@@ -39,14 +44,18 @@ class RegisterBloc extends Bloc<AppEvent, AppState> {
       Response response = await SignupRepository.signUp(body: body);
       if (response.statusCode == 200) {
         emit(Done());
+        RouteUtils.navigateTo(const HomeView());
+
         log(response.statusCode.toString());
       } else {
         emit(Error());
         log(response.statusCode.toString());
+        showSnackBar(response.statusMessage.toString(), errorMessage: true);
       }
     } catch (e) {
       emit(Error());
       log(e.toString());
+      showSnackBar(e.toString(), errorMessage: true);
     }
   }
 }
