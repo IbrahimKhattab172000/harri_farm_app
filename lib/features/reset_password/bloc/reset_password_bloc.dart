@@ -8,6 +8,7 @@ import 'package:harri_farm_app/core/app_state.dart';
 import 'package:harri_farm_app/features/reset_password/repository/reset_password_repository.dart';
 import 'package:harri_farm_app/features/verification/bloc/verification_bloc.dart';
 import 'package:harri_farm_app/helpers/routes.dart';
+import 'package:harri_farm_app/widgets/app_snack_bar.dart';
 
 class ResetPasswordBloc extends Bloc<AppEvent, AppState> {
   ResetPasswordBloc() : super(Start()) {
@@ -35,11 +36,14 @@ class ResetPasswordBloc extends Bloc<AppEvent, AppState> {
         log("Done ${response.statusCode}");
         emit(Done());
       } else {
-        log("error ${response.statusCode}");
+        log("Error ${response.statusCode}");
+        showSnackBar(response.data['message'], errorMessage: true);
+
         emit(Error());
       }
     } catch (e) {
       log("error from the catch part: $e");
+      showSnackBar(e.toString(), errorMessage: true);
     }
   }
 }

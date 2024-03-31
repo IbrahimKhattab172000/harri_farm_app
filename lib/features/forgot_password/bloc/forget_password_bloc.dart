@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:harri_farm_app/core/app_event.dart';
 import 'package:harri_farm_app/core/app_state.dart';
 import 'package:harri_farm_app/features/forgot_password/repository/forget_password_repository.dart';
+import 'package:harri_farm_app/widgets/app_snack_bar.dart';
 
 class ForgetPasswordBloc extends Bloc<AppEvent, AppState> {
   ForgetPasswordBloc() : super(Start()) {
@@ -25,11 +26,14 @@ class ForgetPasswordBloc extends Bloc<AppEvent, AppState> {
         log("Done ${response.statusCode}");
         emit(Done());
       } else {
-        log("error ${response.statusCode}");
+        log("Error ${response.statusCode}");
+        showSnackBar(response.data['message'], errorMessage: true);
+
         emit(Error());
       }
     } catch (e) {
       log("error from the catch part: $e");
+      showSnackBar(e.toString(), errorMessage: true);
     }
   }
 }
