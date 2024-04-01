@@ -1,0 +1,37 @@
+import 'dart:developer';
+
+import 'package:dio/dio.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:harri_farm_app/core/app_event.dart';
+import 'package:harri_farm_app/core/app_state.dart';
+import 'package:harri_farm_app/features/home/repository/home_repository.dart';
+import 'package:harri_farm_app/widgets/app_snack_bar.dart';
+
+class HomeBloc extends Bloc<AppEvent, AppState> {
+  HomeBloc() : super(Start()) {
+    on<Get>(_getData);
+  }
+  static HomeBloc of(context) => BlocProvider.of(context);
+
+  _getData(AppEvent event, Emitter<AppState> emit) async {
+    emit(Loading());
+    try {
+      Response response = await HomeRepository.getData();
+      if (response.statusCode == 200) {
+        log("Done home${response.statusCode}");
+        showSnackBar(response.statusMessage.toString(), errorMessage: true);
+
+        emit(Done());
+      } else {
+        emit(Error());
+
+        log("Error home ${response.statusCode}");
+        showSnackBar(response.statusMessage.toString(), errorMessage: true);
+      }
+    } catch (e) {
+      emit(Error());
+
+      log("error from the catch part home: $e");
+    }
+  }
+}
