@@ -16,13 +16,14 @@ class AppStorage {
   static void cacheNotification(bool value) =>
       _box.write('notification', value);
 
-  static void cacheId(int id) => _box.write('id', id);
+  static void cacheId(var id) => _box.write('id', id);
 
   // static Future<void> cacheUser(UserModel user) async => await _box.write('user', user.toJson());
   // static UserModel get getUserModel => UserModel.fromJson(_box.read('user'));
   // static int get getId => getUserModel.data!.id!;
 
-  static String get getToken => _box.read('token') ?? "";
+  static String? get getToken => _box.read('token');
+  static int get getUserId => _box.read('id');
 
   static bool get isLogged => _box.hasData('userToken');
 

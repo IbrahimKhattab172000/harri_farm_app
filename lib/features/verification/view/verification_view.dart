@@ -11,7 +11,8 @@ import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/helpers/utils.dart';
 
 class VerificationView extends StatelessWidget {
-  const VerificationView({super.key});
+  final bool? isRegister;
+  const VerificationView({super.key, this.isRegister = false});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +32,7 @@ class VerificationView extends StatelessWidget {
                 SizedBox(height: 20.height),
                 const VerificationPinCodeField(),
                 SizedBox(height: 20.height),
-                const VerificationButton(),
+                VerificationButton(isRegister: isRegister),
                 SizedBox(height: 20.height),
                 const VerificationResendText(),
                 const ResendWidget(),

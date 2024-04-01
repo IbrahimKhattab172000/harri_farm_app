@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:harri_farm_app/core/app_storage.dart';
 import 'package:harri_farm_app/features/about_us/view/view.dart';
 import 'package:harri_farm_app/features/update_profile/view/view.dart';
 import 'package:harri_farm_app/features/addresses/view/view.dart';
@@ -115,7 +116,9 @@ class AppDrawerItems extends StatelessWidget {
     {
       "imagePath": "log_out",
       "title": "logout",
-      "onTap": () {},
+      "onTap": () {
+        AppStorage.signOut();
+      },
       "isLogout": true,
     },
   ];

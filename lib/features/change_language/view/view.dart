@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart'; // Import GetStorage package
 import 'package:harri_farm_app/features/change_language/widgets/select_language_toggle_card.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/helpers/utils.dart';
@@ -16,10 +17,12 @@ class ChangeLanguageView extends StatefulWidget {
 class _ChangeLanguageViewState extends State<ChangeLanguageView> {
   late String _selectedLanguage;
 
+  final GetStorage box = GetStorage();
+
   @override
   void initState() {
     super.initState();
-    _selectedLanguage = Utils.isAR ? "ar" : "en";
+    _selectedLanguage = box.read('language') ?? (Utils.isAR ? "ar" : "en");
   }
 
   @override
@@ -56,6 +59,7 @@ class _ChangeLanguageViewState extends State<ChangeLanguageView> {
             AppButton(
               title: "confirm".tr(),
               onTap: () {
+                box.write('language', _selectedLanguage);
                 context.setLocale(Locale(_selectedLanguage));
                 final rootElement =
                     WidgetsFlutterBinding.ensureInitialized().rootElement!;

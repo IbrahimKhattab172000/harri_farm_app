@@ -2,7 +2,10 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:harri_farm_app/core/app_event.dart';
+import 'package:harri_farm_app/core/app_storage.dart';
 import 'package:harri_farm_app/features/forgot_password/bloc/forget_password_bloc.dart';
+import 'package:harri_farm_app/features/home/bloc/home_bloc.dart';
 import 'package:harri_farm_app/features/login/bloc/login_bloc.dart';
 import 'package:harri_farm_app/features/register/bloc/register_bloc.dart';
 import 'package:harri_farm_app/features/reset_password/bloc/reset_password_bloc.dart';
@@ -11,6 +14,7 @@ import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/pop_scaffold.dart';
 import 'package:harri_farm_app/helpers/routes.dart';
 import 'package:harri_farm_app/features/splash/view/view.dart';
+import 'package:harri_farm_app/network/network_layer.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -22,6 +26,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
+    Network.lang = context.locale.languageCode;
     return ScreenUtilInit(
       designSize: const Size(375, 812),
       minTextAdapt: true,
@@ -45,6 +50,9 @@ class _MyAppState extends State<MyApp> {
             ),
             BlocProvider(
               create: (context) => ResetPasswordBloc(),
+            ),
+            BlocProvider(
+              create: (context) => HomeBloc()..add(Get()),
             ),
           ],
           child: MaterialApp(

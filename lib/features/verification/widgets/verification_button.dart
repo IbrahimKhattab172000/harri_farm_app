@@ -8,8 +8,10 @@ import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/widgets/app_button.dart';
 
 class VerificationButton extends StatelessWidget {
+  final bool? isRegister;
   const VerificationButton({
     super.key,
+    this.isRegister,
   });
 
   @override
@@ -27,7 +29,7 @@ class VerificationButton extends StatelessWidget {
           return AppButton(
             title: "continue".tr(),
             onTap: () {
-              bloc.add(Click());
+              bloc.add(Click(arguments: isRegister));
             },
           );
         }

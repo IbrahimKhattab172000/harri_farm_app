@@ -3,7 +3,7 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:harri_farm_app/core/app_config/app_config.dart';
+import 'package:harri_farm_app/app_config/app_config.dart';
 import 'package:harri_farm_app/core/app_storage.dart';
 import 'package:harri_farm_app/network/mapper.dart';
 import 'package:harri_farm_app/network/network_logger.dart';
@@ -35,13 +35,13 @@ class Network {
     Map<String, dynamic>? header,
     ServerMethods method = ServerMethods.GET,
   }) async {
-    String _token = AppStorage.getToken;
+    String? _token = AppStorage.getToken;
 
     _dio.options.headers = {
-      'Authorization': 'Bearer $_token',
+      if (_token != null) 'Authorization': 'Bearer $_token',
       'Accept': 'application/json',
       "User-Agent": "Dart",
-      'Lang': lang,
+      'Accept-Language': lang,
     };
     if (header != null) {
       _dio.options.headers.addAll(header);

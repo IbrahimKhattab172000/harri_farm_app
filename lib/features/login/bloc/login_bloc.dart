@@ -36,17 +36,18 @@ class LoginBloc extends Bloc<AppEvent, AppState> {
 
       if (response.statusCode == 200) {
         log("Done ${response.statusCode}");
+        // await AppStorage.cacheUser(UserModel.fromJson(response.data));
         RouteUtils.navigateTo(const HomeView());
         emit(Done());
       } else {
         log("Error ${response.statusCode}");
         showSnackBar(response.statusMessage.toString(), errorMessage: true);
-
         emit(Error());
       }
     } catch (e) {
       log("error from the catch part: $e");
       showSnackBar(e.toString(), errorMessage: true);
+      emit(Error());
     }
   }
 }

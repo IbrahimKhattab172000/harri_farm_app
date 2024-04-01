@@ -7,9 +7,11 @@ abstract class AppEvent {
 class Add extends AppEvent {
   Add({Object? arguments}) : super(arguments);
 }
+
 class Click extends AppEvent {
   Click({Object? arguments}) : super(arguments);
 }
+
 class Reset extends AppEvent {
   Reset({Object? arguments}) : super(arguments);
 }
@@ -21,7 +23,6 @@ class Get extends AppEvent {
 class Read extends AppEvent {
   Read({Object? arguments}) : super(arguments);
 }
-
 
 class PickLocation extends AppEvent {
   PickLocation({Object? arguments}) : super(arguments);
@@ -58,6 +59,7 @@ class Accept extends AppEvent {
 class Negotiate extends AppEvent {
   Negotiate({Object? arguments}) : super(arguments);
 }
+
 class RequestCode extends AppEvent {
   RequestCode({Object? arguments}) : super(arguments);
 }

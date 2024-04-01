@@ -23,6 +23,8 @@ class _ResendWidgetState extends State<ResendWidget> {
   }
 
   void count() {
+    // final bloc = VerificationBloc.of(context);
+    // bloc.add(Click());
     counter = 60;
     setState(() {});
     timer = Timer.periodic(const Duration(seconds: 1), (timer) {

@@ -165,5 +165,6 @@
      "from_lowest_to_highest": "من السعر الاقل الي الاعلى",
      "kilo" :"كيلو",
      "uncooked" :"ذبيحه غير مطبوخه",
-     "nothing" :"لا  شئ"
+     "nothing" :"لا  شئ",
+     "error_loading_data" : "خطأ في تحميل البيانات"
     }

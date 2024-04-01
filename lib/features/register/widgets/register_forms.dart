@@ -64,6 +64,7 @@ class _RegisterFormsState extends State<RegisterForms> {
           ),
           SizedBox(height: 10.height),
           AppTextField(
+            controller: bloc.passwordConfirmation,
             label: 'confirm_password'.tr(),
             secure: isPasswordConfirmationSecure,
             trailing: InkWell(

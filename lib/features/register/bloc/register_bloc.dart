@@ -5,8 +5,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:harri_farm_app/core/app_event.dart';
 import 'package:harri_farm_app/core/app_state.dart';
-import 'package:harri_farm_app/features/home/view/home_view.dart';
+import 'package:harri_farm_app/core/app_storage.dart';
 import 'package:harri_farm_app/features/register/repository/register_repository.dart';
+import 'package:harri_farm_app/features/verification/view/verification_view.dart';
 import 'package:harri_farm_app/helpers/routes.dart';
 import 'package:harri_farm_app/widgets/app_snack_bar.dart';
 
@@ -44,17 +45,17 @@ class RegisterBloc extends Bloc<AppEvent, AppState> {
       Response response = await SignupRepository.signUp(body: body);
       if (response.statusCode == 200) {
         emit(Done());
-        RouteUtils.navigateTo(const HomeView());
-
+        AppStorage.cacheId(response.data["data"]["user_id"]);
+        RouteUtils.navigateTo(const VerificationView(isRegister: true));
         log(response.statusCode.toString());
       } else {
         emit(Error());
-        log(response.statusCode.toString());
+        log("FROM ELSE ${response.statusCode}");
         showSnackBar(response.statusMessage.toString(), errorMessage: true);
       }
     } catch (e) {
       emit(Error());
-      log(e.toString());
+      log("FROM CATCH $e");
       showSnackBar(e.toString(), errorMessage: true);
     }
   }

@@ -6,4 +6,5 @@ class Endpoints {
   static const String FORGETPASSWORD = "resendcode";
   static const String VERIFYCODE = "verifycode";
   static const String RESETPASSWORD = "forgetpassword";
+  static const String HOME = "home";
 }
