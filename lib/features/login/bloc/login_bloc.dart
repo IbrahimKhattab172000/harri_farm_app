@@ -8,6 +8,7 @@ import 'package:harri_farm_app/core/app_state.dart';
 import 'package:harri_farm_app/core/app_storage.dart';
 import 'package:harri_farm_app/features/home/view/home_view.dart';
 import 'package:harri_farm_app/features/login/repository/login_repository.dart';
+import 'package:harri_farm_app/features/verification/view/verification_view.dart';
 import 'package:harri_farm_app/helpers/routes.dart';
 import 'package:harri_farm_app/widgets/app_snack_bar.dart';
 
@@ -39,14 +40,18 @@ class LoginBloc extends Bloc<AppEvent, AppState> {
         log("Done ${response.statusCode}");
         // await AppStorage.cacheUser(UserModel.fromJson(response.data));
         AppStorage.cacheToken(response.data['data']['token']);
-
         RouteUtils.navigateTo(const HomeView());
         emit(Done());
         showSnackBar(response.data['message'], errorMessage: false);
       } else {
+        emit(Error());
+
         log("Error ${response.statusCode}");
         showSnackBar(response.data['message'], errorMessage: true);
-        emit(Error());
+
+        if (response.data['isVerified'] == 0) {
+          RouteUtils.navigateTo(const VerificationView());
+        }
       }
     } catch (e) {
       log("error from the catch part: $e");
