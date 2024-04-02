@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:harri_farm_app/features/home/bloc/home_bloc.dart';
 import 'package:harri_farm_app/features/home/widgets/home_section_card.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
@@ -15,6 +16,7 @@ class HomeSections extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bloc = HomeBloc.of(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -32,14 +34,16 @@ class HomeSections extends StatelessWidget {
           height: 88.height,
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
-            itemCount: homeSectionsList.length,
+            itemCount: bloc.homeData.category?.length ?? 0,
             padding: const EdgeInsets.symmetric(horizontal: 16),
             itemBuilder: (context, index) {
-              final section = homeSectionsList[index];
+              String colorString = bloc.homeData.category![index].color!;
+              int colorValue = int.parse(colorString.substring(1), radix: 16);
+              Color color = Color(0xFF000000 + colorValue);
               return HomeSectionCard(
-                color: section['color'] as Color,
-                imagePath: section['imagePath'] as String,
-                name: section['name'] as String,
+                color: color,
+                imagePath: bloc.homeData.category![index].image as String,
+                name: bloc.homeData.category![index].name as String,
               );
             },
             separatorBuilder: (BuildContext context, int index) {

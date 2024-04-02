@@ -1,22 +1,22 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:harri_farm_app/features/sections/view/view.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/helpers/routes.dart';
-import 'package:harri_farm_app/helpers/utils.dart';
 import 'package:harri_farm_app/widgets/app_text.dart';
 
 class HomeSectionCard extends StatelessWidget {
   final Color color;
   final String imagePath;
   final String name;
+
   const HomeSectionCard({
-    super.key,
+    Key? key,
     required this.color,
     required this.imagePath,
     required this.name,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -34,19 +34,23 @@ class HomeSectionCard extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              height: 38.height,
-              width: 38.width,
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
+            ClipRRect(
+              borderRadius: BorderRadius.circular(10000),
+              child: Container(
+                width: 44.width,
+                height: 44.width,
                 color: AppColors.white,
-              ),
-              padding: const EdgeInsets.all(10),
-              child: Image.asset(
-                Utils.getAssetPNGPath(imagePath),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: CircleAvatar(
+                    radius: 24,
+                    backgroundColor: AppColors.white,
+                    backgroundImage: NetworkImage(imagePath),
+                  ),
+                ),
               ),
             ),
-            SizedBox(width: 4.width),
+            SizedBox(height: 4.height),
             AppText(
               title: name.tr(),
               color: AppColors.black,

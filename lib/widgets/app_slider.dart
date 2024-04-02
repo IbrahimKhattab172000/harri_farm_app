@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:harri_farm_app/features/home/bloc/home_bloc.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/widgets/app_top_view_card.dart';
@@ -16,6 +17,7 @@ class _AppSliderState extends State<AppSlider> {
 
   @override
   Widget build(BuildContext context) {
+    final bloc = HomeBloc.of(context);
     return Column(
       children: [
         CarouselSlider(
@@ -27,17 +29,15 @@ class _AppSliderState extends State<AppSlider> {
             autoPlay: true,
             onPageChanged: (index, _) => setState(() => _currentIndex = index),
           ),
-          items: const [
-            AppTopViewedCard(),
-            AppTopViewedCard(),
-            AppTopViewedCard()
-          ],
+          items: bloc.homeData.banner!.map((banner) {
+            return AppTopViewedCard(imagePath: banner.image!);
+          }).toList(),
         ),
         SizedBox(height: 10.height),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: List.generate(
-            3,
+            bloc.homeData.banner!.length,
             (index) {
               return HomeDotIndicator(
                 isActive: index == _currentIndex,
