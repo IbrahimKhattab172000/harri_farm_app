@@ -39,9 +39,10 @@ class ResetPasswordBloc extends Bloc<AppEvent, AppState> {
         log("Done ${response.statusCode}");
         emit(Done());
         RouteUtils.navigateTo(const HomeView());
+        showSnackBar(response.data['message'], errorMessage: false);
       } else {
         log("Error ${response.statusCode}");
-        showSnackBar(response.statusMessage.toString(), errorMessage: true);
+        showSnackBar(response.data['message'], errorMessage: true);
 
         emit(Error());
       }

@@ -19,19 +19,20 @@ class HomeBloc extends Bloc<AppEvent, AppState> {
       Response response = await HomeRepository.getData();
       if (response.statusCode == 200) {
         log("Done home${response.statusCode}");
-        showSnackBar(response.statusMessage.toString(), errorMessage: true);
 
         emit(Done());
       } else {
         emit(Error());
 
         log("Error home ${response.statusCode}");
-        showSnackBar(response.statusMessage.toString(), errorMessage: true);
+        showSnackBar(response.data['message'], errorMessage: true);
       }
     } catch (e) {
       emit(Error());
 
       log("error from the catch part home: $e");
+
+      showSnackBar(e.toString(), errorMessage: true);
     }
   }
 }

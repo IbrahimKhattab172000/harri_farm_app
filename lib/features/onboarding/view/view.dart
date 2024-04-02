@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:harri_farm_app/core/app_storage.dart';
 import 'package:harri_farm_app/features/onboarding/models/boarding.dart';
 import 'package:harri_farm_app/features/onboarding/widgets/onboarding_indicators.dart';
 import 'package:harri_farm_app/features/onboarding/widgets/onboarding_item.dart';
@@ -19,6 +20,11 @@ class _OnBoardingViewState extends State<OnBoardingView> {
   var boardController = PageController();
 
   bool isLast = false;
+  @override
+  void initState() {
+    AppStorage.cacheOnBoarding(true);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

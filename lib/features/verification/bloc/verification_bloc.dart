@@ -35,7 +35,7 @@ class VerificationBloc extends Bloc<AppEvent, AppState> {
       if (response.statusCode == 200) {
         log("Done ${response.statusCode}");
         emit(Done());
-
+        AppStorage.cacheVerification(response.data['data']['isVerified']);
         if (event.arguments == true) {
           RouteUtils.navigateTo(const HomeView());
         } else {

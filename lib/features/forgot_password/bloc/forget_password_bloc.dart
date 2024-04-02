@@ -31,7 +31,7 @@ class ForgetPasswordBloc extends Bloc<AppEvent, AppState> {
         RouteUtils.navigateTo(const VerificationView());
       } else {
         log("Error ${response.statusCode}");
-        showSnackBar(response.statusMessage.toString(), errorMessage: true);
+        showSnackBar(response.data['message'], errorMessage: true);
 
         emit(Error());
       }

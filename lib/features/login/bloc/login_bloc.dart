@@ -5,6 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:harri_farm_app/core/app_event.dart';
 import 'package:harri_farm_app/core/app_state.dart';
+import 'package:harri_farm_app/core/app_storage.dart';
 import 'package:harri_farm_app/features/home/view/home_view.dart';
 import 'package:harri_farm_app/features/login/repository/login_repository.dart';
 import 'package:harri_farm_app/helpers/routes.dart';
@@ -37,11 +38,14 @@ class LoginBloc extends Bloc<AppEvent, AppState> {
       if (response.statusCode == 200) {
         log("Done ${response.statusCode}");
         // await AppStorage.cacheUser(UserModel.fromJson(response.data));
+        AppStorage.cacheToken(response.data['data']['token']);
+
         RouteUtils.navigateTo(const HomeView());
         emit(Done());
+        showSnackBar(response.data['message'], errorMessage: false);
       } else {
         log("Error ${response.statusCode}");
-        showSnackBar(response.statusMessage.toString(), errorMessage: true);
+        showSnackBar(response.data['message'], errorMessage: true);
         emit(Error());
       }
     } catch (e) {

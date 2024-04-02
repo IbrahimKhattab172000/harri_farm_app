@@ -12,7 +12,7 @@ import 'package:harri_farm_app/features/verification/bloc/verification_bloc.dart
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/pop_scaffold.dart';
 import 'package:harri_farm_app/helpers/routes.dart';
-import 'package:harri_farm_app/features/splash/view/view.dart';
+import 'package:harri_farm_app/features/splash/view/splash_view.dart';
 import 'package:harri_farm_app/network/network_layer.dart';
 
 class MyApp extends StatefulWidget {

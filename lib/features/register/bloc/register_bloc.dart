@@ -48,10 +48,11 @@ class RegisterBloc extends Bloc<AppEvent, AppState> {
         AppStorage.cacheId(response.data["data"]["user_id"]);
         RouteUtils.navigateTo(const VerificationView(isRegister: true));
         log(response.statusCode.toString());
+        showSnackBar(response.data['message'], errorMessage: false);
       } else {
         emit(Error());
         log("FROM ELSE ${response.statusCode}");
-        showSnackBar(response.statusMessage.toString(), errorMessage: true);
+        showSnackBar(response.data['message'], errorMessage: true);
       }
     } catch (e) {
       emit(Error());
