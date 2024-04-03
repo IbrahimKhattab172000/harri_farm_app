@@ -9,7 +9,7 @@ import 'package:harri_farm_app/features/home/repository/home_repository.dart';
 import 'package:harri_farm_app/widgets/app_snack_bar.dart';
 
 class HomeBloc extends Bloc<AppEvent, AppState> {
-  HomeBloc() : super(Start()) {
+  HomeBloc() : super(Loading()) {
     on<Get>(_getData);
   }
   static HomeBloc of(context) => BlocProvider.of(context);
@@ -25,7 +25,7 @@ class HomeBloc extends Bloc<AppEvent, AppState> {
 
         emit(Done());
         homeData = HomeModel.fromMap(response.data);
-        print(" First " + homeData!.products![0].toString());
+        print(" First " + homeData.products![0].toString());
       } else {
         emit(Error());
 

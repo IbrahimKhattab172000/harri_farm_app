@@ -1,32 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:harri_farm_app/features/cart/view/view.dart';
-import 'package:harri_farm_app/features/home/models/home_model.dart';
+import 'package:harri_farm_app/features/search/models/search_model.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/helpers/routes.dart';
 import 'package:harri_farm_app/helpers/utils.dart';
 import 'package:harri_farm_app/widgets/app_text.dart';
 
-class AppProductCard extends StatefulWidget {
+class SearchProductCard extends StatefulWidget {
   final bool isFavorite;
   final VoidCallback onTap;
   final Function(bool)? onFavoriteChanged;
-  final Offer? offer;
-
-  const AppProductCard({
+  final SearchItem searchItem;
+  const SearchProductCard({
     Key? key,
     required this.onTap,
     this.isFavorite = false,
     this.onFavoriteChanged,
-    this.offer,
+    required this.searchItem,
   }) : super(key: key);
 
   @override
-  State<AppProductCard> createState() => _AppProductCardState();
+  State<SearchProductCard> createState() => _AppProductCardState();
 }
 
-class _AppProductCardState extends State<AppProductCard> {
+class _AppProductCardState extends State<SearchProductCard> {
   bool _isFavorite = false;
 
   @override
@@ -40,6 +39,7 @@ class _AppProductCardState extends State<AppProductCard> {
     return InkWell(
       onTap: widget.onTap,
       child: Container(
+        // constraints: BoxConstraints(minHeight: 220.height),
         width: 146.width,
         color: AppColors.background,
         child: Stack(
@@ -53,32 +53,24 @@ class _AppProductCardState extends State<AppProductCard> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Expanded(
-                    child: Center(
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(20),
-                        child: Image.network(
-                          widget.offer?.image ?? Utils.dummyProductImage,
-                          // height: 106.height,
-                          // width: 146.width,
-                          fit: BoxFit.cover,
-                        ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                      child: Image.network(
+                        widget.searchItem.image,
+                        // height: 106.height,
+                        // width: 146.width,
+                        fit: BoxFit.cover,
                       ),
                     ),
                   ),
-
-                  // Image.asset(
-                  //   Utils.getAssetPNGPath("offer_meat"),
-                  //   height: 116.height,
-                  //   width: 136.width,
-                  // ),
                   SizedBox(height: 6.height),
                   AppText(
-                    title: widget.offer?.category.tr() ?? "test",
+                    title: widget.searchItem.category.tr(),
                     fontSize: 14,
                   ),
                   SizedBox(height: 6.height),
                   AppText(
-                    title: widget.offer?.name.tr() ?? "test",
+                    title: widget.searchItem.name.tr(),
                     maxLines: 1,
                     fontSize: 14,
                     color: AppColors.black,
@@ -90,7 +82,7 @@ class _AppProductCardState extends State<AppProductCard> {
                       Row(
                         children: [
                           AppText(
-                            title: widget.offer?.price.tr() ?? "test",
+                            title: widget.searchItem.price.tr(),
                             fontSize: 14,
                             color: AppColors.lightGray,
                             fontWeight: FontWeight.w600,
@@ -98,7 +90,7 @@ class _AppProductCardState extends State<AppProductCard> {
                           ),
                           SizedBox(width: 4.width),
                           AppText(
-                            title: widget.offer?.offerPrice.tr() ?? "test",
+                            title: widget.searchItem.offerPrice.tr(),
                             fontSize: 14,
                             color: AppColors.primary,
                             fontWeight: FontWeight.w600,
@@ -132,16 +124,16 @@ class _AppProductCardState extends State<AppProductCard> {
                   color: AppColors.red,
                   shape: BoxShape.circle,
                 ),
-                child: Column(
+                child: const Column(
                   children: [
                     AppText(
-                      title: widget.offer?.discount.tr() ?? "test",
+                      title: "10%",
                       fontSize: 8,
                       color: AppColors.white,
                       fontWeight: FontWeight.w700,
                     ),
                     AppText(
-                      title: "a_discount".tr(),
+                      title: "خصم",
                       fontSize: 8,
                       color: AppColors.white,
                       fontWeight: FontWeight.w700,

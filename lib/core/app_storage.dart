@@ -1,7 +1,6 @@
 import 'dart:developer';
 
 import 'package:get_storage/get_storage.dart';
-import 'package:harri_farm_app/features/login/view/login_view.dart';
 import 'package:harri_farm_app/features/splash/view/splash_view.dart';
 import 'package:harri_farm_app/helpers/routes.dart';
 

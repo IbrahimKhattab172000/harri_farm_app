@@ -7,4 +7,5 @@ class Endpoints {
   static const String VERIFYCODE = "verifycode";
   static const String RESETPASSWORD = "forgetpassword";
   static const String HOME = "home";
+  static const String SEARCH = "search";
 }
