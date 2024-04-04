@@ -8,7 +8,6 @@ import 'package:harri_farm_app/core/app_event.dart';
 import 'package:harri_farm_app/core/app_state.dart';
 import 'package:harri_farm_app/core/app_storage.dart';
 import 'package:harri_farm_app/features/forgot_password/repository/forget_password_repository.dart';
-import 'package:harri_farm_app/features/forgot_password/view/forgot_password_view.dart';
 import 'package:harri_farm_app/features/verification/view/verification_view.dart';
 import 'package:harri_farm_app/helpers/routes.dart';
 import 'package:harri_farm_app/widgets/app_snack_bar.dart';
