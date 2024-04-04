@@ -5,7 +5,10 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:harri_farm_app/core/app_event.dart';
 import 'package:harri_farm_app/core/app_state.dart';
+import 'package:harri_farm_app/core/app_storage.dart';
 import 'package:harri_farm_app/features/home/view/home_view.dart';
+import 'package:harri_farm_app/features/login/bloc/login_bloc.dart';
+import 'package:harri_farm_app/features/login/view/login_view.dart';
 import 'package:harri_farm_app/features/reset_password/repository/reset_password_repository.dart';
 import 'package:harri_farm_app/features/verification/bloc/verification_bloc.dart';
 import 'package:harri_farm_app/helpers/routes.dart';
@@ -20,7 +23,15 @@ class ResetPasswordBloc extends Bloc<AppEvent, AppState> {
   TextEditingController password = TextEditingController();
   TextEditingController confirmPassword = TextEditingController();
 
-  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  var formKey = GlobalKey<FormState>();
+
+  // @override
+  // Future<void> close() {
+  //   password.dispose();
+  //   confirmPassword.dispose();
+  //   return super.close();
+  // }
+
   _resetPassword(AppEvent event, Emitter<AppState> emit) async {
     if (!formKey.currentState!.validate()) return;
 
@@ -38,7 +49,9 @@ class ResetPasswordBloc extends Bloc<AppEvent, AppState> {
       if (response.statusCode == 200) {
         log("Done ${response.statusCode}");
         emit(Done());
-        RouteUtils.navigateTo(const HomeView());
+
+        RouteUtils.navigateAndPopAll(const LoginView());
+
         showSnackBar(response.data['message'], errorMessage: false);
       } else {
         log("Error ${response.statusCode}");

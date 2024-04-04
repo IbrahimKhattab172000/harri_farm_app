@@ -1,7 +1,6 @@
 import 'dart:developer';
 
 import 'package:get_storage/get_storage.dart';
-import 'package:harri_farm_app/features/login/view/login_view.dart';
 import 'package:harri_farm_app/features/splash/view/splash_view.dart';
 import 'package:harri_farm_app/helpers/routes.dart';
 
@@ -26,10 +25,10 @@ class AppStorage {
 
 //-----------------------
 
-//verificationToken-----------
-  static void cacheVerification(var value) => _box.write('verification', value);
-  static bool get isVerification => _box.hasData('verification');
-  static int? get getVerification => _box.read('verification');
+// //verificationToken-----------
+//   static void cacheVerification(var value) => _box.write('verification', value);
+//   static bool get isVerification => _box.hasData('verification');
+//   static int? get getVerification => _box.read('verification');
 //-------------
 
 //verificationToken-----------

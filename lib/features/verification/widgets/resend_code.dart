@@ -2,6 +2,9 @@ import 'dart:async';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:harri_farm_app/core/app_event.dart';
+import 'package:harri_farm_app/features/forgot_password/bloc/forget_password_bloc.dart';
+import 'package:harri_farm_app/features/verification/bloc/verification_bloc.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/widgets/app_text.dart';
 
@@ -13,7 +16,7 @@ class ResendWidget extends StatefulWidget {
 }
 
 class _ResendWidgetState extends State<ResendWidget> {
-  int counter = 60;
+  int counter = 30;
   Timer? timer;
 
   @override
@@ -23,9 +26,9 @@ class _ResendWidgetState extends State<ResendWidget> {
   }
 
   void count() {
-    // final bloc = VerificationBloc.of(context);
-    // bloc.add(Click());
-    counter = 60;
+    final bloc = ForgetPasswordBloc.of(context);
+    bloc.add(ResendCode());
+    counter = 30;
     setState(() {});
     timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       counter--;

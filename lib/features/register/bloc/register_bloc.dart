@@ -24,7 +24,7 @@ class RegisterBloc extends Bloc<AppEvent, AppState> {
   TextEditingController password = TextEditingController();
   TextEditingController passwordConfirmation = TextEditingController();
 
-  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  var formKey = GlobalKey<FormState>();
 
   //============================================================================
   //============================================================================  Functions
