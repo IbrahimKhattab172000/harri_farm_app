@@ -24,13 +24,6 @@ class LoginBloc extends Bloc<AppEvent, AppState> {
 
   var formKey = GlobalKey<FormState>();
 
-  // @override
-  // Future<void> close() {
-  //   emailOrPhone.dispose();
-  //   password.dispose();
-  //   return super.close();
-  // }
-
   _login(AppEvent event, Emitter<AppState> emit) async {
     if (!formKey.currentState!.validate()) return;
 
@@ -50,11 +43,12 @@ class LoginBloc extends Bloc<AppEvent, AppState> {
         RouteUtils.navigateTo(const HomeView());
         emit(Done());
         showSnackBar(response.data['message'], errorMessage: false);
-      } else if (response.statusCode == 422 &&
+      } else if (
+          // response.statusCode == 422 &&
           response.data['isVerified'] == 0) {
         emit(Done());
         if (response.data['isVerified'] == 0) {
-          RouteUtils.navigateTo(const VerificationView());
+          RouteUtils.navigateTo(const VerificationView(isVerified: true));
         }
       } else {
         emit(Error());

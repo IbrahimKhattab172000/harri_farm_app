@@ -29,6 +29,8 @@ class ForgetPasswordBloc extends Bloc<AppEvent, AppState> {
     String body = emailOrPhone.text;
     try {
       Response response = await ForgetPasswordRepository.sendCode(body: body);
+      log("statussss ${response.statusCode}");
+
       if (response.statusCode == 200) {
         log("Done ${response.statusCode}");
         AppStorage.cacheId(response.data['user_id']);

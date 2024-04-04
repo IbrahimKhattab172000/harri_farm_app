@@ -26,8 +26,6 @@ class _ResendWidgetState extends State<ResendWidget> {
   }
 
   void count() {
-    final bloc = ForgetPasswordBloc.of(context);
-    bloc.add(ResendCode());
     counter = 30;
     setState(() {});
     timer = Timer.periodic(const Duration(seconds: 1), (timer) {
@@ -37,6 +35,11 @@ class _ResendWidgetState extends State<ResendWidget> {
         timer.cancel();
       }
     });
+  }
+
+  void resendCode() {
+    final bloc = VerificationBloc.of(context);
+    bloc.add(ResendCode());
   }
 
   @override
@@ -63,7 +66,10 @@ class _ResendWidgetState extends State<ResendWidget> {
       );
     }
     return GestureDetector(
-      onTap: count,
+      onTap: () {
+        count();
+        resendCode();
+      },
       child: AppText(
         title: "resend_code".tr(),
         decoration: TextDecoration.underline,
