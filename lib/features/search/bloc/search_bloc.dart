@@ -34,7 +34,7 @@ class SearchBloc extends Bloc<AppEvent, AppState> {
 
         emit(Done());
         searchData = SearchModel.fromJson(response.data);
-        print(" First " + searchData!.data![0].toString());
+        print(" First " + searchData.data![0].toString());
       } else {
         emit(Error());
 

@@ -42,6 +42,7 @@ class HomeSections extends StatelessWidget {
               Color color = Color(0xFF000000 + colorValue);
               return HomeSectionCard(
                 color: color,
+                catId: bloc.homeData.category![index].id.toString(),
                 imagePath: bloc.homeData.category![index].image as String,
                 name: bloc.homeData.category![index].name as String,
               );

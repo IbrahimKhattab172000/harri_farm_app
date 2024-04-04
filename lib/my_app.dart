@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:harri_farm_app/core/app_event.dart';
+import 'package:harri_farm_app/features/all_offers/bloc/all_offers_bloc.dart';
 import 'package:harri_farm_app/features/forgot_password/bloc/forget_password_bloc.dart';
 import 'package:harri_farm_app/features/home/bloc/home_bloc.dart';
 import 'package:harri_farm_app/features/login/bloc/login_bloc.dart';
 import 'package:harri_farm_app/features/register/bloc/register_bloc.dart';
 import 'package:harri_farm_app/features/reset_password/bloc/reset_password_bloc.dart';
+import 'package:harri_farm_app/features/sections/bloc/sections_bloc.dart';
 import 'package:harri_farm_app/features/verification/bloc/verification_bloc.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/pop_scaffold.dart';
@@ -52,6 +54,12 @@ class _MyAppState extends State<MyApp> {
             ),
             BlocProvider(
               create: (context) => HomeBloc()..add(Get()),
+            ),
+            BlocProvider(
+              create: (context) => AllOffersBloc()..add(Get()),
+            ),
+            BlocProvider(
+              create: (context) => SectionBloc(),
             ),
           ],
           child: MaterialApp(

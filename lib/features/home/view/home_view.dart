@@ -15,7 +15,7 @@ import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/widgets/app_decorated_background.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/helpers/utils.dart';
-import 'package:harri_farm_app/widgets/app_slider.dart';
+import 'package:harri_farm_app/features/home/widgets/home_slider.dart';
 import 'package:harri_farm_app/widgets/app_text.dart';
 
 class HomeView extends StatelessWidget {
@@ -100,7 +100,7 @@ class HomeBuildLoadedItems extends StatelessWidget {
             SizedBox(height: 22.height),
             const HomeSearchField(),
             SizedBox(height: 16.height),
-            const AppSlider(),
+            const HomeSlider(),
             SizedBox(height: 16.height),
             HomeSections(homeSectionsList: homeSectionsList),
             SizedBox(height: 16.height),

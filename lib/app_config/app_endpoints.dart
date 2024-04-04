@@ -8,4 +8,8 @@ class Endpoints {
   static const String RESETPASSWORD = "forgetpassword";
   static const String HOME = "home";
   static const String SEARCH = "search";
+  static const String ALLOFFERES = "show-all-offer";
+  static String subCat({required String catId}) {
+    return "category/$catId/subcategory";
+  }
 }

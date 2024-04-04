@@ -1,6 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:harri_farm_app/features/offers/view/offers_view.dart';
+import 'package:harri_farm_app/core/app_event.dart';
+import 'package:harri_farm_app/features/all_offers/bloc/all_offers_bloc.dart';
+import 'package:harri_farm_app/features/all_offers/view/all_offers_view.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/routes.dart';
 import 'package:harri_farm_app/widgets/app_text.dart';
@@ -25,6 +27,8 @@ class HomeOffersBar extends StatelessWidget {
           const Spacer(),
           InkWell(
             onTap: () {
+              final bloc = AllOffersBloc.of(context);
+              bloc.add(Get());
               RouteUtils.navigateTo(const OffersView());
             },
             child: AppText(

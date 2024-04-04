@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:harri_farm_app/features/all_offers/bloc/all_offers_bloc.dart';
 import 'package:harri_farm_app/features/product_details/view/view.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/helpers/routes.dart';
@@ -9,6 +10,8 @@ class OffersGridItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bloc = AllOffersBloc.of(context);
+
     return Expanded(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
@@ -20,9 +23,10 @@ class OffersGridItems extends StatelessWidget {
             crossAxisSpacing: 8.height,
             childAspectRatio: 2 / 3,
           ),
-          itemCount: 10,
+          itemCount: bloc.allOffersData.data!.offers!.length,
           itemBuilder: (context, index) {
             return AppProductCard(
+              offer: bloc.allOffersData.data!.offers![index],
               onTap: () => RouteUtils.navigateTo(const ProductDetailsView()),
             );
           },

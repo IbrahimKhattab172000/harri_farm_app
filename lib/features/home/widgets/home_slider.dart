@@ -5,14 +5,14 @@ import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/widgets/app_top_view_card.dart';
 
-class AppSlider extends StatefulWidget {
-  const AppSlider({super.key});
+class HomeSlider extends StatefulWidget {
+  const HomeSlider({super.key});
 
   @override
-  State<AppSlider> createState() => _AppSliderState();
+  State<HomeSlider> createState() => _HomeSliderState();
 }
 
-class _AppSliderState extends State<AppSlider> {
+class _HomeSliderState extends State<HomeSlider> {
   int _currentIndex = 0;
 
   @override

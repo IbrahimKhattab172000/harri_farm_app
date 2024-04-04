@@ -12,7 +12,7 @@ class AppProductCard extends StatefulWidget {
   final bool isFavorite;
   final VoidCallback onTap;
   final Function(bool)? onFavoriteChanged;
-  final Offer? offer;
+  final ProductModel? offer;
 
   const AppProductCard({
     Key? key,
@@ -73,12 +73,12 @@ class _AppProductCardState extends State<AppProductCard> {
                   // ),
                   SizedBox(height: 6.height),
                   AppText(
-                    title: widget.offer?.category.tr() ?? "test",
+                    title: widget.offer?.category ?? "test",
                     fontSize: 14,
                   ),
                   SizedBox(height: 6.height),
                   AppText(
-                    title: widget.offer?.name.tr() ?? "test",
+                    title: widget.offer?.name ?? "test",
                     maxLines: 1,
                     fontSize: 14,
                     color: AppColors.black,
@@ -90,7 +90,7 @@ class _AppProductCardState extends State<AppProductCard> {
                       Row(
                         children: [
                           AppText(
-                            title: widget.offer?.price.tr() ?? "test",
+                            title: widget.offer?.price ?? "test",
                             fontSize: 14,
                             color: AppColors.lightGray,
                             fontWeight: FontWeight.w600,
@@ -98,7 +98,7 @@ class _AppProductCardState extends State<AppProductCard> {
                           ),
                           SizedBox(width: 4.width),
                           AppText(
-                            title: widget.offer?.offerPrice.tr() ?? "test",
+                            title: widget.offer?.offerPrice ?? "test",
                             fontSize: 14,
                             color: AppColors.primary,
                             fontWeight: FontWeight.w600,
@@ -135,7 +135,7 @@ class _AppProductCardState extends State<AppProductCard> {
                 child: Column(
                   children: [
                     AppText(
-                      title: widget.offer?.discount.tr() ?? "test",
+                      title: widget.offer?.discount ?? "test",
                       fontSize: 8,
                       color: AppColors.white,
                       fontWeight: FontWeight.w700,
