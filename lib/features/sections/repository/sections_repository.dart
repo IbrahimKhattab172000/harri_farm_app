@@ -8,4 +8,28 @@ class SectionsRepository {
       method: ServerMethods.GET,
     );
   }
+
+  static Future getSubCategoryOffersData({
+    required String subId,
+  }) async {
+    return await Network().request(
+      Endpoints.subCategoryOffers(
+        subId: subId,
+      ),
+      method: ServerMethods.GET,
+    );
+  }
+
+  static Future filter({
+    required String catId,
+    required String filterId,
+  }) async {
+    return await Network().request(
+      Endpoints.subCategoryOffers(
+        subId: catId,
+      ),
+      method: ServerMethods.GET,
+      query: {"type": filterId},
+    );
+  }
 }

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:harri_farm_app/core/app_event.dart';
 import 'package:harri_farm_app/features/cart/view/view.dart';
+import 'package:harri_farm_app/features/notifications/bloc/notifications_bloc.dart';
+import 'package:harri_farm_app/features/notifications/view/view.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/helpers/routes.dart';
@@ -62,7 +65,10 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
             ),
             SizedBox(width: 15.width),
             InkWell(
-              onTap: () {},
+              onTap: () {
+                NotificationBloc.of(context).add(Get());
+                RouteUtils.navigateTo(NotificationsView());
+              },
               child: Stack(
                 children: [
                   Image.asset(

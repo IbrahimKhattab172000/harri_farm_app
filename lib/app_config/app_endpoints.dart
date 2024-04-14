@@ -9,7 +9,21 @@ class Endpoints {
   static const String HOME = "home";
   static const String SEARCH = "search";
   static const String ALLOFFERES = "show-all-offer";
+  static const String NOTIFICATIONS = "notifications";
+
   static String subCat({required String catId}) {
     return "category/$catId/subcategory";
+  }
+
+  static String subCategoryOffers({
+    required String subId,
+  }) {
+    return "category/$subId/offers";
+  }
+
+  static String filters({
+    required String catId,
+  }) {
+    return "category/$catId/offers";
   }
 }

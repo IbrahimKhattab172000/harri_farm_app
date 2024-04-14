@@ -1,5 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:harri_farm_app/core/app_event.dart';
+import 'package:harri_farm_app/features/sections/bloc/sections_bloc.dart';
 import 'package:harri_farm_app/widgets/app_toggle.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
@@ -29,7 +31,35 @@ class SectionBottomSheet extends StatefulWidget {
 }
 
 class _SectionBottomSheetState extends State<SectionBottomSheet> {
-  int selectedIndex = 0;
+  int? selectedIndex;
+
+  final List<Map<String, dynamic>> filters = [
+    {
+      "id": 0,
+      "title": "الكل",
+      "titleEn": "all",
+    },
+    {
+      "id": 1,
+      "title": "الاكثر مبيعا",
+      "titleEn": "Best seller",
+    },
+    {
+      "id": 2,
+      "title": "الاعلى تقييمًا",
+      "titleEn": "Highest rated",
+    },
+    {
+      "id": 3,
+      "title": "من السعر الاعلي الي الاقل",
+      "titleEn": "From the highest price to the lowest",
+    },
+    {
+      "id": 4,
+      "title": "من السعر الاقل الي الاعلى",
+      "titleEn": "From the lowest price to the highest",
+    },
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -71,40 +101,22 @@ class _SectionBottomSheetState extends State<SectionBottomSheet> {
                   ],
                 ),
                 SizedBox(height: 24.height),
-                AppToggleCard(
-                  title: "sold_the_most".tr(),
-                  isSelected: selectedIndex == 0,
-                  onTap: () {
-                    setState(() {
-                      selectedIndex = 0;
-                    });
-                  },
-                ),
-                AppToggleCard(
-                  title: "highest_in_price".tr(),
-                  isSelected: selectedIndex == 1,
-                  onTap: () {
-                    setState(() {
-                      selectedIndex = 1;
-                    });
-                  },
-                ),
-                AppToggleCard(
-                  title: "from_highest_to_lowest".tr(),
-                  isSelected: selectedIndex == 2,
-                  onTap: () {
-                    setState(() {
-                      selectedIndex = 2;
-                    });
-                  },
-                ),
-                AppToggleCard(
-                  title: "from_lowest_to_highest".tr(),
-                  isSelected: selectedIndex == 3,
-                  onTap: () {
-                    setState(() {
-                      selectedIndex = 3;
-                    });
+                ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: filters.length,
+                  itemBuilder: (context, index) {
+                    final filter = filters[index];
+                    return AppToggleCard(
+                      title: filter["title"],
+                      isSelected: selectedIndex == filter["id"],
+                      onTap: () {
+                        setState(() {
+                          selectedIndex = filter["id"];
+                          SectionBloc.of(context)
+                              .add(Click(arguments: selectedIndex.toString()));
+                        });
+                      },
+                    );
                   },
                 ),
                 SizedBox(height: 24.height),

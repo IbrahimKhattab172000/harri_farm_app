@@ -1,10 +1,13 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:harri_farm_app/core/app_event.dart';
+import 'package:harri_farm_app/features/sections/bloc/sections_bloc.dart';
 import 'package:harri_farm_app/features/sections/models/sections_model.dart';
 import 'package:harri_farm_app/features/sections/widgets/sections_tab.dart';
+import 'package:harri_farm_app/helpers/dimentions.dart';
 
 class SectionsTabBars extends StatefulWidget {
   final List<SubCategory>? subCategory;
+
   const SectionsTabBars({Key? key, this.subCategory}) : super(key: key);
 
   @override
@@ -12,7 +15,7 @@ class SectionsTabBars extends StatefulWidget {
 }
 
 class _SectionsTabBarsState extends State<SectionsTabBars> {
-  int _currentViewIndex = 0;
+  int? _currentViewIndex;
 
   void _changeView(int index) {
     setState(() {
@@ -20,16 +23,32 @@ class _SectionsTabBarsState extends State<SectionsTabBars> {
     });
   }
 
+  // @override
+  // void initState() {
+  //   SectionBloc.of(context)
+  //       .add(Read(arguments: widget.subCategory!.first.id.toString()));
+  //   super.initState();
+  // }
+
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: widget.subCategory!.map((element) {
-        return SectionsTab(
-          isSelected: _currentViewIndex == 0,
-          title: element.name ?? "",
-          onTap: () => _changeView(0),
-        );
-      }).toList(),
+    return SizedBox(
+      height: 52.height,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          for (var index = 0; index < widget.subCategory!.length; index++)
+            SectionsTab(
+                isSelected: _currentViewIndex == index,
+                title: widget.subCategory?[index].name ?? "",
+                onTap: () {
+                  _changeView(index);
+                  // SectionBloc.of(context).add(Read(arguments: "$index"));
+                  SectionBloc.of(context).add(Read(
+                      arguments: widget.subCategory![index].id.toString()));
+                }),
+        ],
+      ),
     );
   }
 }

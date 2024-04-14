@@ -51,10 +51,7 @@ class AppDrawerItems extends StatelessWidget {
       "imagePath": "bell",
       "title": "notifications",
       "onTap": () {
-        RouteUtils.navigateTo(const NotificationsView(
-          // isEmpty: true,
-          isEmpty: false,
-        ));
+        RouteUtils.navigateTo(NotificationsView());
       },
     },
     {

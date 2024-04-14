@@ -6,8 +6,13 @@ import 'package:harri_farm_app/helpers/utils.dart';
 import 'package:harri_farm_app/widgets/app_text.dart';
 
 class NotificationCard extends StatelessWidget {
+  final String title;
+
+  final String dateTime;
   const NotificationCard({
     super.key,
+    required this.title,
+    required this.dateTime,
   });
 
   @override
@@ -24,14 +29,14 @@ class NotificationCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             AppText(
-              title: "your_order_has_been_accepted_and_in_process".tr(),
+              title: title,
               color: AppColors.black,
               fontSize: 14,
               fontWeight: FontWeight.w700,
             ),
             SizedBox(height: 8.height),
-            const AppText(
-              title: "3:50 PM",
+            AppText(
+              title: dateTime,
               color: AppColors.gray,
               fontSize: 14,
               fontWeight: FontWeight.w500,

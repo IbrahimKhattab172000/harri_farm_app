@@ -17,25 +17,21 @@ class SectionsTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: InkWell(
-        onTap: onTap,
-        child: Container(
-          width: 80.width,
-          // height: 40.height,
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-            color: isSelected ? AppColors.primary : AppColors.lightGray,
-            borderRadius: BorderRadius.circular(8),
-          ),
-          margin: const EdgeInsets.all(4),
-          child: AppText(
-            title: title,
-            color: isSelected ? AppColors.white : AppColors.black,
-            fontSize: 14,
-            fontWeight: FontWeight.w700,
-            padding: const EdgeInsets.symmetric(vertical: 12),
-          ),
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        width: 80.width,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          color: isSelected ? AppColors.primary : AppColors.lightGray,
+          borderRadius: BorderRadius.circular(8),
+        ),
+        margin: const EdgeInsets.all(4),
+        child: AppText(
+          title: title,
+          color: isSelected ? AppColors.white : AppColors.black,
+          fontSize: 14,
+          fontWeight: FontWeight.w700,
         ),
       ),
     );
