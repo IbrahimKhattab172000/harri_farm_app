@@ -1,6 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/helpers/utils.dart';
@@ -8,12 +7,20 @@ import 'package:harri_farm_app/widgets/app_text.dart';
 
 class MyOrdersCard extends StatelessWidget {
   final VoidCallback onTap;
-  final String orderType;
+  final String status;
+  final String name;
+  final String date;
+  final String price;
+  final String id;
 
   const MyOrdersCard({
     Key? key,
     required this.onTap,
-    required this.orderType,
+    required this.status,
+    required this.name,
+    required this.date,
+    required this.price,
+    required this.id,
   }) : super(key: key);
 
   @override
@@ -48,7 +55,7 @@ class MyOrdersCard extends StatelessWidget {
                   Row(
                     children: [
                       AppText(
-                        title: "order_number".tr(),
+                        title: "${"order_number".tr()} #",
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         color: AppColors.black,
@@ -56,8 +63,8 @@ class MyOrdersCard extends StatelessWidget {
                         fontSize: 14,
                       ),
                       SizedBox(width: 4.width),
-                      const AppText(
-                        title: "# 28102022",
+                      AppText(
+                        title: id,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         color: AppColors.black,
@@ -67,16 +74,18 @@ class MyOrdersCard extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height: 4.height),
-                  AppText(
-                    title: "dummy_product_name".tr(),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    color: AppColors.gray,
-                    fontSize: 12,
-                  ),
+                  name == ""
+                      ? const SizedBox()
+                      : AppText(
+                          title: name,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          color: AppColors.gray,
+                          fontSize: 12,
+                        ),
                   SizedBox(height: 4.height),
-                  const AppText(
-                    title: ' 20/12/2022 الساعة 5:32 م',
+                  AppText(
+                    title: date,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     color: AppColors.gray,
@@ -107,7 +116,7 @@ class MyOrdersCard extends StatelessWidget {
             ),
             const Spacer(),
             AppText(
-              title: orderType.tr(),
+              title: status.tr(),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               color: AppColors.primary,

@@ -13,9 +13,9 @@ import 'package:harri_farm_app/widgets/app_button.dart';
 import 'package:harri_farm_app/widgets/app_price_summary.dart';
 
 class MyOrdersDetailsView extends StatelessWidget {
-  final String orderType;
+  final String status;
 
-  const MyOrdersDetailsView({super.key, required this.orderType});
+  const MyOrdersDetailsView({super.key, required this.status});
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,7 @@ class MyOrdersDetailsView extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(height: 24.height),
-              MyOrderDetailsHeader(orderType: orderType),
+              MyOrderDetailsHeader(status: status),
               SizedBox(height: 28.height),
               const MyOrderDetailsRateBar(),
               SizedBox(height: 28.height),
@@ -45,7 +45,7 @@ class MyOrdersDetailsView extends StatelessWidget {
               SizedBox(height: 20.height),
               const MyOrdersDetailsShippingInfo(),
               SizedBox(height: 16.height),
-              orderType == "rejected"
+              status == "refuse" || status == "تم الرفض"
                   ? const MyOrdersDetailsRejection()
                   : const AppPriceSummary(),
               SizedBox(height: 40.height),

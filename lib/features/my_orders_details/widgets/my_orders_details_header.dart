@@ -6,10 +6,10 @@ import 'package:harri_farm_app/helpers/utils.dart';
 import 'package:harri_farm_app/widgets/app_text.dart';
 
 class MyOrderDetailsHeader extends StatelessWidget {
-  final String orderType;
+  final String status;
   const MyOrderDetailsHeader({
     super.key,
-    required this.orderType,
+    required this.status,
   });
 
   @override
@@ -57,10 +57,12 @@ class MyOrderDetailsHeader extends StatelessWidget {
         ),
         SizedBox(height: 4.height),
         AppText(
-          title: orderType.tr(),
+          title: status.tr(),
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
-          color: orderType == "rejected" ? AppColors.red : AppColors.primary,
+          color: status == "refuse" || status == "تم الرفض"
+              ? AppColors.red
+              : AppColors.primary,
           fontSize: 14,
           fontWeight: FontWeight.w700,
         ),

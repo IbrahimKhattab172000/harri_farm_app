@@ -22,7 +22,7 @@ class MyOrdersBloc extends Bloc<AppEvent, AppState> {
 
   _handleChangeView(ChangeView event, Emitter<AppState> emit) {
     currentViewIndex = event.arguments as int;
-    emit(Loading());
+    emit(Reload());
   }
 
   _getData(AppEvent event, Emitter<AppState> emit) async {

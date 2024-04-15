@@ -5,6 +5,8 @@ abstract class AppState {}
 
 class Start extends AppState {}
 
+class Reload extends AppState {}
+
 class Done extends AppState {
   Mapper? model;
   List<Widget>? cards;

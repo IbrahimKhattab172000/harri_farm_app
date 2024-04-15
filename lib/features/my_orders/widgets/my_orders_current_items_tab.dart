@@ -11,14 +11,7 @@ import 'package:harri_farm_app/helpers/routes.dart';
 import 'package:harri_farm_app/widgets/app_text.dart';
 
 class MyOrdersCurrentItemsTab extends StatelessWidget {
-  MyOrdersCurrentItemsTab({Key? key}) : super(key: key);
-
-  final List<String> orderType = [
-    "in_delivery",
-    "new_order",
-    "new_order",
-    "in_delivery"
-  ];
+  const MyOrdersCurrentItemsTab({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -38,11 +31,18 @@ class MyOrdersCurrentItemsTab extends StatelessWidget {
               padding: EdgeInsets.only(top: 8.height),
               itemBuilder: (context, index) {
                 return MyOrdersCard(
-                  orderType:
-                      bloc.myOrdersData.data?.newOrder?[index].status ?? "",
+                  status: bloc.myOrdersData.data?.newOrder?[index].status ?? "",
+                  date: bloc.myOrdersData.data?.newOrder?[index].date ?? "",
+                  id: bloc.myOrdersData.data?.newOrder?[index].id.toString() ??
+                      "",
+                  name: bloc.myOrdersData.data?.newOrder?[index].note ?? "",
+                  price:
+                      bloc.myOrdersData.data?.newOrder?[index].finalPrice ?? "",
                   onTap: () {
-                    RouteUtils.navigateTo(
-                        MyOrdersDetailsView(orderType: orderType[index]));
+                    RouteUtils.navigateTo(MyOrdersDetailsView(
+                      status:
+                          bloc.myOrdersData.data?.newOrder?[index].status ?? "",
+                    ));
                   },
                 );
               },
