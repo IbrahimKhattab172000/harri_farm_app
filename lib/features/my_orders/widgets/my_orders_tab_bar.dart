@@ -1,7 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:harri_farm_app/features/my_orders/bloc/tab_cubit/cubit.dart';
+import 'package:harri_farm_app/core/app_event.dart';
+import 'package:harri_farm_app/core/app_state.dart';
+import 'package:harri_farm_app/features/my_orders/bloc/my_orders_bloc.dart';
 import 'package:harri_farm_app/features/my_orders/widgets/my_orders_custom_tab.dart';
 
 class MyOrdersTabBar extends StatelessWidget {
@@ -9,20 +11,20 @@ class MyOrdersTabBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MyOrdersCubit, MyOrdersStates>(
+    return BlocBuilder<MyOrdersBloc, AppState>(
       builder: (context, state) {
-        final cubit = MyOrdersCubit.of(context);
+        final bloc = MyOrdersBloc.of(context);
         return Row(
           children: [
             MyOrdersCustomTab(
-              isEnabled: cubit.currentViewIndex == 0,
+              isEnabled: bloc.currentViewIndex == 0,
               title: "current".tr(),
-              onTap: () => cubit.changeView(0),
+              onTap: () => bloc.add(ChangeView(value: 0)),
             ),
             MyOrdersCustomTab(
-              isEnabled: cubit.currentViewIndex == 1,
+              isEnabled: bloc.currentViewIndex == 1,
               title: 'done'.tr(),
-              onTap: () => cubit.changeView(1),
+              onTap: () => bloc.add(ChangeView(value: 1)),
             ),
           ],
         );

@@ -3,15 +3,16 @@
 class Endpoints {
   static const String REGISTER = "register";
   static const String LOGIN = "login";
-  static const String FORGETPASSWORD = "resendcode";
-  static const String VERIFYCODE = "verifycode";
-  static const String RESETPASSWORD = "forgetpassword";
+  static const String FORGET_PASSWORD = "resendcode";
+  static const String VERIFY_CODE = "verifycode";
+  static const String RESET_PASSWORD = "forgetpassword";
   static const String HOME = "home";
   static const String SEARCH = "search";
-  static const String ALLOFFERES = "show-all-offer";
+  static const String ALL_OFFERES = "show-all-offer";
   static const String NOTIFICATIONS = "notifications";
   static const String USER = "user";
   static const String UPDATE = "update";
+  static const String GET_ORDERS = "get-orders";
 
   static String subCat({required String catId}) {
     return "category/$catId/subcategory";

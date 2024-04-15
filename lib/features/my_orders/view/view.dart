@@ -2,7 +2,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:harri_farm_app/features/my_orders/bloc/tab_cubit/cubit.dart';
+import 'package:harri_farm_app/core/app_state.dart';
+import 'package:harri_farm_app/features/my_orders/bloc/my_orders_bloc.dart';
 import 'package:harri_farm_app/features/my_orders/widgets/my_orders_current_items_tab.dart';
 import 'package:harri_farm_app/features/my_orders/widgets/my_orders_done_items_tab.dart';
 import 'package:harri_farm_app/features/my_orders/widgets/my_orders_tab_bar.dart';
@@ -17,41 +18,37 @@ class MyOrdersView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => MyOrdersCubit(),
-      child: Scaffold(
-        appBar: AppAppBar(
-          title: "my_orders".tr(),
-          leading: InkWell(
-            onTap: () => RouteUtils.pop(),
-            child: const Icon(
-              Icons.arrow_back_ios,
-              size: 18,
-            ),
+    return Scaffold(
+      appBar: AppAppBar(
+        title: "my_orders".tr(),
+        leading: InkWell(
+          onTap: () => RouteUtils.pop(),
+          child: const Icon(
+            Icons.arrow_back_ios,
+            size: 18,
           ),
-          elevation: 0,
         ),
-        body: BlocBuilder<MyOrdersCubit, MyOrdersStates>(
-          builder: (context, state) {
-            final cubit = MyOrdersCubit.of(context);
-
-            return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Column(
-                children: [
-                  SizedBox(height: 44.height),
-                  const MyOrdersTabBar(),
-                  SizedBox(height: 24.height),
-                  [
-                    MyOrdersCurrentItemsTab(),
-                    MyOrdersDoneItemsTab(),
-                  ][cubit.currentViewIndex],
-                  SizedBox(height: Utils.bottomDevicePadding),
-                ],
-              ),
-            );
-          },
-        ),
+        elevation: 0,
+      ),
+      body: BlocBuilder<MyOrdersBloc, AppState>(
+        builder: (context, state) {
+          final bloc = MyOrdersBloc.of(context);
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Column(
+              children: [
+                SizedBox(height: 44.height),
+                const MyOrdersTabBar(),
+                SizedBox(height: 24.height),
+                [
+                  MyOrdersCurrentItemsTab(),
+                  MyOrdersDoneItemsTab(),
+                ][bloc.currentViewIndex],
+                SizedBox(height: Utils.bottomDevicePadding),
+              ],
+            ),
+          );
+        },
       ),
     );
   }

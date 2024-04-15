@@ -7,6 +7,7 @@ import 'package:harri_farm_app/features/all_offers/bloc/all_offers_bloc.dart';
 import 'package:harri_farm_app/features/forgot_password/bloc/forget_password_bloc.dart';
 import 'package:harri_farm_app/features/home/bloc/home_bloc.dart';
 import 'package:harri_farm_app/features/login/bloc/login_bloc.dart';
+import 'package:harri_farm_app/features/my_orders/bloc/my_orders_bloc.dart';
 import 'package:harri_farm_app/features/notifications/bloc/notifications_bloc.dart';
 import 'package:harri_farm_app/features/register/bloc/register_bloc.dart';
 import 'package:harri_farm_app/features/reset_password/bloc/reset_password_bloc.dart';
@@ -68,6 +69,9 @@ class _MyAppState extends State<MyApp> {
             ),
             BlocProvider(
               create: (context) => UpdateProfileBloc(),
+            ),
+            BlocProvider(
+              create: (context) => MyOrdersBloc(),
             ),
           ],
           child: MaterialApp(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:harri_farm_app/core/app_event.dart';
 import 'package:harri_farm_app/core/app_storage.dart';
 import 'package:harri_farm_app/features/about_us/view/view.dart';
+import 'package:harri_farm_app/features/my_orders/bloc/my_orders_bloc.dart';
 import 'package:harri_farm_app/features/update_profile/bloc/update_profile_bloc.dart';
 import 'package:harri_farm_app/features/update_profile/view/view.dart';
 import 'package:harri_farm_app/features/addresses/view/view.dart';
@@ -33,6 +34,7 @@ class AppDrawerItems extends StatelessWidget {
       "imagePath": "shopping_bag",
       "title": "my_orders",
       "onTap": () {
+        MyOrdersBloc.of(RouteUtils.context).add(Get());
         RouteUtils.navigateTo(const MyOrdersView());
       },
     },

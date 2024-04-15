@@ -1,8 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:harri_farm_app/features/favorite/widgets/favorite_grid_item.dart';
-import 'package:harri_farm_app/features/my_orders/bloc/tab_cubit/cubit.dart';
 import 'package:harri_farm_app/helpers/routes.dart';
 import 'package:harri_farm_app/widgets/app_appbar.dart';
 
@@ -13,22 +11,19 @@ class FavoriteView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => MyOrdersCubit(),
-      child: Scaffold(
-        appBar: AppAppBar(
-          title: "favorite".tr(),
-          leading: InkWell(
-            onTap: () => RouteUtils.pop(),
-            child: const Icon(
-              Icons.arrow_back_ios,
-              size: 18,
-            ),
+    return Scaffold(
+      appBar: AppAppBar(
+        title: "favorite".tr(),
+        leading: InkWell(
+          onTap: () => RouteUtils.pop(),
+          child: const Icon(
+            Icons.arrow_back_ios,
+            size: 18,
           ),
-          elevation: 0,
         ),
-        body: const SafeArea(child: FavoriteGridItems()),
+        elevation: 0,
       ),
+      body: const SafeArea(child: FavoriteGridItems()),
     );
   }
 }

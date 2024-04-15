@@ -91,3 +91,7 @@ class VerifyForgetPasswordEvent extends AppEvent {
 class LoadingState extends AppEvent {
   LoadingState({Object? arguments}) : super(arguments);
 }
+
+class ChangeView extends AppEvent {
+  ChangeView({int? value}) : super(value);
+}

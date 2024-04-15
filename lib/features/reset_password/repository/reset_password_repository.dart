@@ -4,7 +4,7 @@ import 'package:harri_farm_app/network/network_layer.dart';
 abstract class ResetPasswordRepository {
   static Future resetPassword({required Map<String, dynamic> body}) async {
     return await Network().request(
-      Endpoints.RESETPASSWORD,
+      Endpoints.RESET_PASSWORD,
       body: body,
       method: ServerMethods.POST,
     );

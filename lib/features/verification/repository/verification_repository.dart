@@ -4,7 +4,7 @@ import 'package:harri_farm_app/network/network_layer.dart';
 abstract class VerificationRepository {
   static Future verifyCode({required Map<String, dynamic> body}) async {
     return Network().request(
-      Endpoints.VERIFYCODE,
+      Endpoints.VERIFY_CODE,
       body: body,
       method: ServerMethods.POST,
     );
