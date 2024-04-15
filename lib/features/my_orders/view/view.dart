@@ -12,6 +12,7 @@ import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/helpers/routes.dart';
 import 'package:harri_farm_app/helpers/utils.dart';
 import 'package:harri_farm_app/widgets/app_appbar.dart';
+import 'package:harri_farm_app/widgets/app_text.dart';
 
 class MyOrdersView extends StatelessWidget {
   const MyOrdersView({super.key});
@@ -32,22 +33,28 @@ class MyOrdersView extends StatelessWidget {
       ),
       body: BlocBuilder<MyOrdersBloc, AppState>(
         builder: (context, state) {
-          final bloc = MyOrdersBloc.of(context);
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Column(
-              children: [
-                SizedBox(height: 44.height),
-                const MyOrdersTabBar(),
-                SizedBox(height: 24.height),
-                [
-                  const MyOrdersCurrentItemsTab(),
-                  const MyOrdersDoneItemsTab(),
-                ][bloc.currentViewIndex],
-                SizedBox(height: Utils.bottomDevicePadding),
-              ],
-            ),
-          );
+          if (state is Loading) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (state is Error) {
+            return Center(child: AppText(title: 'error_loading_data'.tr()));
+          } else {
+            final bloc = MyOrdersBloc.of(context);
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Column(
+                children: [
+                  SizedBox(height: 44.height),
+                  const MyOrdersTabBar(),
+                  SizedBox(height: 24.height),
+                  [
+                    const MyOrdersCurrentItemsTab(),
+                    const MyOrdersDoneItemsTab(),
+                  ][bloc.currentViewIndex],
+                  SizedBox(height: Utils.bottomDevicePadding),
+                ],
+              ),
+            );
+          }
         },
       ),
     );

@@ -8,7 +8,9 @@ import 'package:harri_farm_app/features/forgot_password/bloc/forget_password_blo
 import 'package:harri_farm_app/features/home/bloc/home_bloc.dart';
 import 'package:harri_farm_app/features/login/bloc/login_bloc.dart';
 import 'package:harri_farm_app/features/my_orders/bloc/my_orders_bloc.dart';
+import 'package:harri_farm_app/features/my_orders_details/bloc/my_orders_details_bloc.dart';
 import 'package:harri_farm_app/features/notifications/bloc/notifications_bloc.dart';
+import 'package:harri_farm_app/features/rate_service/bloc/rate_service_bloc.dart';
 import 'package:harri_farm_app/features/register/bloc/register_bloc.dart';
 import 'package:harri_farm_app/features/reset_password/bloc/reset_password_bloc.dart';
 import 'package:harri_farm_app/features/sections/bloc/sections_bloc.dart';
@@ -72,6 +74,12 @@ class _MyAppState extends State<MyApp> {
             ),
             BlocProvider(
               create: (context) => MyOrdersBloc(),
+            ),
+            BlocProvider(
+              create: (context) => MyOrdersDetailsBloc(),
+            ),
+            BlocProvider(
+              create: (context) => RateServiceBloc(),
             ),
           ],
           child: MaterialApp(

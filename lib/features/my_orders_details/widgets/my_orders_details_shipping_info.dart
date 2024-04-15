@@ -1,12 +1,16 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:harri_farm_app/features/my_orders_details/models/my_orders_details_model.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/widgets/app_text.dart';
 
 class MyOrdersDetailsShippingInfo extends StatelessWidget {
+  final MyOrderDetailsModel myOrderDetailsModel;
+
   const MyOrdersDetailsShippingInfo({
     super.key,
+    required this.myOrderDetailsModel,
   });
 
   @override
@@ -39,21 +43,21 @@ class MyOrdersDetailsShippingInfo extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const AppText(
-                  title: "محمد الحديدى",
+                AppText(
+                  title: myOrderDetailsModel.data?.name ?? "",
                   fontSize: 14,
                   color: AppColors.black,
                   fontWeight: FontWeight.w700,
                 ),
                 SizedBox(height: 4.height),
-                const AppText(
-                  title: "0502527234",
+                AppText(
+                  title: myOrderDetailsModel.data?.phone.toString() ?? "",
                   fontSize: 14,
                   color: AppColors.lightGray,
                 ),
                 SizedBox(height: 4.height),
-                const AppText(
-                  title: "جدة 23 شارع عبد القدوس الانصارى",
+                AppText(
+                  title: myOrderDetailsModel.data?.address ?? "",
                   fontSize: 14,
                   color: AppColors.lightGray,
                   maxLines: 2,

@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:harri_farm_app/features/my_orders_details/models/my_orders_details_model.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/helpers/utils.dart';
@@ -7,9 +8,11 @@ import 'package:harri_farm_app/widgets/app_text.dart';
 
 class MyOrderDetailsHeader extends StatelessWidget {
   final String status;
+  final MyOrderDetailsModel myOrderDetailsModel;
   const MyOrderDetailsHeader({
     super.key,
     required this.status,
+    required this.myOrderDetailsModel,
   });
 
   @override
@@ -45,8 +48,8 @@ class MyOrderDetailsHeader extends StatelessWidget {
               fontSize: 14,
             ),
             SizedBox(width: 4.width),
-            const AppText(
-              title: '150.00',
+            AppText(
+              title: myOrderDetailsModel.data?.total ?? "",
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
               color: AppColors.black,

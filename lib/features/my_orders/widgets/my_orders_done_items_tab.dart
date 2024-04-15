@@ -1,9 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:harri_farm_app/core/app_event.dart';
 import 'package:harri_farm_app/core/app_state.dart';
 import 'package:harri_farm_app/features/my_orders/bloc/my_orders_bloc.dart';
 import 'package:harri_farm_app/features/my_orders/widgets/my_orders_card.dart';
+import 'package:harri_farm_app/features/my_orders_details/bloc/my_orders_details_bloc.dart';
 import 'package:harri_farm_app/features/my_orders_details/view/view.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
@@ -42,11 +44,19 @@ class MyOrdersDoneItemsTab extends StatelessWidget {
                       bloc.myOrdersData.data?.payedOrder?[index].finalPrice ??
                           "",
                   onTap: () {
-                    RouteUtils.navigateTo(MyOrdersDetailsView(
-                      status:
-                          bloc.myOrdersData.data?.payedOrder?[index].status ??
-                              "",
-                    ));
+                    MyOrdersDetailsBloc.of(context).add(
+                      Click(
+                        arguments:
+                            bloc.myOrdersData.data?.payedOrder?[index].id,
+                      ),
+                    );
+                    RouteUtils.navigateTo(
+                      MyOrdersDetailsView(
+                        status:
+                            bloc.myOrdersData.data?.payedOrder?[index].status ??
+                                "",
+                      ),
+                    );
                   },
                 );
               },

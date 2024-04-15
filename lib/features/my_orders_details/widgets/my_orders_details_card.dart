@@ -1,5 +1,5 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:harri_farm_app/features/my_orders_details/models/my_orders_details_model.dart';
 
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
@@ -7,8 +7,10 @@ import 'package:harri_farm_app/helpers/utils.dart';
 import 'package:harri_farm_app/widgets/app_text.dart';
 
 class MyOrdersDetailsCard extends StatelessWidget {
+  final Offers offer;
   const MyOrdersDetailsCard({
     Key? key,
+    required this.offer,
   }) : super(key: key);
 
   @override
@@ -38,7 +40,7 @@ class MyOrdersDetailsCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 AppText(
-                  title: "dummy_product_name".tr(),
+                  title: offer.name ?? "",
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   color: AppColors.darkGray,
@@ -46,8 +48,8 @@ class MyOrdersDetailsCard extends StatelessWidget {
                   fontWeight: FontWeight.w700,
                 ),
                 SizedBox(height: 4.height),
-                const AppText(
-                  title: "الكمية 1",
+                AppText(
+                  title: offer.quantity.toString(),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   color: AppColors.gray,
@@ -64,8 +66,8 @@ class MyOrdersDetailsCard extends StatelessWidget {
                       fontSize: 12,
                     ),
                     SizedBox(width: 4.width),
-                    const AppText(
-                      title: '150.00',
+                    AppText(
+                      title: offer.price.toString(),
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       color: AppColors.gray,

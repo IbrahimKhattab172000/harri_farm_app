@@ -9,8 +9,10 @@ import 'package:harri_farm_app/helpers/utils.dart';
 import 'package:harri_farm_app/widgets/app_appbar.dart';
 
 class RateServiceView extends StatelessWidget {
+  final String orderId;
   const RateServiceView({
     super.key,
+    required this.orderId,
   });
 
   @override
@@ -37,7 +39,7 @@ class RateServiceView extends StatelessWidget {
               SizedBox(height: 40.height),
               const RateServiceField(),
               SizedBox(height: 40.height),
-              const RateServiceButton(),
+              RateServiceButton(orderId: orderId),
               SizedBox(height: Utils.bottomDevicePadding),
             ],
           ),
