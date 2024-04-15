@@ -11,6 +11,7 @@ import 'package:harri_farm_app/features/notifications/bloc/notifications_bloc.da
 import 'package:harri_farm_app/features/register/bloc/register_bloc.dart';
 import 'package:harri_farm_app/features/reset_password/bloc/reset_password_bloc.dart';
 import 'package:harri_farm_app/features/sections/bloc/sections_bloc.dart';
+import 'package:harri_farm_app/features/update_profile/bloc/update_profile_bloc.dart';
 import 'package:harri_farm_app/features/verification/bloc/verification_bloc.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/pop_scaffold.dart';
@@ -64,6 +65,9 @@ class _MyAppState extends State<MyApp> {
             ),
             BlocProvider(
               create: (context) => NotificationBloc(),
+            ),
+            BlocProvider(
+              create: (context) => UpdateProfileBloc(),
             ),
           ],
           child: MaterialApp(

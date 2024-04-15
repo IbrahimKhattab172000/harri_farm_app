@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:harri_farm_app/core/app_event.dart';
 import 'package:harri_farm_app/core/app_storage.dart';
 import 'package:harri_farm_app/features/about_us/view/view.dart';
+import 'package:harri_farm_app/features/update_profile/bloc/update_profile_bloc.dart';
 import 'package:harri_farm_app/features/update_profile/view/view.dart';
 import 'package:harri_farm_app/features/addresses/view/view.dart';
 import 'package:harri_farm_app/features/change_language/view/view.dart';
@@ -23,6 +25,7 @@ class AppDrawerItems extends StatelessWidget {
       "imagePath": "setting",
       "title": "account_settings",
       "onTap": () {
+        UpdateProfileBloc.of(RouteUtils.context).add(Get());
         RouteUtils.navigateTo(const UpdateProfileView());
       },
     },
@@ -51,7 +54,7 @@ class AppDrawerItems extends StatelessWidget {
       "imagePath": "bell",
       "title": "notifications",
       "onTap": () {
-        RouteUtils.navigateTo(NotificationsView());
+        RouteUtils.navigateTo(const NotificationsView());
       },
     },
     {

@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:get_storage/get_storage.dart';
 import 'package:harri_farm_app/features/splash/view/splash_view.dart';
+import 'package:harri_farm_app/features/update_profile/models/update_profile_model.dart';
 import 'package:harri_farm_app/helpers/routes.dart';
 
 class AppStorage {
@@ -45,7 +46,11 @@ class AppStorage {
 
 //--------
   static void cacheId(var id) => _box.write('id', id);
-
+//----
+  static Future<void> cacheUser(UpdateProfileModel user) async =>
+      await _box.write('user', user.toJson());
+  static UpdateProfileModel get getUserModel =>
+      UpdateProfileModel.fromJson(_box.read('user'));
   // static Future<void> cacheUser(UserModel user) async => await _box.write('user', user.toJson());
   // static UserModel get getUserModel => UserModel.fromJson(_box.read('user'));
   // static int get getId => getUserModel.data!.id!;

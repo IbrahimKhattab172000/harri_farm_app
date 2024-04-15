@@ -10,6 +10,8 @@ class Endpoints {
   static const String SEARCH = "search";
   static const String ALLOFFERES = "show-all-offer";
   static const String NOTIFICATIONS = "notifications";
+  static const String USER = "user";
+  static const String UPDATE = "update";
 
   static String subCat({required String catId}) {
     return "category/$catId/subcategory";
