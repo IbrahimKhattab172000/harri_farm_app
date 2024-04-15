@@ -1,7 +1,6 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:harri_farm_app/core/app_event.dart';
 import 'package:harri_farm_app/core/app_state.dart';
@@ -16,8 +15,13 @@ class RateServiceBloc extends Bloc<AppEvent, AppState> {
 
   static RateServiceBloc of(context) => BlocProvider.of(context);
 
-  TextEditingController commentController = TextEditingController();
-  RatingModel? ratingModel;
+  RatingModel ratingModel = RatingModel(
+    comment: "0",
+    deliverySpeed: "0",
+    order: "0",
+    satisfaction: "0",
+    service: "0",
+  );
 
   void fillBody({
     String? order,
@@ -26,38 +30,39 @@ class RateServiceBloc extends Bloc<AppEvent, AppState> {
     String? satisfaction,
     String? comment,
   }) {
-    ratingModel?.copyWith(
-      order: order ?? ratingModel?.order,
-      comment: comment ?? ratingModel?.comment,
-      service: service ?? ratingModel?.service,
-      deliverySpeed: deliverySpeed ?? ratingModel?.deliverySpeed,
-      satisfaction: satisfaction ?? ratingModel?.satisfaction,
+    //!Here
+    ratingModel = ratingModel.copyWith(
+      order: order,
+      comment: comment,
+      service: service,
+      deliverySpeed: deliverySpeed,
+      satisfaction: satisfaction,
     );
+  }
 
-    // log(order.toString());
+  printValues() {
+    log(ratingModel.order.toString());
+    log(ratingModel.service.toString());
+    log(ratingModel.deliverySpeed.toString());
+    log(ratingModel.satisfaction.toString());
+    log(ratingModel.comment.toString());
   }
 
   _sendRate(AppEvent event, Emitter<AppState> emit) async {
     emit(Loading());
-
+    printValues();
     Map<String, dynamic> body = {
-      "order": ratingModel?.order,
+      "order": ratingModel.order,
       "order_id": event.arguments.toString(),
-      "service": ratingModel?.service,
-      "deliverySpeed": ratingModel?.deliverySpeed,
-      "satisfaction": ratingModel?.satisfaction,
-      "comment": ratingModel?.comment,
+      "service": ratingModel.service,
+      "deliverySpeed": ratingModel.deliverySpeed,
+      "satisfaction": ratingModel.satisfaction,
+      "comment": ratingModel.comment,
     };
     try {
-      // log(ratingModel.order.toString());
-      // log(ratingModel.service.toString());
-      // log(ratingModel.deliverySpeed.toString());
-      // log(ratingModel.satisfaction.toString());
-      // log(ratingModel.comment.toString());
-
       Response response = await RateServiceRepository.sendRate(body: body);
       if (response.statusCode == 200) {
-        log("Done rate service${response.statusCode}");
+        log("Done rate service ${response.statusCode}");
 
         emit(Done());
 

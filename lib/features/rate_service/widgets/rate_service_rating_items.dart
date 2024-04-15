@@ -10,7 +10,8 @@ class RateServiceRatingItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bloc = RateServiceBloc();
+    //!Here
+    final bloc = RateServiceBloc.of(context);
     return Column(
       children: [
         AppRatingWidget(

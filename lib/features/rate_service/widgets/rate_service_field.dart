@@ -11,7 +11,8 @@ class RateServiceField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bloc = RateServiceBloc();
+    //!Here
+    final bloc = RateServiceBloc.of(context);
     return AppTextField(
       maxLines: 6,
       hint: "add_your_notes_here".tr(),
