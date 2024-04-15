@@ -6,8 +6,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:harri_farm_app/core/app_event.dart';
 import 'package:harri_farm_app/core/app_state.dart';
 import 'package:harri_farm_app/core/app_storage.dart';
-import 'package:harri_farm_app/features/forgot_password/view/forgot_password_view.dart';
-import 'package:harri_farm_app/features/home/view/home_view.dart';
+import 'package:harri_farm_app/features/forgot_password/repository/forget_password_repository.dart';
+import 'package:harri_farm_app/features/login/bloc/login_bloc.dart';
+import 'package:harri_farm_app/features/login/view/login_view.dart';
+import 'package:harri_farm_app/features/reset_password/view/reset_password_view.dart';
 import 'package:harri_farm_app/features/verification/repository/verification_repository.dart';
 import 'package:harri_farm_app/helpers/routes.dart';
 import 'package:harri_farm_app/widgets/app_snack_bar.dart';
@@ -15,12 +17,13 @@ import 'package:harri_farm_app/widgets/app_snack_bar.dart';
 class VerificationBloc extends Bloc<AppEvent, AppState> {
   VerificationBloc() : super(Start()) {
     on<Click>(_verifyCode);
+    on<ResendCode>(_resendCode);
   }
 
   static VerificationBloc of(context) => BlocProvider.of(context);
 
   TextEditingController codeController = TextEditingController();
-  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  var formKey = GlobalKey<FormState>();
 
   _verifyCode(AppEvent event, Emitter<AppState> emit) async {
     if (!formKey.currentState!.validate()) return;
@@ -35,15 +38,38 @@ class VerificationBloc extends Bloc<AppEvent, AppState> {
       if (response.statusCode == 200) {
         log("Done ${response.statusCode}");
         emit(Done());
-        AppStorage.cacheVerification(response.data['data']['isVerified']);
+        // AppStorage.cacheToken(response.data['data']['isVerified']);
         if (event.arguments == true) {
-          RouteUtils.navigateTo(const HomeView());
+          RouteUtils.navigateTo(const LoginView());
         } else {
-          RouteUtils.navigateTo(const ForgotPasswordView());
+          RouteUtils.navigateTo(const ResetPasswordView());
         }
       } else {
         log("Error ${response.statusCode}");
         showSnackBar(response.statusMessage.toString(), errorMessage: true);
+
+        emit(Error());
+      }
+    } catch (e) {
+      log("error from the catch part: $e");
+      showSnackBar(e.toString(), errorMessage: true);
+    }
+  }
+
+  _resendCode(AppEvent event, Emitter<AppState> emit) async {
+    // if (!formKey.currentState!.validate()) return;
+    emit(Loading());
+
+    String body = LoginBloc.of(RouteUtils.context).emailOrPhone.text;
+    try {
+      Response response = await ForgetPasswordRepository.sendCode(body: body);
+      if (response.statusCode == 200) {
+        log("Done ${response.statusCode}");
+        AppStorage.cacheId(response.data['user_id']);
+        emit(Done());
+      } else {
+        log("Error ${response.statusCode}");
+        showSnackBar(response.data['message'], errorMessage: true);
 
         emit(Error());
       }

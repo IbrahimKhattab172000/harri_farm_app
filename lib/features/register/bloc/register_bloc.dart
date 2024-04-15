@@ -24,7 +24,7 @@ class RegisterBloc extends Bloc<AppEvent, AppState> {
   TextEditingController password = TextEditingController();
   TextEditingController passwordConfirmation = TextEditingController();
 
-  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  var formKey = GlobalKey<FormState>();
 
   //============================================================================
   //============================================================================  Functions
@@ -46,7 +46,7 @@ class RegisterBloc extends Bloc<AppEvent, AppState> {
       if (response.statusCode == 200) {
         emit(Done());
         AppStorage.cacheId(response.data["data"]["user_id"]);
-        RouteUtils.navigateTo(const VerificationView(isRegister: true));
+        RouteUtils.navigateTo(const VerificationView(isVerified: true));
         log(response.statusCode.toString());
         showSnackBar(response.data['message'], errorMessage: false);
       } else {

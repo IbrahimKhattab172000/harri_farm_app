@@ -26,10 +26,10 @@ class AppStorage {
 
 //-----------------------
 
-//verificationToken-----------
-  static void cacheVerification(var value) => _box.write('verification', value);
-  static bool get isVerification => _box.hasData('verification');
-  static int? get getVerification => _box.read('verification');
+// //verificationToken-----------
+//   static void cacheVerification(var value) => _box.write('verification', value);
+//   static bool get isVerification => _box.hasData('verification');
+//   static int? get getVerification => _box.read('verification');
 //-------------
 
 //verificationToken-----------

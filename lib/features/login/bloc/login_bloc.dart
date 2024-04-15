@@ -22,7 +22,7 @@ class LoginBloc extends Bloc<AppEvent, AppState> {
   TextEditingController emailOrPhone = TextEditingController();
   TextEditingController password = TextEditingController();
 
-  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  var formKey = GlobalKey<FormState>();
 
   _login(AppEvent event, Emitter<AppState> emit) async {
     if (!formKey.currentState!.validate()) return;
@@ -43,15 +43,17 @@ class LoginBloc extends Bloc<AppEvent, AppState> {
         RouteUtils.navigateTo(const HomeView());
         emit(Done());
         showSnackBar(response.data['message'], errorMessage: false);
+      } else if (
+          // response.statusCode == 422 &&
+          response.data['isVerified'] == 0) {
+        emit(Done());
+        if (response.data['isVerified'] == 0) {
+          RouteUtils.navigateTo(const VerificationView(isVerified: true));
+        }
       } else {
         emit(Error());
-
         log("Error ${response.statusCode}");
         showSnackBar(response.data['message'], errorMessage: true);
-
-        if (response.data['isVerified'] == 0) {
-          RouteUtils.navigateTo(const VerificationView());
-        }
       }
     } catch (e) {
       log("error from the catch part: $e");
