@@ -6,9 +6,11 @@ import 'package:harri_farm_app/widgets/app_text.dart';
 
 class AboutUsCard extends StatelessWidget {
   final String title;
+  final String body;
   const AboutUsCard({
     super.key,
     required this.title,
+    required this.body,
   });
 
   @override
@@ -24,7 +26,7 @@ class AboutUsCard extends StatelessWidget {
         ),
         SizedBox(height: 8.height),
         AppText(
-          title: "dummy_text".tr(),
+          title: body,
           fontSize: 16,
           color: AppColors.black,
           maxLines: 4,

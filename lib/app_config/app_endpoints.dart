@@ -15,6 +15,13 @@ class Endpoints {
   static const String GET_ORDERS = "get-orders";
   static const String GET_ORDERS_DETAILS = "order-details";
   static const String RATE_SERVICE = "rate-service";
+  static const String SHIPPING_POLICY = "shipping_delivery";
+  static const String EXCHANGE_POLICY = "exchange_policy";
+  static const String FAQ = "qustions";
+  static const String PRIVACY_POLICY = "privacy";
+  static const String ABOUT_US = "aboutus";
+  static const String FAVOURITE = "favorite";
+  static const String LIKE = "like";
 
   static String subCat({required String catId}) {
     return "category/$catId/subcategory";

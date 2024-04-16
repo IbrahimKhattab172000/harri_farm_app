@@ -6,6 +6,7 @@ import 'package:harri_farm_app/core/app_event.dart';
 import 'package:harri_farm_app/core/app_state.dart';
 import 'package:harri_farm_app/features/rate_service/models/rate_service_model.dart';
 import 'package:harri_farm_app/features/rate_service/repository/service_rate_repository.dart';
+import 'package:harri_farm_app/helpers/routes.dart';
 import 'package:harri_farm_app/widgets/app_snack_bar.dart';
 
 class RateServiceBloc extends Bloc<AppEvent, AppState> {
@@ -16,7 +17,7 @@ class RateServiceBloc extends Bloc<AppEvent, AppState> {
   static RateServiceBloc of(context) => BlocProvider.of(context);
 
   RatingModel ratingModel = RatingModel(
-    comment: "0",
+    comment: "No-Comment",
     deliverySpeed: "0",
     order: "0",
     satisfaction: "0",
@@ -48,6 +49,16 @@ class RateServiceBloc extends Bloc<AppEvent, AppState> {
     log(ratingModel.comment.toString());
   }
 
+  void resetValues() {
+    ratingModel = ratingModel.copyWith(
+      comment: "No Comment",
+      deliverySpeed: "0",
+      order: "0",
+      satisfaction: "0",
+      service: "0",
+    );
+  }
+
   _sendRate(AppEvent event, Emitter<AppState> emit) async {
     emit(Loading());
     printValues();
@@ -68,11 +79,14 @@ class RateServiceBloc extends Bloc<AppEvent, AppState> {
 
         showSnackBar("Thank you for submiting your feedback",
             errorMessage: false);
+        resetValues();
+        RouteUtils.pop();
       } else {
         emit(Error());
 
         log("Error rate service ${response.statusCode}");
         showSnackBar(response.data['message'], errorMessage: true);
+        resetValues();
       }
     } catch (e) {
       emit(Error());

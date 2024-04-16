@@ -1,6 +1,12 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:harri_farm_app/core/app_event.dart';
+import 'package:harri_farm_app/core/app_state.dart';
 import 'package:harri_farm_app/features/cart/view/view.dart';
+import 'package:harri_farm_app/features/favorite/bloc/favorite_bloc.dart';
 import 'package:harri_farm_app/features/home/models/home_model.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
@@ -9,15 +15,15 @@ import 'package:harri_farm_app/helpers/utils.dart';
 import 'package:harri_farm_app/widgets/app_text.dart';
 
 class AppProductCard extends StatefulWidget {
-  final bool isFavorite;
+  bool isFavorite;
   final VoidCallback onTap;
   final Function(bool)? onFavoriteChanged;
   final ProductModel? offer;
 
-  const AppProductCard({
+  AppProductCard({
     Key? key,
     required this.onTap,
-    this.isFavorite = false,
+    required this.isFavorite,
     this.onFavoriteChanged,
     this.offer,
   }) : super(key: key);
@@ -150,26 +156,42 @@ class _AppProductCardState extends State<AppProductCard> {
                 ),
               ),
             ),
-            Positioned(
-              left: Utils.isAR ? null : 0,
-              right: Utils.isAR ? 0 : null,
-              top: -10,
-              child: IconButton(
-                icon: Icon(
-                  _isFavorite ? Icons.favorite : Icons.favorite_border,
-                  color: AppColors.primary,
-                  size: 28,
-                ),
-                onPressed: () {
-                  setState(() {
-                    _isFavorite = !_isFavorite;
+            BlocBuilder<FavouriteBloc, AppState>(
+              builder: (context, state) {
+                if (state is Loading) {
+                  return const Center(child: CircularProgressIndicator());
+                } else {
+                  return Positioned(
+                    left: Utils.isAR ? null : 0,
+                    right: Utils.isAR ? 0 : null,
+                    top: -10,
+                    child: IconButton(
+                      icon: Icon(
+                        _isFavorite ? Icons.favorite : Icons.favorite_border,
+                        color: AppColors.primary,
+                        size: 28,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _isFavorite = !_isFavorite;
+                          FavouriteBloc.of(context).add(
+                            Click(
+                              arguments: {
+                                "product_id": widget.offer?.id,
+                                "like": _isFavorite,
+                              },
+                            ),
+                          );
 
-                    if (widget.onFavoriteChanged != null) {
-                      widget.onFavoriteChanged!(_isFavorite);
-                    }
-                  });
-                },
-              ),
+                          // if (widget.onFavoriteChanged != null) {
+                          //   widget.onFavoriteChanged!(_isFavorite);
+                          // }
+                        });
+                      },
+                    ),
+                  );
+                }
+              },
             )
           ],
         ),

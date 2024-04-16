@@ -40,7 +40,9 @@ class SectionsView extends StatelessWidget {
                         title: bloc.subCategoryData.data!.name),
                     SizedBox(height: 16.height),
                     SectionsTabBars(
-                        subCategory: bloc.subCategoryData.data!.subCategory),
+                      subCategory: bloc.subCategoryData.data!.subCategory,
+                      isFiltering: false,
+                    ),
                     SizedBox(height: 32.height),
                     const SectionGridItems(),
                     SizedBox(height: Utils.bottomDevicePadding),

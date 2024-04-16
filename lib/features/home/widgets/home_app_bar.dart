@@ -67,7 +67,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
             InkWell(
               onTap: () {
                 NotificationBloc.of(context).add(Get());
-                RouteUtils.navigateTo(NotificationsView());
+                RouteUtils.navigateTo(const NotificationsView());
               },
               child: Stack(
                 children: [

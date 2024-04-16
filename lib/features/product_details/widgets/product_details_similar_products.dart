@@ -36,6 +36,7 @@ class ProductDetailsSimilarProducts extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: AppProductCard(
                   onTap: () {},
+                  isFavorite: false,
                 ),
               );
             },

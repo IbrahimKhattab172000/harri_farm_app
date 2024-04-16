@@ -24,7 +24,8 @@ class HomeOffersCards extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: AppProductCard(
               onTap: () => RouteUtils.navigateTo(const ProductDetailsView()),
-              offer: bloc.homeData.offer![index],
+              offer: bloc.homeData.offer?[index],
+              isFavorite: bloc.homeData.offer![index].like ?? false,
             ),
           );
         },

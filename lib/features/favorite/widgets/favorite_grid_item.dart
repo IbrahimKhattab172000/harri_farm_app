@@ -1,35 +1,68 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:harri_farm_app/core/app_event.dart';
+import 'package:harri_farm_app/core/app_state.dart';
+import 'package:harri_farm_app/features/favorite/bloc/favorite_bloc.dart';
+import 'package:harri_farm_app/features/favorite/models/favorite_model.dart';
+import 'package:harri_farm_app/features/home/models/home_model.dart';
 import 'package:harri_farm_app/features/product_details/view/view.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/helpers/routes.dart';
 import 'package:harri_farm_app/widgets/app_product_card.dart';
 
 class FavoriteGridItems extends StatelessWidget {
-  const FavoriteGridItems({Key? key}) : super(key: key);
+  // final FavouriteModel favModel;
+  const FavoriteGridItems({
+    Key? key,
+    //  required this.favModel
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-        child: GridView.builder(
-          physics: const BouncingScrollPhysics(),
-          shrinkWrap: true,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            mainAxisSpacing: 8.height,
-            crossAxisSpacing: 32.width,
-            childAspectRatio: 2 / 3.6,
-          ),
-          itemCount: 10,
-          itemBuilder: (context, index) {
-            return AppProductCard(
-              onTap: () => RouteUtils.navigateTo(const ProductDetailsView()),
-              isFavorite: true,
-            );
-          },
-        ),
-      ),
+    return BlocBuilder<FavouriteBloc, AppState>(
+      builder: (context, state) {
+        if (state is Loading) {
+          return const Center(child: CircularProgressIndicator());
+        } else {
+          final bloc = FavouriteBloc.of(context);
+
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+            child: GridView.builder(
+              physics: const BouncingScrollPhysics(),
+              shrinkWrap: true,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisSpacing: 8.height,
+                crossAxisSpacing: 32.width,
+                childAspectRatio: 2 / 3.6,
+              ),
+              itemCount: bloc.favouriteData.data?.product?.length ?? 0,
+              itemBuilder: (context, index) {
+                return AppProductCard(
+                  onTap: () =>
+                      RouteUtils.navigateTo(const ProductDetailsView()),
+                  isFavorite:
+                      bloc.favouriteData.data?.product?[index].like ?? false,
+                  offer: bloc.favouriteData.data?.product?[index] ??
+                      ProductModel(),
+                  onFavoriteChanged: (isFav) {
+                    FavouriteBloc.of(context).add(
+                      Click(
+                        arguments: {
+                          "product_id":
+                              bloc.favouriteData.data?.product?[index].id,
+                          "like": isFav,
+                        },
+                      ),
+                    );
+                  },
+                );
+              },
+            ),
+          );
+        }
+      },
     );
   }
 }

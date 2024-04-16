@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:harri_farm_app/core/app_event.dart';
 import 'package:harri_farm_app/features/sections/bloc/sections_bloc.dart';
+import 'package:harri_farm_app/features/sections/bloc/section_items_bloc.dart';
 import 'package:harri_farm_app/features/sections/view/sections_view.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
@@ -27,6 +28,7 @@ class HomeSectionCard extends StatelessWidget {
     return InkWell(
       onTap: () {
         SectionBloc.of(context).add(Get(arguments: catId));
+
         RouteUtils.navigateTo(const SectionsView());
       },
       child: Container(

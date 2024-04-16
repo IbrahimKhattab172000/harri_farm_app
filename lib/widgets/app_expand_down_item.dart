@@ -35,7 +35,7 @@ class ExpandDownItem extends StatelessWidget {
                     color: state.isSelected
                         ? AppColors.primary
                         : AppColors.lightGray,
-                    width: 1,
+                    width: 2,
                   ),
                   borderRadius: BorderRadius.circular(8),
                 ),

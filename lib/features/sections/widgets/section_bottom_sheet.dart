@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:harri_farm_app/core/app_event.dart';
-import 'package:harri_farm_app/features/sections/bloc/sections_bloc.dart';
+import 'package:harri_farm_app/features/sections/bloc/section_items_bloc.dart';
 import 'package:harri_farm_app/widgets/app_toggle.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
@@ -112,7 +112,7 @@ class _SectionBottomSheetState extends State<SectionBottomSheet> {
                       onTap: () {
                         setState(() {
                           selectedIndex = filter["id"];
-                          SectionBloc.of(context)
+                          SectionItemsBloc.of(context)
                               .add(Click(arguments: selectedIndex.toString()));
                         });
                       },

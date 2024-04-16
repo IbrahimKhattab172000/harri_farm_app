@@ -3,17 +3,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:harri_farm_app/core/app_event.dart';
+import 'package:harri_farm_app/features/about_us/bloc/about_us_bloc.dart';
 import 'package:harri_farm_app/features/all_offers/bloc/all_offers_bloc.dart';
+import 'package:harri_farm_app/features/faq/bloc/faq_bloc.dart';
+import 'package:harri_farm_app/features/favorite/bloc/favorite_bloc.dart';
 import 'package:harri_farm_app/features/forgot_password/bloc/forget_password_bloc.dart';
 import 'package:harri_farm_app/features/home/bloc/home_bloc.dart';
 import 'package:harri_farm_app/features/login/bloc/login_bloc.dart';
 import 'package:harri_farm_app/features/my_orders/bloc/my_orders_bloc.dart';
 import 'package:harri_farm_app/features/my_orders_details/bloc/my_orders_details_bloc.dart';
 import 'package:harri_farm_app/features/notifications/bloc/notifications_bloc.dart';
+import 'package:harri_farm_app/features/privacy_policy/bloc/privacy_policy_bloc.dart';
 import 'package:harri_farm_app/features/rate_service/bloc/rate_service_bloc.dart';
 import 'package:harri_farm_app/features/register/bloc/register_bloc.dart';
 import 'package:harri_farm_app/features/reset_password/bloc/reset_password_bloc.dart';
+import 'package:harri_farm_app/features/return_and_exchange_policy/bloc/return_and_exchange_bloc.dart';
 import 'package:harri_farm_app/features/sections/bloc/sections_bloc.dart';
+import 'package:harri_farm_app/features/sections/bloc/section_items_bloc.dart';
+import 'package:harri_farm_app/features/shipping_and_delivery_policy/bloc/shipping_policy_bloc.dart';
 import 'package:harri_farm_app/features/update_profile/bloc/update_profile_bloc.dart';
 import 'package:harri_farm_app/features/verification/bloc/verification_bloc.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
@@ -80,6 +87,27 @@ class _MyAppState extends State<MyApp> {
             ),
             BlocProvider(
               create: (context) => RateServiceBloc(),
+            ),
+            BlocProvider(
+              create: (context) => ShippingPolicyBloc(),
+            ),
+            BlocProvider(
+              create: (context) => ReturnAndExchangeBloc(),
+            ),
+            BlocProvider(
+              create: (context) => FaqBloc(),
+            ),
+            BlocProvider(
+              create: (context) => PrivacyPolicyBloc(),
+            ),
+            BlocProvider(
+              create: (context) => AboutUsBloc(),
+            ),
+            BlocProvider(
+              create: (context) => FavouriteBloc(),
+            ),
+            BlocProvider(
+              create: (context) => SectionItemsBloc(),
             ),
           ],
           child: MaterialApp(

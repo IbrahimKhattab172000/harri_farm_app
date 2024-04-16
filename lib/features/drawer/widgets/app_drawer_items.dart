@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:harri_farm_app/core/app_event.dart';
 import 'package:harri_farm_app/core/app_storage.dart';
+import 'package:harri_farm_app/features/about_us/bloc/about_us_bloc.dart';
 import 'package:harri_farm_app/features/about_us/view/view.dart';
+import 'package:harri_farm_app/features/faq/bloc/faq_bloc.dart';
+import 'package:harri_farm_app/features/favorite/bloc/favorite_bloc.dart';
 import 'package:harri_farm_app/features/my_orders/bloc/my_orders_bloc.dart';
+import 'package:harri_farm_app/features/notifications/bloc/notifications_bloc.dart';
+import 'package:harri_farm_app/features/privacy_policy/bloc/privacy_policy_bloc.dart';
+import 'package:harri_farm_app/features/return_and_exchange_policy/bloc/return_and_exchange_bloc.dart';
+import 'package:harri_farm_app/features/shipping_and_delivery_policy/bloc/shipping_policy_bloc.dart';
 import 'package:harri_farm_app/features/update_profile/bloc/update_profile_bloc.dart';
 import 'package:harri_farm_app/features/update_profile/view/view.dart';
 import 'package:harri_farm_app/features/addresses/view/view.dart';
@@ -14,9 +21,8 @@ import 'package:harri_farm_app/features/favorite/view/view.dart';
 import 'package:harri_farm_app/features/my_orders/view/view.dart';
 import 'package:harri_farm_app/features/notifications/view/view.dart';
 import 'package:harri_farm_app/features/privacy_policy/view/view.dart';
-import 'package:harri_farm_app/features/return_and_exchange_policy/view/view.dart';
-import 'package:harri_farm_app/features/shipping_and_delivery_policy/view/view.dart';
-import 'package:harri_farm_app/features/terms_and_conditions/view/view.dart';
+import 'package:harri_farm_app/features/return_and_exchange_policy/view/return_and_exchange_view.dart';
+import 'package:harri_farm_app/features/shipping_and_delivery_policy/view/shipping_policy_view.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/helpers/routes.dart';
 
@@ -42,6 +48,8 @@ class AppDrawerItems extends StatelessWidget {
       "imagePath": "heart",
       "title": "favorite",
       "onTap": () {
+        FavouriteBloc.of(RouteUtils.context).add(Get());
+
         RouteUtils.navigateTo(const FavoriteView());
       },
     },
@@ -56,6 +64,7 @@ class AppDrawerItems extends StatelessWidget {
       "imagePath": "bell",
       "title": "notifications",
       "onTap": () {
+        NotificationBloc.of(RouteUtils.context).add(Get());
         RouteUtils.navigateTo(const NotificationsView());
       },
     },
@@ -70,6 +79,8 @@ class AppDrawerItems extends StatelessWidget {
       "imagePath": "info",
       "title": "about_us",
       "onTap": () {
+        AboutUsBloc.of(RouteUtils.context).add(Get());
+
         RouteUtils.navigateTo(const AboutUsView());
       },
     },
@@ -84,20 +95,23 @@ class AppDrawerItems extends StatelessWidget {
       "imagePath": "lock",
       "title": "policy",
       "onTap": () {
+        PrivacyPolicyBloc.of(RouteUtils.context).add(Get());
+
         RouteUtils.navigateTo(const PrivacyPolicyView());
       },
     },
-    {
-      "imagePath": "file",
-      "title": "terms_and_conditions",
-      "onTap": () {
-        RouteUtils.navigateTo(const TermsAndConditionsView());
-      },
-    },
+    // {
+    //   "imagePath": "file",
+    //   "title": "terms_and_conditions",
+    //   "onTap": () {
+    //     RouteUtils.navigateTo(const TermsAndConditionsView());
+    //   },
+    // },
     {
       "imagePath": "refresh_right_square",
       "title": "return_and_exchange_policy",
       "onTap": () {
+        ReturnAndExchangeBloc.of(RouteUtils.context).add(Get());
         RouteUtils.navigateTo(ReturnAndExchangePolicyView());
       },
     },
@@ -105,6 +119,8 @@ class AppDrawerItems extends StatelessWidget {
       "imagePath": "truck_fast",
       "title": "shipping_and_delivery_policy",
       "onTap": () {
+        ShippingPolicyBloc.of(RouteUtils.context).add(Get());
+
         RouteUtils.navigateTo(const ShippingAndDeliveryPolicyView());
       },
     },
@@ -112,7 +128,9 @@ class AppDrawerItems extends StatelessWidget {
       "imagePath": "help_circle",
       "title": "faq",
       "onTap": () {
-        RouteUtils.navigateTo(FaqView());
+        FaqBloc.of(RouteUtils.context).add(Get());
+
+        RouteUtils.navigateTo(const FaqView());
       },
     },
     {
