@@ -4,6 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:harri_farm_app/core/app_event.dart';
 import 'package:harri_farm_app/features/about_us/bloc/about_us_bloc.dart';
+import 'package:harri_farm_app/features/add_address/bloc/add_address_bloc.dart';
+import 'package:harri_farm_app/features/add_address/bloc/get_cities_and_regions_bloc.dart';
+import 'package:harri_farm_app/features/addresses/bloc/addresses_bloc.dart';
 import 'package:harri_farm_app/features/all_offers/bloc/all_offers_bloc.dart';
 import 'package:harri_farm_app/features/faq/bloc/faq_bloc.dart';
 import 'package:harri_farm_app/features/favorite/bloc/favorite_bloc.dart';
@@ -108,6 +111,15 @@ class _MyAppState extends State<MyApp> {
             ),
             BlocProvider(
               create: (context) => SectionItemsBloc(),
+            ),
+            BlocProvider(
+              create: (context) => AddressesBloc(),
+            ),
+            BlocProvider(
+              create: (context) => AddAddressBloc(),
+            ),
+            BlocProvider(
+              create: (context) => CitiesAndRegionsBloc(),
             ),
           ],
           child: MaterialApp(

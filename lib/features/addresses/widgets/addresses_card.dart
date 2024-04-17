@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:harri_farm_app/features/addresses/models/addresses_model.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/helpers/utils.dart';
 import 'package:harri_farm_app/widgets/app_text.dart';
 
 class AddressesCard extends StatelessWidget {
+  final Address address;
   const AddressesCard({
     super.key,
+    required this.address,
   });
 
   @override
@@ -28,8 +31,8 @@ class AddressesCard extends StatelessWidget {
           children: [
             Row(
               children: [
-                const AppText(
-                  title: "محمد الحديدى",
+                AppText(
+                  title: address.name ?? "محمد الحديدى",
                   fontSize: 14,
                   color: AppColors.black,
                   fontWeight: FontWeight.w700,
@@ -43,14 +46,25 @@ class AddressesCard extends StatelessWidget {
               ],
             ),
             SizedBox(height: 4.height),
-            const AppText(
-              title: "0502527234",
+            AppText(
+              title: address.phone == null || address.phone == ""
+                  ? "73366363"
+                  : address.phone ?? "73763636",
               fontSize: 14,
               color: AppColors.lightGray,
             ),
             SizedBox(height: 4.height),
-            const AppText(
-              title: "جدة 23 شارع عبد القدوس الانصارى",
+            AppText(
+              title:
+                  address.addressDetails ?? "جدة 23 شارع عبد القدوس الانصارى",
+              fontSize: 14,
+              color: AppColors.lightGray,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+            ),
+            SizedBox(height: 4.height),
+            AppText(
+              title: address.country ?? "جدة 23 شارع عبد القدوس الانصارى",
               fontSize: 14,
               color: AppColors.lightGray,
               maxLines: 2,

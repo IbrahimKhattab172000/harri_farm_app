@@ -22,6 +22,13 @@ class Endpoints {
   static const String ABOUT_US = "aboutus";
   static const String FAVOURITE = "favorite";
   static const String LIKE = "like";
+  static const String FETCH_ADDRESS = "fetch-address";
+  static const String ADD_ADDRESS = "save-address";
+  static const String GET_CITIES = "city";
+
+  static String getRegions({required String cityId}) {
+    return "area/$cityId";
+  }
 
   static String subCat({required String catId}) {
     return "category/$catId/subcategory";

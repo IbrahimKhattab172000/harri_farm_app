@@ -1,6 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:harri_farm_app/features/add_address/view/view.dart';
+import 'package:harri_farm_app/core/app_event.dart';
+import 'package:harri_farm_app/features/add_address/bloc/get_cities_and_regions_bloc.dart';
+import 'package:harri_farm_app/features/add_address/view/add_address_view.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/helpers/routes.dart';
@@ -15,6 +17,7 @@ class AddressesAddBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
+        CitiesAndRegionsBloc.of(context).add(Get());
         RouteUtils.navigateTo(const AddAddressView());
       },
       child: Row(

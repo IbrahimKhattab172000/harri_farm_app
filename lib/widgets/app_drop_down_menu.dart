@@ -10,7 +10,7 @@ import 'package:harri_farm_app/widgets/app_text.dart';
 
 // ignore: must_be_immutable
 class AppDropDownSelection extends StatelessWidget {
-  final List<SelectionItem> items;
+  final List<SelectionItem>? items;
   List<SelectionItem>? initialItems;
   final String hint;
   Function(List<SelectionItem> values)? onChangeMulti;
@@ -68,7 +68,7 @@ class AppDropDownSelection extends StatelessWidget {
 
 // Configures Content for different views
 class DropDownSelectionContent extends StatelessWidget {
-  final List<SelectionItem> items;
+  final List<SelectionItem>? items;
   final String hint;
   final double height;
   final bool multiSelection;
@@ -83,6 +83,9 @@ class DropDownSelectionContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (items == null || items!.isEmpty) {
+      return const SizedBox();
+    }
     return Container(
       padding: const EdgeInsets.symmetric(
         vertical: 13,
@@ -105,21 +108,22 @@ class DropDownSelectionContent extends StatelessWidget {
             );
           }
           // Configure item selection
-          List<DropDownListTile> childs = items.map((e) {
-            bool selected = false;
-            // Check if item is selected
-            for (var element in (state).selectedItems) {
-              if (element.value == e.value) {
-                selected = true;
-                break;
-              }
-            }
-            return DropDownListTile(
-              multiSelection: multiSelection,
-              item: e,
-              selected: selected,
-            );
-          }).toList();
+          List<DropDownListTile> childs = items?.map((e) {
+                bool selected = false;
+                // Check if item is selected
+                for (var element in (state).selectedItems) {
+                  if (element.value == e.value) {
+                    selected = true;
+                    break;
+                  }
+                }
+                return DropDownListTile(
+                  multiSelection: multiSelection,
+                  item: e,
+                  selected: selected,
+                );
+              }).toList() ??
+              [];
           return SizedBox(
             height: height,
             child: Column(
@@ -133,7 +137,9 @@ class DropDownSelectionContent extends StatelessWidget {
                 const Divider(),
                 Expanded(
                   child: Scrollbar(
-                    child: ListView(children: childs),
+                    child: ListView(
+                        physics: const BouncingScrollPhysics(),
+                        children: childs),
                   ),
                 ),
               ],
@@ -242,7 +248,7 @@ class SelectionRow extends StatelessWidget {
 // Clickable list tile for selection section
 class DropDownListTile extends StatelessWidget {
   final bool selected;
-  final SelectionItem item;
+  final SelectionItem? item;
   final bool multiSelection;
 
   const DropDownListTile({
@@ -254,9 +260,15 @@ class DropDownListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (item == null) {
+      return const SizedBox();
+    }
+
     return InkWell(
       onTap: () {
-        context.read<DropDownSelectionCubit>().tap(item: item);
+        context
+            .read<DropDownSelectionCubit>()
+            .tap(item: item ?? SelectionItem(label: "", value: ""));
       },
       child: Container(
         margin: selected ? const EdgeInsets.only(bottom: 5) : null,
@@ -275,7 +287,9 @@ class DropDownListTile extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            AppText(title: item.label),
+            AppText(
+              title: item?.label ?? "",
+            ),
             const Spacer(),
             // Show check icon if item is selected
             multiSelection && selected

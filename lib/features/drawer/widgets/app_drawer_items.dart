@@ -3,6 +3,7 @@ import 'package:harri_farm_app/core/app_event.dart';
 import 'package:harri_farm_app/core/app_storage.dart';
 import 'package:harri_farm_app/features/about_us/bloc/about_us_bloc.dart';
 import 'package:harri_farm_app/features/about_us/view/view.dart';
+import 'package:harri_farm_app/features/addresses/bloc/addresses_bloc.dart';
 import 'package:harri_farm_app/features/faq/bloc/faq_bloc.dart';
 import 'package:harri_farm_app/features/favorite/bloc/favorite_bloc.dart';
 import 'package:harri_farm_app/features/my_orders/bloc/my_orders_bloc.dart';
@@ -12,7 +13,7 @@ import 'package:harri_farm_app/features/return_and_exchange_policy/bloc/return_a
 import 'package:harri_farm_app/features/shipping_and_delivery_policy/bloc/shipping_policy_bloc.dart';
 import 'package:harri_farm_app/features/update_profile/bloc/update_profile_bloc.dart';
 import 'package:harri_farm_app/features/update_profile/view/view.dart';
-import 'package:harri_farm_app/features/addresses/view/view.dart';
+import 'package:harri_farm_app/features/addresses/view/addresses_view.dart';
 import 'package:harri_farm_app/features/change_language/view/view.dart';
 import 'package:harri_farm_app/features/contact_us/view/view.dart';
 import 'package:harri_farm_app/features/drawer/widgets/app_drawer_tile.dart';
@@ -57,6 +58,8 @@ class AppDrawerItems extends StatelessWidget {
       "imagePath": "location",
       "title": "locations",
       "onTap": () {
+        AddressesBloc.of(RouteUtils.context).add(Get());
+
         RouteUtils.navigateTo(const AddressesView());
       },
     },

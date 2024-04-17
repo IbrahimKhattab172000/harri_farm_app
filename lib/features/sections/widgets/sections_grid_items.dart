@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:harri_farm_app/core/app_state.dart';
 import 'package:harri_farm_app/features/product_details/view/view.dart';
-import 'package:harri_farm_app/features/sections/bloc/sections_bloc.dart';
 import 'package:harri_farm_app/features/sections/bloc/section_items_bloc.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/helpers/routes.dart';
