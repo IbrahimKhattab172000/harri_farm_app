@@ -15,7 +15,7 @@ import 'package:harri_farm_app/features/update_profile/bloc/update_profile_bloc.
 import 'package:harri_farm_app/features/update_profile/view/view.dart';
 import 'package:harri_farm_app/features/addresses/view/addresses_view.dart';
 import 'package:harri_farm_app/features/change_language/view/view.dart';
-import 'package:harri_farm_app/features/contact_us/view/view.dart';
+import 'package:harri_farm_app/features/contact_us/view/contact_us_view.dart';
 import 'package:harri_farm_app/features/drawer/widgets/app_drawer_tile.dart';
 import 'package:harri_farm_app/features/faq/view/view.dart';
 import 'package:harri_farm_app/features/favorite/view/view.dart';

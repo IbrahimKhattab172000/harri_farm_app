@@ -8,6 +8,7 @@ import 'package:harri_farm_app/features/add_address/bloc/add_address_bloc.dart';
 import 'package:harri_farm_app/features/add_address/bloc/get_cities_and_regions_bloc.dart';
 import 'package:harri_farm_app/features/addresses/bloc/addresses_bloc.dart';
 import 'package:harri_farm_app/features/all_offers/bloc/all_offers_bloc.dart';
+import 'package:harri_farm_app/features/contact_us/bloc/contact_us_bloc.dart';
 import 'package:harri_farm_app/features/faq/bloc/faq_bloc.dart';
 import 'package:harri_farm_app/features/favorite/bloc/favorite_bloc.dart';
 import 'package:harri_farm_app/features/forgot_password/bloc/forget_password_bloc.dart';
@@ -120,6 +121,9 @@ class _MyAppState extends State<MyApp> {
             ),
             BlocProvider(
               create: (context) => CitiesAndRegionsBloc(),
+            ),
+            BlocProvider(
+              create: (context) => ContactUsBloc(),
             ),
           ],
           child: MaterialApp(

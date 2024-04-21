@@ -25,6 +25,7 @@ class Endpoints {
   static const String FETCH_ADDRESS = "fetch-address";
   static const String ADD_ADDRESS = "save-address";
   static const String GET_CITIES = "city";
+  static const String CONTACT_US = "contactUs";
 
   static String getRegions({required String cityId}) {
     return "area/$cityId";
