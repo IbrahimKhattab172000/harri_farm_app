@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:harri_farm_app/features/cart/view/cart_view.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/helpers/routes.dart';
@@ -33,7 +34,9 @@ class ProductDetailsAppBar extends StatelessWidget
             clipBehavior: Clip.none,
             children: [
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  RouteUtils.navigateTo(const CartView());
+                },
                 child: Image.asset(
                   Utils.getAssetPNGPath("shopping_icon"),
                   width: 22.width,

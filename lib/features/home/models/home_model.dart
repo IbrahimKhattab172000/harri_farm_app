@@ -1,5 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
+import 'package:harri_farm_app/main_models/product_model.dart';
+
 class HomeModel {
   bool? success;
   List<CategoryModel>? category;
@@ -87,100 +89,6 @@ class CategoryModel {
     data['image'] = image;
     data['color'] = color;
     data['Number_Products'] = numberProducts;
-    return data;
-  }
-}
-
-class ProductModel {
-  int? id;
-  String? name;
-  String? price;
-  String? discount;
-  String? discountType;
-  String? category;
-  String? offerPrice;
-  double? rateAvg;
-  String? description;
-  String? image;
-  int? quantity;
-  bool? like;
-  List<Map<String, dynamic>>? addition;
-  List<Map<String, dynamic>>? wrapping;
-  List<Map<String, dynamic>>? cutting;
-  List<Map<String, dynamic>>? sizes;
-  List<Map<String, dynamic>>? similarProduct;
-  List<Map<String, dynamic>>? orderType;
-
-  ProductModel({
-    this.id,
-    this.name,
-    this.price,
-    this.discount,
-    this.discountType,
-    this.category,
-    this.offerPrice,
-    this.rateAvg,
-    this.description,
-    this.image,
-    this.quantity,
-    this.like,
-    this.addition,
-    this.wrapping,
-    this.cutting,
-    this.sizes,
-    this.similarProduct,
-    this.orderType,
-  });
-
-  factory ProductModel.fromJson(Map<String, dynamic> json) {
-    return ProductModel(
-      id: json['id'],
-      name: json['name'],
-      price: json['price'],
-      discount: json['discount'],
-      discountType: json['discountType'],
-      category: json['category'],
-      offerPrice: json['offer_price'],
-      rateAvg: json['rateavg'].toDouble(),
-      description: json['description'],
-      image: json['image'],
-      quantity: json['quantity'],
-      like: json['like'],
-      addition: List<Map<String, dynamic>>.from(
-          json['addition']?.map((x) => x) ?? []),
-      wrapping: List<Map<String, dynamic>>.from(
-          json['wrapping']?.map((x) => x) ?? []),
-      cutting:
-          List<Map<String, dynamic>>.from(json['cutting']?.map((x) => x) ?? []),
-      sizes:
-          List<Map<String, dynamic>>.from(json['sizes']?.map((x) => x) ?? []),
-      similarProduct: List<Map<String, dynamic>>.from(
-          json['similarProduct']?.map((x) => x) ?? []),
-      orderType: List<Map<String, dynamic>>.from(
-          json['OrderType']?.map((x) => x) ?? []),
-    );
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = {};
-    data['id'] = id;
-    data['name'] = name;
-    data['price'] = price;
-    data['discount'] = discount;
-    data['discountType'] = discountType;
-    data['category'] = category;
-    data['offer_price'] = offerPrice;
-    data['rateavg'] = rateAvg;
-    data['description'] = description;
-    data['image'] = image;
-    data['quantity'] = quantity;
-    data['like'] = like;
-    data['addition'] = addition;
-    data['wrapping'] = wrapping;
-    data['cutting'] = cutting;
-    data['sizes'] = sizes;
-    data['similarProduct'] = similarProduct;
-    data['OrderType'] = orderType;
     return data;
   }
 }

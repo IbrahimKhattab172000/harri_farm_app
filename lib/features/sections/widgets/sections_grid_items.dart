@@ -2,10 +2,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:harri_farm_app/core/app_state.dart';
-import 'package:harri_farm_app/features/product_details/view/view.dart';
 import 'package:harri_farm_app/features/sections/bloc/section_items_bloc.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
-import 'package:harri_farm_app/helpers/routes.dart';
 import 'package:harri_farm_app/widgets/app_product_card.dart';
 import 'package:harri_farm_app/widgets/app_text.dart';
 
@@ -35,9 +33,8 @@ class SectionGridItems extends StatelessWidget {
               itemCount: bloc.subcategoryOffersModel.data?.offer?.length ?? 0,
               itemBuilder: (context, index) {
                 return AppProductCard(
-                    offer: bloc.subcategoryOffersModel.data!.offer![index],
-                    onTap: () =>
-                        RouteUtils.navigateTo(const ProductDetailsView()),
+                    similarProduct:
+                        bloc.subcategoryOffersModel.data!.offer![index],
                     isFavorite:
                         bloc.subcategoryOffersModel.data!.offer![index].like ??
                             false);

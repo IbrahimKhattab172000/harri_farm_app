@@ -1,43 +1,41 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:harri_farm_app/core/app_event.dart';
+import 'package:harri_farm_app/features/cart/bloc/cart_bloc.dart';
+import 'package:harri_farm_app/features/cart/models/cart_model.dart';
 import 'package:harri_farm_app/features/cart/widgets/cart_card.dart';
-import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
-import 'package:harri_farm_app/widgets/app_text.dart';
 
 class CartProudcts extends StatelessWidget {
+  final CartModel cartModel;
   const CartProudcts({
     super.key,
+    required this.cartModel,
   });
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Row(
-          children: [
-            AppText(
-              title: "3 ${"products".tr()}",
-              color: AppColors.black,
-              fontSize: 16,
-              fontWeight: FontWeight.w700,
-            ),
-            const Spacer(),
-            AppText(
-              title: "delete_cart".tr(),
-              color: AppColors.primary,
-              fontSize: 16,
-              fontWeight: FontWeight.w700,
-            ),
-          ],
-        ),
         ListView.separated(
           physics: const BouncingScrollPhysics(),
-          itemCount: 3,
+          itemCount: cartModel.data?.cart?.length ?? 0,
           shrinkWrap: true,
+          reverse: true,
           itemBuilder: (context, index) {
             return CartCard(
-              onCountChanged: (int count) {},
+              onDecrement: () {
+                CartBloc.of(context)
+                    .add(Click(arguments: cartModel.data?.cart?[index].id));
+              },
+              onIncrement: () {
+                CartBloc.of(context)
+                    .add(Add(arguments: cartModel.data?.cart?[index].id));
+              },
+              onDelete: () {
+                CartBloc.of(context)
+                    .add(Clear(arguments: cartModel.data?.cart?[index].id));
+              },
+              cart: cartModel.data?.cart?[index] ?? Cart(),
             );
           },
           separatorBuilder: (context, index) {

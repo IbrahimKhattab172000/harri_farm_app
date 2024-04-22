@@ -5,8 +5,8 @@ import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/widgets/app_text.dart';
 
-class AppPriceSummary extends StatelessWidget {
-  const AppPriceSummary({
+class MyOrderDetailsPriceSummary extends StatelessWidget {
+  const MyOrderDetailsPriceSummary({
     super.key,
   });
 
@@ -22,30 +22,30 @@ class AppPriceSummary extends StatelessWidget {
           fontWeight: FontWeight.w700,
         ),
         SizedBox(height: 16.height),
-        CartSummaryBar(
+        MyOrderDetailsSummaryBar(
           title: "secondary_sum".tr(),
           amount: "150.00",
         ),
         SizedBox(height: 8.height),
-        CartSummaryBar(
+        MyOrderDetailsSummaryBar(
           title: "discount".tr(),
           amount: "50.00",
           color: AppColors.primary,
         ),
         SizedBox(height: 8.height),
-        CartSummaryBar(
+        MyOrderDetailsSummaryBar(
           title: "service_fees".tr(),
           amount: "40.00",
         ),
         SizedBox(height: 8.height),
-        CartSummaryBar(
+        MyOrderDetailsSummaryBar(
           title: "extra_tax_value".tr(),
           amount: "10.00",
         ),
         SizedBox(height: 14.height),
         const CartDottedLine(),
         SizedBox(height: 14.height),
-        CartSummaryBar(
+        MyOrderDetailsSummaryBar(
           title: "total_sum".tr(),
           amount: "450.00",
         ),
@@ -54,11 +54,11 @@ class AppPriceSummary extends StatelessWidget {
   }
 }
 
-class CartSummaryBar extends StatelessWidget {
+class MyOrderDetailsSummaryBar extends StatelessWidget {
   final String title;
   final String amount;
   final Color? color;
-  const CartSummaryBar({
+  const MyOrderDetailsSummaryBar({
     Key? key,
     required this.title,
     required this.amount,

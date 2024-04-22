@@ -26,6 +26,7 @@ class ContactUsView extends StatelessWidget {
           if (state is Loading) {
             return const Center(child: CircularProgressIndicator());
           } else {
+            final bloc = ContactUsBloc.of(context);
             return SingleChildScrollView(
               physics: const BouncingScrollPhysics(),
               child: Padding(
@@ -37,9 +38,10 @@ class ContactUsView extends StatelessWidget {
                     SizedBox(height: 24.height),
                     const ContactUsSendButton(),
                     SizedBox(height: 24.height),
-                    const ContactUsAdditionalContacts(),
+                    ContactUsAdditionalContacts(
+                        contactUsModel: bloc.contactUsModel),
                     SizedBox(height: 24.height),
-                    const ContactUsSocialMedia(),
+                    ContactUsSocialMedia(contactUsModel: bloc.contactUsModel),
                     SizedBox(height: Utils.bottomDevicePadding),
                   ],
                 ),

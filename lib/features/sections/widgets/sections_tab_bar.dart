@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:harri_farm_app/core/app_event.dart';
-import 'package:harri_farm_app/features/sections/bloc/sections_bloc.dart';
 import 'package:harri_farm_app/features/sections/bloc/section_items_bloc.dart';
 import 'package:harri_farm_app/features/sections/models/sections_model.dart';
 import 'package:harri_farm_app/features/sections/widgets/sections_tab.dart';

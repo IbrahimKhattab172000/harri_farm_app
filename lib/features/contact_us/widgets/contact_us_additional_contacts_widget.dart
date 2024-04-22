@@ -9,10 +9,10 @@ class ContactUsAdditionalContactsWidget extends StatelessWidget {
   final String title;
 
   const ContactUsAdditionalContactsWidget({
-    super.key,
+    Key? key,
     required this.imagePath,
     required this.title,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,13 +23,18 @@ class ContactUsAdditionalContactsWidget extends StatelessWidget {
           height: 20.height,
           width: 20.width,
         ),
-        SizedBox(height: 8.height),
-        AppText(
-          title: title,
-          textAlign: TextAlign.center,
-          color: AppColors.black,
-          fontSize: 12,
-          fontWeight: FontWeight.w700,
+        SizedBox(height: 4.height),
+        SizedBox(
+          width: 110.width,
+          child: AppText(
+            title: title,
+            textAlign: TextAlign.center,
+            color: AppColors.black,
+            fontSize: 10,
+            fontWeight: FontWeight.w700,
+            overflow: TextOverflow.ellipsis,
+            maxLines: 2,
+          ),
         ),
       ],
     );

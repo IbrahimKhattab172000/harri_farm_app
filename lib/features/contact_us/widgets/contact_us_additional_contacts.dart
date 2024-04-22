@@ -1,14 +1,19 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+
+import 'package:harri_farm_app/features/contact_us/models/contact_us_model.dart';
 import 'package:harri_farm_app/features/contact_us/widgets/contact_us_additional_contacts_widget.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/widgets/app_text.dart';
 
 class ContactUsAdditionalContacts extends StatelessWidget {
+  final ContactUsModel contactUsModel;
   const ContactUsAdditionalContacts({
-    super.key,
-  });
+    Key? key,
+    required this.contactUsModel,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,20 +27,20 @@ class ContactUsAdditionalContacts extends StatelessWidget {
           fontWeight: FontWeight.w700,
         ),
         SizedBox(height: 24.height),
-        const Row(
+        Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             ContactUsAdditionalContactsWidget(
               imagePath: "location",
-              title: "الرياض , حي التعاون",
+              title: contactUsModel.data?[0].address ?? "dummy",
             ),
             ContactUsAdditionalContactsWidget(
               imagePath: "email",
-              title: "Info@gmail.com",
+              title: contactUsModel.data?[0].email ?? "dummy",
             ),
             ContactUsAdditionalContactsWidget(
               imagePath: "phone",
-              title: "966 123 456 789",
+              title: contactUsModel.data?[0].phone ?? "dummy",
             ),
           ],
         ),

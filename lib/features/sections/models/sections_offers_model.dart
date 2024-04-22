@@ -1,4 +1,4 @@
-import 'package:harri_farm_app/features/home/models/home_model.dart';
+import 'package:harri_farm_app/main_models/product_model.dart';
 
 class SubCategoryOffersModel {
   bool? success;

@@ -1,31 +1,38 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:harri_farm_app/core/app_event.dart';
+import 'package:harri_farm_app/core/app_state.dart';
+import 'package:harri_farm_app/features/all_offers/models/all_offers_model.dart';
 import 'package:harri_farm_app/features/cart/view/cart_view.dart';
-import 'package:harri_farm_app/features/search/models/search_model.dart';
+import 'package:harri_farm_app/features/favorite/bloc/favorite_bloc.dart';
+import 'package:harri_farm_app/features/product_details/bloc/product_details_bloc.dart';
+import 'package:harri_farm_app/features/product_details/view/view.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/helpers/routes.dart';
 import 'package:harri_farm_app/helpers/utils.dart';
 import 'package:harri_farm_app/widgets/app_text.dart';
 
-class SearchProductCard extends StatefulWidget {
-  final bool isFavorite;
-  final VoidCallback onTap;
+class AppSimilarProductCard extends StatefulWidget {
+  bool isFavorite;
   final Function(bool)? onFavoriteChanged;
-  final SearchItem searchItem;
-  const SearchProductCard({
+  final SimilarProduct? similarProduct;
+
+  AppSimilarProductCard({
     Key? key,
-    required this.onTap,
-    this.isFavorite = false,
+    required this.isFavorite,
     this.onFavoriteChanged,
-    required this.searchItem,
+    this.similarProduct,
   }) : super(key: key);
 
   @override
-  State<SearchProductCard> createState() => _AppProductCardState();
+  State<AppSimilarProductCard> createState() => _AppProductCardState();
 }
 
-class _AppProductCardState extends State<SearchProductCard> {
+class _AppProductCardState extends State<AppSimilarProductCard> {
   bool _isFavorite = false;
 
   @override
@@ -37,9 +44,12 @@ class _AppProductCardState extends State<SearchProductCard> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: widget.onTap,
+      onTap: () {
+        ProductDetailsBloc.of(context)
+            .add(Get(arguments: widget.similarProduct?.id.toString()));
+        RouteUtils.navigateTo(const ProductDetailsView());
+      },
       child: Container(
-        // constraints: BoxConstraints(minHeight: 220.height),
         width: 146.width,
         color: AppColors.background,
         child: Stack(
@@ -53,24 +63,33 @@ class _AppProductCardState extends State<SearchProductCard> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Expanded(
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(20),
-                      child: Image.network(
-                        widget.searchItem.image,
-                        // height: 106.height,
-                        // width: 146.width,
-                        fit: BoxFit.cover,
+                    child: Center(
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Image.network(
+                          widget.similarProduct?.image ??
+                              Utils.dummyProductImage,
+                          // height: 106.height,
+                          // width: 146.width,
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                   ),
+
+                  // Image.asset(
+                  //   Utils.getAssetPNGPath("offer_meat"),
+                  //   height: 116.height,
+                  //   width: 136.width,
+                  // ),
                   SizedBox(height: 6.height),
                   AppText(
-                    title: widget.searchItem.category.tr(),
+                    title: widget.similarProduct?.category ?? "test",
                     fontSize: 14,
                   ),
                   SizedBox(height: 6.height),
                   AppText(
-                    title: widget.searchItem.name.tr(),
+                    title: widget.similarProduct?.name ?? "test",
                     maxLines: 1,
                     fontSize: 14,
                     color: AppColors.black,
@@ -82,7 +101,7 @@ class _AppProductCardState extends State<SearchProductCard> {
                       Row(
                         children: [
                           AppText(
-                            title: widget.searchItem.price.tr(),
+                            title: widget.similarProduct?.price ?? "test",
                             fontSize: 14,
                             color: AppColors.lightGray,
                             fontWeight: FontWeight.w600,
@@ -90,7 +109,7 @@ class _AppProductCardState extends State<SearchProductCard> {
                           ),
                           SizedBox(width: 4.width),
                           AppText(
-                            title: widget.searchItem.offerPrice.tr(),
+                            title: widget.similarProduct?.offerPrice ?? "test",
                             fontSize: 14,
                             color: AppColors.primary,
                             fontWeight: FontWeight.w600,
@@ -124,16 +143,16 @@ class _AppProductCardState extends State<SearchProductCard> {
                   color: AppColors.red,
                   shape: BoxShape.circle,
                 ),
-                child: const Column(
+                child: Column(
                   children: [
                     AppText(
-                      title: "10%",
+                      title: widget.similarProduct?.discount ?? "test",
                       fontSize: 8,
                       color: AppColors.white,
                       fontWeight: FontWeight.w700,
                     ),
                     AppText(
-                      title: "خصم",
+                      title: "a_discount".tr(),
                       fontSize: 8,
                       color: AppColors.white,
                       fontWeight: FontWeight.w700,
@@ -142,26 +161,42 @@ class _AppProductCardState extends State<SearchProductCard> {
                 ),
               ),
             ),
-            Positioned(
-              left: Utils.isAR ? null : 0,
-              right: Utils.isAR ? 0 : null,
-              top: -10,
-              child: IconButton(
-                icon: Icon(
-                  _isFavorite ? Icons.favorite : Icons.favorite_border,
-                  color: AppColors.primary,
-                  size: 28,
-                ),
-                onPressed: () {
-                  setState(() {
-                    _isFavorite = !_isFavorite;
+            BlocBuilder<FavouriteBloc, AppState>(
+              builder: (context, state) {
+                if (state is Loading) {
+                  return const Center(child: CircularProgressIndicator());
+                } else {
+                  return Positioned(
+                    left: Utils.isAR ? null : 0,
+                    right: Utils.isAR ? 0 : null,
+                    top: -10,
+                    child: IconButton(
+                      icon: Icon(
+                        _isFavorite ? Icons.favorite : Icons.favorite_border,
+                        color: AppColors.primary,
+                        size: 28,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _isFavorite = !_isFavorite;
+                          FavouriteBloc.of(context).add(
+                            Click(
+                              arguments: {
+                                "product_id": widget.similarProduct?.id,
+                                "like": _isFavorite,
+                              },
+                            ),
+                          );
 
-                    if (widget.onFavoriteChanged != null) {
-                      widget.onFavoriteChanged!(_isFavorite);
-                    }
-                  });
-                },
-              ),
+                          // if (widget.onFavoriteChanged != null) {
+                          //   widget.onFavoriteChanged!(_isFavorite);
+                          // }
+                        });
+                      },
+                    ),
+                  );
+                }
+              },
             )
           ],
         ),

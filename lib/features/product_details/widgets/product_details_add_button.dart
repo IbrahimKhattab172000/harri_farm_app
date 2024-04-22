@@ -1,5 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:harri_farm_app/core/app_event.dart';
+import 'package:harri_farm_app/features/product_details/bloc/product_details_bloc.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/helpers/utils.dart';
@@ -10,10 +12,21 @@ class ProductDetailsAddToCartButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bloc = ProductDetailsBloc.of(context);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 26, vertical: 18),
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          bloc.add(
+            Click(
+              arguments: {
+                "offer_id": bloc.productDetailsData.data?.offer?.id.toString(),
+                "size_id": bloc.productDetailsData.data?.offer?.sizes?[0].id
+                    .toString(),
+              },
+            ),
+          );
+        },
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.primary,
           padding: EdgeInsets.zero,

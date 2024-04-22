@@ -9,4 +9,11 @@ abstract class ContactUsRepository {
       method: ServerMethods.POST,
     );
   }
+
+  static Future getData() async {
+    return await Network().request(
+      Endpoints.CONTACT_US_INFO,
+      method: ServerMethods.GET,
+    );
+  }
 }

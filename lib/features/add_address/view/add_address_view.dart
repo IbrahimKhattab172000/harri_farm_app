@@ -2,7 +2,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:harri_farm_app/core/app_state.dart';
-import 'package:harri_farm_app/features/add_address/bloc/add_address_bloc.dart';
 import 'package:harri_farm_app/features/add_address/bloc/get_cities_and_regions_bloc.dart';
 import 'package:harri_farm_app/features/add_address/widgets/add_address_button.dart';
 import 'package:harri_farm_app/features/add_address/widgets/add_address_forms.dart';

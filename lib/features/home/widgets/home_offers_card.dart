@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:harri_farm_app/features/home/bloc/home_bloc.dart';
-import 'package:harri_farm_app/features/product_details/view/view.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
-import 'package:harri_farm_app/helpers/routes.dart';
 import 'package:harri_farm_app/widgets/app_product_card.dart';
 
 class HomeOffersCards extends StatelessWidget {
@@ -23,8 +21,7 @@ class HomeOffersCards extends StatelessWidget {
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: AppProductCard(
-              onTap: () => RouteUtils.navigateTo(const ProductDetailsView()),
-              offer: bloc.homeData.offer?[index],
+              similarProduct: bloc.homeData.offer?[index],
               isFavorite: bloc.homeData.offer![index].like ?? false,
             ),
           );

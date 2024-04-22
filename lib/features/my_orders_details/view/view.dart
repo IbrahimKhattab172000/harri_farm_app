@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:harri_farm_app/core/app_state.dart';
 import 'package:harri_farm_app/features/my_orders_details/bloc/my_orders_details_bloc.dart';
 import 'package:harri_farm_app/features/my_orders_details/models/my_orders_details_model.dart';
+import 'package:harri_farm_app/features/my_orders_details/widgets/my_order_details_summary.dart';
 import 'package:harri_farm_app/features/my_orders_details/widgets/my_orders_details_header.dart';
 import 'package:harri_farm_app/features/my_orders_details/widgets/my_orders_details_rate_bar.dart';
 import 'package:harri_farm_app/features/my_orders_details/widgets/my_orders_details_items.dart';
@@ -14,7 +15,6 @@ import 'package:harri_farm_app/helpers/routes.dart';
 import 'package:harri_farm_app/helpers/utils.dart';
 import 'package:harri_farm_app/widgets/app_appbar.dart';
 import 'package:harri_farm_app/widgets/app_button.dart';
-import 'package:harri_farm_app/widgets/app_price_summary.dart';
 import 'package:harri_farm_app/widgets/app_text.dart';
 
 class MyOrdersDetailsView extends StatelessWidget {
@@ -70,7 +70,7 @@ class MyOrdersDetailsView extends StatelessWidget {
                     SizedBox(height: 16.height),
                     status == "refuse" || status == "تم الرفض"
                         ? const MyOrdersDetailsRejection()
-                        : const AppPriceSummary(),
+                        : const MyOrderDetailsPriceSummary(),
                     SizedBox(height: 40.height),
                     AppButton(
                       title: "re_order".tr(),

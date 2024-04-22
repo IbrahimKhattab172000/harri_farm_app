@@ -4,6 +4,7 @@ import 'package:harri_farm_app/core/app_storage.dart';
 import 'package:harri_farm_app/features/about_us/bloc/about_us_bloc.dart';
 import 'package:harri_farm_app/features/about_us/view/view.dart';
 import 'package:harri_farm_app/features/addresses/bloc/addresses_bloc.dart';
+import 'package:harri_farm_app/features/contact_us/bloc/contact_us_bloc.dart';
 import 'package:harri_farm_app/features/faq/bloc/faq_bloc.dart';
 import 'package:harri_farm_app/features/favorite/bloc/favorite_bloc.dart';
 import 'package:harri_farm_app/features/my_orders/bloc/my_orders_bloc.dart';
@@ -91,6 +92,7 @@ class AppDrawerItems extends StatelessWidget {
       "imagePath": "headphones",
       "title": "contact_us",
       "onTap": () {
+        ContactUsBloc.of(RouteUtils.context).add(Get());
         RouteUtils.navigateTo(const ContactUsView());
       },
     },

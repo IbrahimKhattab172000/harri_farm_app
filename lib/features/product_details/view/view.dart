@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:harri_farm_app/core/app_state.dart';
+import 'package:harri_farm_app/features/product_details/bloc/product_details_bloc.dart';
 import 'package:harri_farm_app/features/product_details/widgets/product_details_add_button.dart';
 import 'package:harri_farm_app/features/product_details/widgets/product_details_app_bar.dart';
 import 'package:harri_farm_app/features/product_details/widgets/product_details_extra_service.dart';
@@ -20,27 +23,39 @@ class ProductDetailsView extends StatelessWidget {
       floatingActionButton: const ProductDetailsAddToCartButton(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       appBar: const ProductDetailsAppBar(),
-      body: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const ProductDetailsInfo(),
-            SizedBox(height: 24.height),
-            const ProductDetailsOrderType(),
-            SizedBox(height: 24.height),
-            const ProductDetailsExtraService(),
-            SizedBox(height: 24.height),
-            const ProductDetailsPackaging(),
-            SizedBox(height: 24.height),
-            const ProductDetailsShredder(),
-            SizedBox(height: 24.height),
-            const ProductDetailsRating(),
-            SizedBox(height: 20.height),
-            const ProductDetailsSimilarProducts(),
-            SizedBox(height: Utils.bottomDevicePadding + 28),
-          ],
-        ),
+      body: BlocBuilder<ProductDetailsBloc, AppState>(
+        builder: (context, state) {
+          if (state is Loading) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          } else {
+            final bloc = ProductDetailsBloc.of(context);
+            return SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ProductDetailsInfo(product: bloc.productDetailsData),
+                  SizedBox(height: 24.height),
+                  ProductDetailsOrderType(product: bloc.productDetailsData),
+                  SizedBox(height: 24.height),
+                  ProductDetailsExtraService(product: bloc.productDetailsData),
+                  SizedBox(height: 24.height),
+                  ProductDetailsPackaging(product: bloc.productDetailsData),
+                  SizedBox(height: 24.height),
+                  ProductDetailsShredder(product: bloc.productDetailsData),
+                  SizedBox(height: 24.height),
+                  const ProductDetailsRating(),
+                  SizedBox(height: 20.height),
+                  ProductDetailsSimilarProducts(
+                      product: bloc.productDetailsData),
+                  SizedBox(height: Utils.bottomDevicePadding + 28),
+                ],
+              ),
+            );
+          }
+        },
       ),
     );
   }

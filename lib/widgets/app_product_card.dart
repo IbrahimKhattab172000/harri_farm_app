@@ -5,27 +5,27 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:harri_farm_app/core/app_event.dart';
 import 'package:harri_farm_app/core/app_state.dart';
-import 'package:harri_farm_app/features/cart/view/view.dart';
+import 'package:harri_farm_app/features/cart/view/cart_view.dart';
 import 'package:harri_farm_app/features/favorite/bloc/favorite_bloc.dart';
-import 'package:harri_farm_app/features/home/models/home_model.dart';
+import 'package:harri_farm_app/features/product_details/bloc/product_details_bloc.dart';
+import 'package:harri_farm_app/features/product_details/view/view.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/helpers/routes.dart';
 import 'package:harri_farm_app/helpers/utils.dart';
+import 'package:harri_farm_app/main_models/product_model.dart';
 import 'package:harri_farm_app/widgets/app_text.dart';
 
 class AppProductCard extends StatefulWidget {
   bool isFavorite;
-  final VoidCallback onTap;
   final Function(bool)? onFavoriteChanged;
-  final ProductModel? offer;
+  final ProductModel? similarProduct;
 
   AppProductCard({
     Key? key,
-    required this.onTap,
     required this.isFavorite,
     this.onFavoriteChanged,
-    this.offer,
+    this.similarProduct,
   }) : super(key: key);
 
   @override
@@ -44,7 +44,11 @@ class _AppProductCardState extends State<AppProductCard> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: widget.onTap,
+      onTap: () {
+        ProductDetailsBloc.of(context)
+            .add(Get(arguments: widget.similarProduct?.id.toString()));
+        RouteUtils.navigateTo(const ProductDetailsView());
+      },
       child: Container(
         width: 146.width,
         color: AppColors.background,
@@ -63,7 +67,8 @@ class _AppProductCardState extends State<AppProductCard> {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(20),
                         child: Image.network(
-                          widget.offer?.image ?? Utils.dummyProductImage,
+                          widget.similarProduct?.image ??
+                              Utils.dummyProductImage,
                           // height: 106.height,
                           // width: 146.width,
                           fit: BoxFit.cover,
@@ -79,12 +84,12 @@ class _AppProductCardState extends State<AppProductCard> {
                   // ),
                   SizedBox(height: 6.height),
                   AppText(
-                    title: widget.offer?.category ?? "test",
+                    title: widget.similarProduct?.category ?? "test",
                     fontSize: 14,
                   ),
                   SizedBox(height: 6.height),
                   AppText(
-                    title: widget.offer?.name ?? "test",
+                    title: widget.similarProduct?.name ?? "test",
                     maxLines: 1,
                     fontSize: 14,
                     color: AppColors.black,
@@ -96,7 +101,7 @@ class _AppProductCardState extends State<AppProductCard> {
                       Row(
                         children: [
                           AppText(
-                            title: widget.offer?.price ?? "test",
+                            title: widget.similarProduct?.price ?? "test",
                             fontSize: 14,
                             color: AppColors.lightGray,
                             fontWeight: FontWeight.w600,
@@ -104,7 +109,7 @@ class _AppProductCardState extends State<AppProductCard> {
                           ),
                           SizedBox(width: 4.width),
                           AppText(
-                            title: widget.offer?.offerPrice ?? "test",
+                            title: widget.similarProduct?.offerPrice ?? "test",
                             fontSize: 14,
                             color: AppColors.primary,
                             fontWeight: FontWeight.w600,
@@ -141,7 +146,7 @@ class _AppProductCardState extends State<AppProductCard> {
                 child: Column(
                   children: [
                     AppText(
-                      title: widget.offer?.discount ?? "test",
+                      title: widget.similarProduct?.discount ?? "test",
                       fontSize: 8,
                       color: AppColors.white,
                       fontWeight: FontWeight.w700,
@@ -177,7 +182,7 @@ class _AppProductCardState extends State<AppProductCard> {
                           FavouriteBloc.of(context).add(
                             Click(
                               arguments: {
-                                "product_id": widget.offer?.id,
+                                "product_id": widget.similarProduct?.id,
                                 "like": _isFavorite,
                               },
                             ),

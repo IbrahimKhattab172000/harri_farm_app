@@ -1,30 +1,37 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:harri_farm_app/features/cart/models/cart_model.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/helpers/utils.dart';
 import 'package:harri_farm_app/widgets/app_text.dart';
 
 class CartCard extends StatefulWidget {
-  const CartCard({Key? key, required this.onCountChanged}) : super(key: key);
+  final Cart cart;
+  final void Function() onIncrement;
+  final void Function() onDecrement;
+  final VoidCallback onDelete;
 
-  final void Function(int count) onCountChanged;
+  const CartCard({
+    Key? key,
+    required this.cart,
+    required this.onIncrement,
+    required this.onDecrement,
+    required this.onDelete,
+  }) : super(key: key);
 
   @override
-  State<CartCard> createState() => __ProductCard();
+  State<CartCard> createState() => _CartCardState();
 }
 
-class __ProductCard extends State<CartCard> {
-  int count = 1;
-
+class _CartCardState extends State<CartCard> {
   @override
   Widget build(BuildContext context) {
     return Material(
       elevation: 1,
       borderRadius: BorderRadius.circular(16),
       child: Container(
-        height: 120.height,
+        height: 130.height,
         margin: const EdgeInsets.only(bottom: 12),
         decoration: BoxDecoration(
           color: AppColors.background,
@@ -34,8 +41,8 @@ class __ProductCard extends State<CartCard> {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(8),
-              child: Image.asset(
-                Utils.getAssetPNGPath("cart_item"),
+              child: Image.network(
+                widget.cart.image ?? Utils.dummyProductImage,
                 width: 84.width,
                 height: 84.height,
                 fit: BoxFit.cover,
@@ -51,7 +58,7 @@ class __ProductCard extends State<CartCard> {
                       children: [
                         Expanded(
                           child: AppText(
-                            title: "dummy_product_name".tr(),
+                            title: widget.cart.name ?? "dummy",
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             color: AppColors.black,
@@ -59,11 +66,21 @@ class __ProductCard extends State<CartCard> {
                             fontSize: 14,
                           ),
                         ),
+                        Padding(
+                          padding: const EdgeInsets.all(4),
+                          child: InkWell(
+                            onTap: widget.onDelete,
+                            child: const Icon(
+                              Icons.delete,
+                              color: Colors.red,
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                     SizedBox(height: 4.height),
                     AppText(
-                      title: "dummy_text".tr(),
+                      title: widget.cart.description ?? "dummy",
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       color: AppColors.gray,
@@ -84,8 +101,8 @@ class __ProductCard extends State<CartCard> {
                                 fontSize: 16,
                               ),
                               SizedBox(width: 10.width),
-                              const AppText(
-                                title: '150.00',
+                              AppText(
+                                title: widget.cart.price ?? "dummy",
                                 color: AppColors.black,
                                 maxLines: 1,
                                 fontWeight: FontWeight.bold,
@@ -95,14 +112,7 @@ class __ProductCard extends State<CartCard> {
                           ),
                         ),
                         InkWell(
-                          onTap: () {
-                            if (count == 1) {
-                              return;
-                            }
-                            count--;
-                            setState(() {});
-                            widget.onCountChanged(count);
-                          },
+                          onTap: widget.onDecrement,
                           child: const Icon(
                             FontAwesomeIcons.circleMinus,
                             color: AppColors.green,
@@ -110,20 +120,13 @@ class __ProductCard extends State<CartCard> {
                         ),
                         SizedBox(width: 10.width),
                         AppText(
-                          title: '$count',
+                          title: '${widget.cart.quantity}',
                           fontSize: 16,
                           color: AppColors.black,
                         ),
                         SizedBox(width: 10.width),
                         InkWell(
-                          onTap: () {
-                            if (count == 99) {
-                              return;
-                            }
-                            count++;
-                            setState(() {});
-                            widget.onCountChanged(count);
-                          },
+                          onTap: widget.onIncrement,
                           child: const Icon(
                             FontAwesomeIcons.circlePlus,
                             color: AppColors.green,

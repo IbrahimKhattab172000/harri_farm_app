@@ -8,6 +8,8 @@ import 'package:harri_farm_app/features/add_address/bloc/add_address_bloc.dart';
 import 'package:harri_farm_app/features/add_address/bloc/get_cities_and_regions_bloc.dart';
 import 'package:harri_farm_app/features/addresses/bloc/addresses_bloc.dart';
 import 'package:harri_farm_app/features/all_offers/bloc/all_offers_bloc.dart';
+import 'package:harri_farm_app/features/cart/bloc/cart_bloc.dart';
+import 'package:harri_farm_app/features/cart/bloc/cart_coupon_bloc.dart';
 import 'package:harri_farm_app/features/contact_us/bloc/contact_us_bloc.dart';
 import 'package:harri_farm_app/features/faq/bloc/faq_bloc.dart';
 import 'package:harri_farm_app/features/favorite/bloc/favorite_bloc.dart';
@@ -18,6 +20,7 @@ import 'package:harri_farm_app/features/my_orders/bloc/my_orders_bloc.dart';
 import 'package:harri_farm_app/features/my_orders_details/bloc/my_orders_details_bloc.dart';
 import 'package:harri_farm_app/features/notifications/bloc/notifications_bloc.dart';
 import 'package:harri_farm_app/features/privacy_policy/bloc/privacy_policy_bloc.dart';
+import 'package:harri_farm_app/features/product_details/bloc/product_details_bloc.dart';
 import 'package:harri_farm_app/features/rate_service/bloc/rate_service_bloc.dart';
 import 'package:harri_farm_app/features/register/bloc/register_bloc.dart';
 import 'package:harri_farm_app/features/reset_password/bloc/reset_password_bloc.dart';
@@ -124,6 +127,15 @@ class _MyAppState extends State<MyApp> {
             ),
             BlocProvider(
               create: (context) => ContactUsBloc(),
+            ),
+            BlocProvider(
+              create: (context) => ProductDetailsBloc(),
+            ),
+            BlocProvider(
+              create: (context) => CartBloc(),
+            ),
+            BlocProvider(
+              create: (context) => CartCouponBloc(),
             ),
           ],
           child: MaterialApp(

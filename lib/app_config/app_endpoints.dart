@@ -26,9 +26,21 @@ class Endpoints {
   static const String ADD_ADDRESS = "save-address";
   static const String GET_CITIES = "city";
   static const String CONTACT_US = "contactUs";
+  static const String ADD_CART = "add-cart";
+  static const String SHOW_CART = "show-cart";
+  static const String CONTACT_US_INFO = "setting";
+  static const String DELETE_CART = "delete-cart";
+  static const String DELETE_ITEM_CART = "delete-cart-item";
+  static const String INCREASE_CART_ITEM = "increase-cart-item";
+  static const String DECREASE_CART_ITEM = "decrease-cart-item";
+  static const String ADD_COUPON = "add-coupon";
 
   static String getRegions({required String cityId}) {
     return "area/$cityId";
+  }
+
+  static String getOfferDetails({required String offerId}) {
+    return "offer/$offerId";
   }
 
   static String subCat({required String catId}) {

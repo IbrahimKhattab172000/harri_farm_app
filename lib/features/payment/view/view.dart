@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:harri_farm_app/features/done/view/view.dart';
+import 'package:harri_farm_app/features/my_orders_details/widgets/my_order_details_summary.dart';
 import 'package:harri_farm_app/features/payment/bloc/payment_selection/cubit.dart';
 import 'package:harri_farm_app/features/payment/widgets/payment_card_details.dart';
 import 'package:harri_farm_app/features/payment/widgets/payment_method_selection.dart';
@@ -11,7 +12,6 @@ import 'package:harri_farm_app/helpers/routes.dart';
 import 'package:harri_farm_app/helpers/utils.dart';
 import 'package:harri_farm_app/widgets/app_appbar.dart';
 import 'package:harri_farm_app/widgets/app_button.dart';
-import 'package:harri_farm_app/widgets/app_price_summary.dart';
 
 class PaymentView extends StatelessWidget {
   const PaymentView({super.key});
@@ -53,7 +53,7 @@ class PaymentView extends StatelessWidget {
                   },
                 ),
                 SizedBox(height: 40.height),
-                const AppPriceSummary(),
+                const MyOrderDetailsPriceSummary(),
                 SizedBox(height: 40.height),
                 AppButton(
                   title: "confirm_order".tr(),

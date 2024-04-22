@@ -1,13 +1,17 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:harri_farm_app/features/product_details/models/product_details_model.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
-import 'package:harri_farm_app/widgets/app_product_card.dart';
+import 'package:harri_farm_app/widgets/app_similar_product_card.dart';
 import 'package:harri_farm_app/widgets/app_text.dart';
 
 class ProductDetailsSimilarProducts extends StatelessWidget {
+  final ProductDetailsModel product;
+
   const ProductDetailsSimilarProducts({
     super.key,
+    required this.product,
   });
 
   @override
@@ -30,13 +34,14 @@ class ProductDetailsSimilarProducts extends StatelessWidget {
           child: ListView.separated(
             physics: const BouncingScrollPhysics(),
             scrollDirection: Axis.horizontal,
-            itemCount: 5,
+            itemCount: product.data?.offer?.similarProduct?.length ?? 0,
             itemBuilder: (context, index) {
               return Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: AppProductCard(
-                  onTap: () {},
-                  isFavorite: false,
+                child: AppSimilarProductCard(
+                  similarProduct: product.data?.offer?.similarProduct?[index],
+                  isFavorite:
+                      product.data?.offer?.similarProduct?[index].like ?? false,
                 ),
               );
             },
