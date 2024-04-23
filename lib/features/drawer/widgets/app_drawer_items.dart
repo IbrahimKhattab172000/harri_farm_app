@@ -117,7 +117,7 @@ class AppDrawerItems extends StatelessWidget {
       "title": "return_and_exchange_policy",
       "onTap": () {
         ReturnAndExchangeBloc.of(RouteUtils.context).add(Get());
-        RouteUtils.navigateTo(ReturnAndExchangePolicyView());
+        RouteUtils.navigateTo(const ReturnAndExchangePolicyView());
       },
     },
     {

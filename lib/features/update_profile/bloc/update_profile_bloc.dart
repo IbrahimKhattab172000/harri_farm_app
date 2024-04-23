@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
@@ -7,6 +9,7 @@ import 'package:harri_farm_app/core/app_event.dart';
 import 'package:harri_farm_app/core/app_state.dart';
 import 'package:harri_farm_app/features/update_profile/models/update_profile_model.dart';
 import 'package:harri_farm_app/features/update_profile/repository/update_profile_repository.dart';
+import 'package:harri_farm_app/helpers/routes.dart';
 import 'package:harri_farm_app/widgets/app_snack_bar.dart';
 
 class UpdateProfileBloc extends Bloc<AppEvent, AppState> {
@@ -30,10 +33,15 @@ class UpdateProfileBloc extends Bloc<AppEvent, AppState> {
     try {
       Response response = await UpdateProfileRepository.getData();
       if (response.statusCode == 200) {
-        emit(Done());
         userData = UpdateProfileModel.fromJson(response.data);
+
+        emit(Done());
         log(response.statusCode.toString());
         showSnackBar(response.data['message'], errorMessage: false);
+        UpdateProfileBloc bloc = UpdateProfileBloc.of(RouteUtils.context);
+        bloc.name.clear();
+        bloc.phone.clear();
+        bloc.email.clear();
       } else {
         emit(Error());
         log("FROM ELSE get profile${response.statusCode}");

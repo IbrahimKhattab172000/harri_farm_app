@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:harri_farm_app/core/app_state.dart';
 import 'package:harri_farm_app/features/notifications/bloc/notifications_bloc.dart';
-import 'package:harri_farm_app/features/notifications/view/empty.dart';
 import 'package:harri_farm_app/features/notifications/widgets/notification_card.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/widgets/app_appbar.dart';
+import 'package:harri_farm_app/widgets/app_empty_screen.dart';
 import 'package:harri_farm_app/widgets/app_text.dart';
 
 class NotificationsView extends StatelessWidget {
@@ -30,7 +30,9 @@ class NotificationsView extends StatelessWidget {
           } else if (state is Error) {
             return Center(child: AppText(title: 'error_loading_data'.tr()));
           } else if (state is Empty) {
-            return const NotificationsEmpty();
+            return const AppEmptyScreen(
+              title: "no_notifications_start_using_the_app",
+            );
           } else {
             NotificationBloc bloc = NotificationBloc.of(context);
             return ListView.separated(

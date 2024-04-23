@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
@@ -49,6 +51,12 @@ class RegisterBloc extends Bloc<AppEvent, AppState> {
         RouteUtils.navigateTo(const VerificationView(isVerified: true));
         log(response.statusCode.toString());
         showSnackBar(response.data['message'], errorMessage: false);
+        RegisterBloc bloc = RegisterBloc.of(RouteUtils.context);
+        bloc.name.clear();
+        bloc.phone.clear();
+        bloc.email.clear();
+        bloc.password.clear();
+        bloc.passwordConfirmation.clear();
       } else {
         emit(Error());
         log("FROM ELSE ${response.statusCode}");

@@ -52,7 +52,7 @@ class _ProductDetailsOrderTypeState extends State<ProductDetailsOrderType> {
                           setState(() {
                             selectedIndex =
                                 int.parse(entry.value.id.toString());
-                            print(selectedIndex);
+                            // print(selectedIndex);
                             bloc.fillBody(orderTypeId: "$selectedIndex");
                           });
                         },

@@ -29,6 +29,10 @@ class CartBloc extends Bloc<AppEvent, AppState> {
         cartModel = CartModel.fromJson(response.data);
         log('Get cart data Successfuly');
         emit(Done());
+        bool? isCartEmpty = cartModel.data?.carts?.isEmpty;
+        if (isCartEmpty == true || isCartEmpty == null) {
+          emit(Empty());
+        }
       } else {
         emit(Error());
         log('Get cart data Failed with Status code ${response.statusCode}');

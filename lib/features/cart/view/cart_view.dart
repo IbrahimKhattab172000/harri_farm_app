@@ -13,6 +13,7 @@ import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/helpers/routes.dart';
 import 'package:harri_farm_app/helpers/utils.dart';
 import 'package:harri_farm_app/widgets/app_appbar.dart';
+import 'package:harri_farm_app/widgets/app_empty_screen.dart';
 
 class CartView extends StatefulWidget {
   const CartView({super.key});
@@ -46,8 +47,12 @@ class _CartViewState extends State<CartView> {
         builder: (context, state) {
           if (state is Loading) {
             return const Center(child: CircularProgressIndicator());
+          } else if (state is Empty) {
+            return const AppEmptyScreen(
+                title: "add_some_products_to_your_cart");
           } else {
             var bloc = CartBloc.of(context);
+
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: SingleChildScrollView(

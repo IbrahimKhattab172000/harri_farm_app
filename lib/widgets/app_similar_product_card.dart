@@ -9,7 +9,7 @@ import 'package:harri_farm_app/features/all_offers/models/all_offers_model.dart'
 import 'package:harri_farm_app/features/cart/view/cart_view.dart';
 import 'package:harri_farm_app/features/favorite/bloc/favorite_bloc.dart';
 import 'package:harri_farm_app/features/product_details/bloc/product_details_bloc.dart';
-import 'package:harri_farm_app/features/product_details/view/view.dart';
+import 'package:harri_farm_app/features/product_details/view/product_details_view.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/helpers/routes.dart';

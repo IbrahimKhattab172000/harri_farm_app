@@ -16,6 +16,9 @@ class ShippingAddressBloc extends Bloc<AppEvent, AppState> {
 
   Map<String, dynamic> cachedInfo = {};
   _getAddressesShippingData(AppEvent event, Emitter<AppState> emit) async {
+    // final paymentBlocKey = PaymentBloc.of(RouteUtils.context).paymentKey;
+    // if (!paymentBlocKey.currentState!.validate()) return;
+
     emit(Loading());
     try {
       Response response =

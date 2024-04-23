@@ -20,7 +20,6 @@ class _RegisterFormsState extends State<RegisterForms> {
   @override
   Widget build(BuildContext context) {
     final bloc = RegisterBloc.of(context);
-    //TODO: Check if it's important to use the Blocbuilder here
     return Form(
       key: bloc.formKey,
       child: Column(

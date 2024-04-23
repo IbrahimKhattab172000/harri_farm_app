@@ -12,6 +12,7 @@ import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/helpers/routes.dart';
 import 'package:harri_farm_app/helpers/utils.dart';
 import 'package:harri_farm_app/widgets/app_appbar.dart';
+import 'package:harri_farm_app/widgets/app_empty_screen.dart';
 import 'package:harri_farm_app/widgets/app_text.dart';
 
 class MyOrdersView extends StatelessWidget {
@@ -37,6 +38,9 @@ class MyOrdersView extends StatelessWidget {
             return const Center(child: CircularProgressIndicator());
           } else if (state is Error) {
             return Center(child: AppText(title: 'error_loading_data'.tr()));
+          } else if (state is Empty) {
+            return const AppEmptyScreen(
+                title: "add_some_products_to_your_cart");
           } else {
             final bloc = MyOrdersBloc.of(context);
             return Padding(

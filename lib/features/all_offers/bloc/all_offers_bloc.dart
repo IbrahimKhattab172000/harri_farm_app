@@ -25,7 +25,7 @@ class AllOffersBloc extends Bloc<AppEvent, AppState> {
 
         emit(Done());
         allOffersData = AllOfferModel.fromJson(response.data);
-        print(" First " + allOffersData.data!.offers.toString());
+        // print(" First " + allOffersData.data!.offers.toString());
       } else {
         emit(Error());
 

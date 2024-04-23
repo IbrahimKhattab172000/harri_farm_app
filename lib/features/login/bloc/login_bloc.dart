@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
@@ -41,6 +43,10 @@ class LoginBloc extends Bloc<AppEvent, AppState> {
         // await AppStorage.cacheUser(UserModel.fromJson(response.data));
         AppStorage.cacheToken(response.data['data']['token']);
         RouteUtils.navigateTo(const HomeView());
+        LoginBloc bloc = LoginBloc.of(RouteUtils.context);
+        bloc.emailOrPhone.clear();
+        bloc.password.clear();
+
         emit(Done());
         showSnackBar(response.data['message'], errorMessage: false);
       } else if (

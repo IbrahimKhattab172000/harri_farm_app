@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
@@ -34,6 +36,9 @@ class ForgetPasswordBloc extends Bloc<AppEvent, AppState> {
         log("Done ${response.statusCode}");
         AppStorage.cacheId(response.data['user_id']);
         emit(Done());
+        ForgetPasswordBloc bloc = ForgetPasswordBloc.of(RouteUtils.context);
+        bloc.emailOrPhone.clear();
+
         RouteUtils.navigateTo(const VerificationView());
       } else {
         log("Error ${response.statusCode}");

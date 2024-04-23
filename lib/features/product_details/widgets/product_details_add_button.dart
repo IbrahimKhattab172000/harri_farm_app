@@ -39,7 +39,7 @@ class ProductDetailsAddToCartButton extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(
                   Utils.getAssetPNGPath("shopping_icon"),
@@ -50,15 +50,15 @@ class ProductDetailsAddToCartButton extends StatelessWidget {
                 SizedBox(width: 12.width),
                 AppText(
                   title: "add_to_cart".tr(),
-                  fontSize: 16,
+                  fontSize: 18,
                   color: Colors.white,
                 ),
-                const Spacer(),
-                const AppText(
-                  title: "150 ر.س",
-                  fontSize: 16,
-                  color: Colors.white,
-                ),
+                // const Spacer(),
+                //  AppText(
+                //   title: "150 ر.س",
+                //   fontSize: 16,
+                //   color: Colors.white,
+                // ),
               ],
             ),
           ),

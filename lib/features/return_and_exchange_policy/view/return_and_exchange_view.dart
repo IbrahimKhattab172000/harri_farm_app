@@ -8,7 +8,7 @@ import 'package:harri_farm_app/widgets/app_appbar.dart';
 import 'package:harri_farm_app/widgets/app_expand_down_item.dart';
 
 class ReturnAndExchangePolicyView extends StatelessWidget {
-  ReturnAndExchangePolicyView({
+  const ReturnAndExchangePolicyView({
     super.key,
   });
 

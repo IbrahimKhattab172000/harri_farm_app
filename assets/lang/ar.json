@@ -167,5 +167,6 @@
      "kilo" :"كيلو",
      "uncooked" :"ذبيحه غير مطبوخه",
      "nothing" :"لا  شئ",
-     "error_loading_data" : "خطأ في تحميل البيانات"
+     "error_loading_data" : "خطأ في تحميل البيانات",
+     "add_some_products_to_your_cart" : "أضف بعض المنتجات الي السله"
     }

@@ -25,7 +25,7 @@ class HomeBloc extends Bloc<AppEvent, AppState> {
 
         emit(Done());
         homeData = HomeModel.fromMap(response.data);
-        print(" First " + homeData.products![0].toString());
+        // print(" First " + homeData.products![0].toString());
       } else {
         emit(Error());
 

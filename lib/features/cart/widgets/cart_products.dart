@@ -18,24 +18,24 @@ class CartProudcts extends StatelessWidget {
       children: [
         ListView.separated(
           physics: const BouncingScrollPhysics(),
-          itemCount: cartModel.data?.cart?.length ?? 0,
+          itemCount: cartModel.data?.carts?.length ?? 0,
           shrinkWrap: true,
           reverse: true,
           itemBuilder: (context, index) {
             return CartCard(
               onDecrement: () {
                 CartBloc.of(context)
-                    .add(Click(arguments: cartModel.data?.cart?[index].id));
+                    .add(Click(arguments: cartModel.data?.carts?[index].id));
               },
               onIncrement: () {
                 CartBloc.of(context)
-                    .add(Add(arguments: cartModel.data?.cart?[index].id));
+                    .add(Add(arguments: cartModel.data?.carts?[index].id));
               },
               onDelete: () {
                 CartBloc.of(context)
-                    .add(Clear(arguments: cartModel.data?.cart?[index].id));
+                    .add(Clear(arguments: cartModel.data?.carts?[index].id));
               },
-              cart: cartModel.data?.cart?[index] ?? Cart(),
+              cart: cartModel.data?.carts?[index] ?? Cart(),
             );
           },
           separatorBuilder: (context, index) {

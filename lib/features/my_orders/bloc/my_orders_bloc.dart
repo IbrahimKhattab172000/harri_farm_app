@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
@@ -31,9 +33,14 @@ class MyOrdersBloc extends Bloc<AppEvent, AppState> {
       Response response = await MyOrdersRepository.getMyOrders();
       if (response.statusCode == 200) {
         log("Done my orders${response.statusCode}");
+        myOrdersData = MyOrdersModel.fromJson(response.data);
 
         emit(Done());
-        myOrdersData = MyOrdersModel.fromJson(response.data);
+
+        if (myOrdersData.data!.newOrder!.isEmpty ||
+            myOrdersData.data!.payedOrder!.isEmpty) {
+          emit(Empty());
+        }
       } else {
         emit(Error());
 

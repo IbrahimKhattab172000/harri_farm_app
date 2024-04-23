@@ -23,7 +23,7 @@ class CartModel {
 }
 
 class Data {
-  List<Cart>? cart;
+  List<Cart>? carts;
   String? totalPriceBefore;
   String? totalPriceAfter;
   String? discount;
@@ -35,7 +35,7 @@ class Data {
   bool? couponStatus;
 
   Data({
-    this.cart,
+    this.carts,
     this.totalPriceBefore,
     this.totalPriceAfter,
     this.discount,
@@ -49,9 +49,9 @@ class Data {
 
   Data.fromJson(Map<String, dynamic> json) {
     if (json['cart'] != null) {
-      cart = <Cart>[];
+      carts = <Cart>[];
       json['cart'].forEach((v) {
-        cart!.add(Cart.fromJson(v));
+        carts!.add(Cart.fromJson(v));
       });
     }
     totalPriceBefore = json['total_price_before'];
@@ -67,8 +67,8 @@ class Data {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    if (cart != null) {
-      data['cart'] = cart!.map((v) => v.toJson()).toList();
+    if (carts != null) {
+      data['cart'] = carts!.map((v) => v.toJson()).toList();
     }
     data['total_price_before'] = totalPriceBefore;
     data['total_price_after'] = totalPriceAfter;

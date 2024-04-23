@@ -6,6 +6,7 @@ import 'package:harri_farm_app/features/payment/bloc/payment_bloc.dart';
 import 'package:harri_farm_app/features/product_details/models/selection.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
+import 'package:harri_farm_app/helpers/validator.dart';
 import 'package:harri_farm_app/widgets/app_drop_down_menu.dart';
 import 'package:harri_farm_app/widgets/app_text.dart';
 import 'package:harri_farm_app/widgets/app_text_field.dart';
@@ -35,55 +36,63 @@ class _ShippingAddressFormsState extends State<ShippingAddressForms> {
         [];
     final bloc = PaymentBloc.of(context);
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        AppTextField(
-          label: "name".tr(),
-          controller: bloc.nameController,
-        ),
-        SizedBox(height: 8.height),
-        AppTextField(
-          label: "phone_number".tr(),
-          controller: bloc.phoneController,
-        ),
-        SizedBox(height: 8.height),
-        AppTextField(
-          label: "additional_phone_number".tr(),
-          controller: bloc.extraPhoneController,
-        ),
-        SizedBox(height: 12.height),
-        AppTextField(
-          label: "email".tr(),
-          controller: bloc.emailController,
-        ),
-        SizedBox(height: 12.height),
-        AppText(
-          title: "pick_up_address".tr(),
-          color: AppColors.black,
-          fontSize: 16,
-          fontWeight: FontWeight.w700,
-        ),
-        SizedBox(height: 8.height),
-        AppDropDownSelection.single(
-          height: MediaQuery.sizeOf(context).height * 0.2,
-          initialItem: null,
-          items: addresses,
-          onChangeSingle: (value) {
-            // CitiesAndRegionsBloc.of(context)
-            //     .add(Read(arguments: value?.value.toString() ?? "0"));
+    return Form(
+      key: bloc.paymentKey,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          AppTextField(
+            label: "name".tr(),
+            controller: bloc.nameController,
+            validator: Validator.name,
+          ),
+          SizedBox(height: 8.height),
+          AppTextField(
+            label: "phone_number".tr(),
+            controller: bloc.phoneController,
+            validator: Validator.phone,
+          ),
+          SizedBox(height: 8.height),
+          AppTextField(
+            label: "additional_phone_number".tr(),
+            controller: bloc.extraPhoneController,
+            validator: Validator.phone,
+          ),
+          SizedBox(height: 12.height),
+          AppTextField(
+            label: "email".tr(),
+            controller: bloc.emailController,
+            validator: Validator.email,
+          ),
+          SizedBox(height: 12.height),
+          AppText(
+            title: "pick_up_address".tr(),
+            color: AppColors.black,
+            fontSize: 16,
+            fontWeight: FontWeight.w700,
+          ),
+          SizedBox(height: 8.height),
+          AppDropDownSelection.single(
+            height: MediaQuery.sizeOf(context).height * 0.2,
+            initialItem: null,
+            items: addresses,
+            onChangeSingle: (value) {
+              // CitiesAndRegionsBloc.of(context)
+              //     .add(Read(arguments: value?.value.toString() ?? "0"));
 
-            bloc.addressId = value?.value.toString() ?? "0";
-          },
-          hint: "pick_up_address".tr(),
-        ),
-        SizedBox(height: 12.height),
-        AppTextField(
-          label: "add_extra_info".tr(),
-          maxLines: 5,
-          controller: bloc.noteController,
-        ),
-      ],
+              bloc.addressId = value?.value.toString() ?? "0";
+            },
+            hint: "pick_up_address".tr(),
+          ),
+          SizedBox(height: 12.height),
+          AppTextField(
+            label: "add_extra_info".tr(),
+            maxLines: 5,
+            controller: bloc.noteController,
+            validator: Validator.empty,
+          ),
+        ],
+      ),
     );
   }
 }

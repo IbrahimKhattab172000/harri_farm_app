@@ -5,9 +5,11 @@ import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/helpers/utils.dart';
 import 'package:harri_farm_app/widgets/app_text.dart';
 
-class NotificationsEmpty extends StatelessWidget {
-  const NotificationsEmpty({
+class AppEmptyScreen extends StatelessWidget {
+  final String title;
+  const AppEmptyScreen({
     super.key,
+    required this.title,
   });
 
   @override
@@ -22,7 +24,7 @@ class NotificationsEmpty extends StatelessWidget {
         ),
         SizedBox(height: 24.height),
         AppText(
-          title: "no_notifications_start_using_the_app".tr(),
+          title: title.tr(),
           color: AppColors.darkGray,
           fontSize: 16,
           fontWeight: FontWeight.w700,

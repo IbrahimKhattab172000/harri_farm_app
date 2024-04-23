@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
@@ -50,6 +52,10 @@ class ResetPasswordBloc extends Bloc<AppEvent, AppState> {
         RouteUtils.navigateAndPopAll(const LoginView());
 
         showSnackBar(response.data['message'], errorMessage: false);
+
+        ResetPasswordBloc bloc = ResetPasswordBloc.of(RouteUtils.context);
+        bloc.password.clear();
+        bloc.confirmPassword.clear();
       } else {
         log("Error ${response.statusCode}");
         showSnackBar(response.data['message'], errorMessage: true);

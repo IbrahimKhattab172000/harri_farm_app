@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
@@ -44,6 +46,8 @@ class VerificationBloc extends Bloc<AppEvent, AppState> {
         } else {
           RouteUtils.navigateTo(const ResetPasswordView());
         }
+        VerificationBloc bloc = VerificationBloc.of(RouteUtils.context);
+        bloc.codeController.clear();
       } else {
         log("Error ${response.statusCode}");
         showSnackBar(response.statusMessage.toString(), errorMessage: true);

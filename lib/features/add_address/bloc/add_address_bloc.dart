@@ -48,12 +48,17 @@ class AddAddressBloc extends Bloc<AppEvent, AppState> {
       if (response.statusCode == 200) {
         log('Posted Address data Successfuly ');
         emit(Done());
-        // if (addressesData.data!.isEmpty) {
-        //   emit(Empty());
-        // }
+
+        AddAddressBloc bloc = AddAddressBloc.of(RouteUtils.context);
+        bloc.nameController.clear();
+        bloc.phoneController.clear();
+        bloc.addressDetailsController.clear();
+        bloc.neighborhoodController.clear();
+        bloc.streetNameController.clear();
+        bloc.buildingNumberController.clear();
+        bloc.notesController.clear();
 
         AddressesBloc.of(RouteUtils.context).add(Get());
-        // RouteUtils.pop();
       } else {
         emit(Error());
         log('Posted Address data Failed with Status code ${response.statusCode}');

@@ -18,7 +18,7 @@ class CartBar extends StatelessWidget {
     return Row(
       children: [
         AppText(
-          title: "${cartModel.data?.cart?.length.toInt()} ${"products".tr()}",
+          title: "${cartModel.data?.carts?.length.toInt()} ${"products".tr()}",
           color: AppColors.black,
           fontSize: 16,
           fontWeight: FontWeight.w700,

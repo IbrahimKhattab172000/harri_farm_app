@@ -17,6 +17,9 @@ class ProductDetailsBloc extends Bloc<AppEvent, AppState> {
     on<Click>(_addToCart);
   }
 
+  static ProductDetailsBloc of(context) => BlocProvider.of(context);
+  ProductDetailsModel productDetailsData = ProductDetailsModel();
+
   CartAddingRequestModel cartAddingRequestModel = CartAddingRequestModel(
     addition: "",
     cuttingId: "",
@@ -54,9 +57,6 @@ class ProductDetailsBloc extends Bloc<AppEvent, AppState> {
       executeTime: DateTime.now(),
     );
   }
-
-  static ProductDetailsBloc of(context) => BlocProvider.of(context);
-  ProductDetailsModel productDetailsData = ProductDetailsModel();
 
   _getData(AppEvent event, Emitter<AppState> emit) async {
     emit(Loading());

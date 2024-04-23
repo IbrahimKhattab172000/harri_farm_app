@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +8,7 @@ import 'package:harri_farm_app/core/app_event.dart';
 import 'package:harri_farm_app/core/app_state.dart';
 import 'package:harri_farm_app/features/contact_us/models/contact_us_model.dart';
 import 'package:harri_farm_app/features/contact_us/repository/contact_us_repository.dart';
+import 'package:harri_farm_app/helpers/routes.dart';
 
 class ContactUsBloc extends Bloc<AppEvent, AppState> {
   ContactUsBloc() : super(Start()) {
@@ -36,7 +39,12 @@ class ContactUsBloc extends Bloc<AppEvent, AppState> {
       if (response.statusCode == 200) {
         log('Posted Contact Us data Successfuly ');
         emit(Done());
-        // RouteUtils.pop();
+
+        ContactUsBloc bloc = ContactUsBloc.of(RouteUtils.context);
+        bloc.nameController.clear();
+        bloc.phoneController.clear();
+        bloc.emailController.clear();
+        bloc.messageController.clear();
       } else {
         emit(Error());
         log('Posted Contact Us data Failed with Status code ${response.statusCode}');

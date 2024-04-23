@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:harri_farm_app/core/app_event.dart';
 import 'package:harri_farm_app/core/app_state.dart';
 import 'package:harri_farm_app/features/cart/repository/cart_repository.dart';
+import 'package:harri_farm_app/helpers/routes.dart';
 import 'package:harri_farm_app/widgets/app_snack_bar.dart';
 
 class CartCouponBloc extends Bloc<AppEvent, AppState> {
@@ -28,6 +29,9 @@ class CartCouponBloc extends Bloc<AppEvent, AppState> {
         log('Add coupon data Successfuly');
         emit(Done());
         showSnackBar(response.data['message'], errorMessage: false);
+
+        CartCouponBloc bloc = CartCouponBloc.of(RouteUtils.context);
+        bloc.couponController.clear();
       } else {
         emit(Error());
         log('Add coupon data Failed with Status code ${response.statusCode}');
