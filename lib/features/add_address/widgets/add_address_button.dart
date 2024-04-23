@@ -5,6 +5,7 @@ import 'package:harri_farm_app/core/app_event.dart';
 import 'package:harri_farm_app/core/app_state.dart';
 import 'package:harri_farm_app/features/add_address/bloc/add_address_bloc.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
+import 'package:harri_farm_app/helpers/routes.dart';
 import 'package:harri_farm_app/widgets/app_button.dart';
 
 class AddAddressButton extends StatelessWidget {
@@ -27,6 +28,7 @@ class AddAddressButton extends StatelessWidget {
             title: "save".tr(),
             onTap: () {
               AddAddressBloc.of(context).add(Click());
+              RouteUtils.pop();
             },
           );
         }

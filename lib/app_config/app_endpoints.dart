@@ -34,6 +34,7 @@ class Endpoints {
   static const String INCREASE_CART_ITEM = "increase-cart-item";
   static const String DECREASE_CART_ITEM = "decrease-cart-item";
   static const String ADD_COUPON = "add-coupon";
+  static const String ADD_ORDER = "add-order";
 
   static String getRegions({required String cityId}) {
     return "area/$cityId";

@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:harri_farm_app/features/payment/bloc/payment_bloc.dart';
 import 'package:harri_farm_app/features/payment/bloc/payment_selection/cubit.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
@@ -33,6 +34,9 @@ class PaymentMethodSelection extends StatelessWidget {
               title: "payment_in_cash",
               onTap: () {
                 cubit.toggleStates(isCash: true);
+                cubit.payInCash == true
+                    ? PaymentBloc.of(context).paymentType = "offline"
+                    : "online";
               },
               value: cubit.payInCash,
             ),
@@ -47,6 +51,9 @@ class PaymentMethodSelection extends StatelessWidget {
               title: "payment_via_visa",
               onTap: () {
                 cubit.toggleStates(isCash: false);
+                cubit.payInCash == true
+                    ? PaymentBloc.of(context).paymentType = "offline"
+                    : "online";
               },
               value: cubit.payInCash ? false : true,
             )

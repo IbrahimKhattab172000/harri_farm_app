@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:harri_farm_app/features/done/view/view.dart';
 import 'package:harri_farm_app/features/my_orders_details/widgets/my_order_details_summary.dart';
 import 'package:harri_farm_app/features/payment/bloc/payment_selection/cubit.dart';
+import 'package:harri_farm_app/features/payment/widgets/payment_button.dart';
 import 'package:harri_farm_app/features/payment/widgets/payment_card_details.dart';
 import 'package:harri_farm_app/features/payment/widgets/payment_method_selection.dart';
 import 'package:harri_farm_app/features/payment/widgets/payment_shipping_details.dart';
@@ -55,12 +56,7 @@ class PaymentView extends StatelessWidget {
                 SizedBox(height: 40.height),
                 const MyOrderDetailsPriceSummary(),
                 SizedBox(height: 40.height),
-                AppButton(
-                  title: "confirm_order".tr(),
-                  onTap: () {
-                    RouteUtils.navigateTo(const DoneView());
-                  },
-                ),
+                const PaymentButton(),
                 SizedBox(height: Utils.bottomDevicePadding + 28),
               ],
             ),

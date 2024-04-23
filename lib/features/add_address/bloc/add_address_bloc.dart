@@ -53,7 +53,7 @@ class AddAddressBloc extends Bloc<AppEvent, AppState> {
         // }
 
         AddressesBloc.of(RouteUtils.context).add(Get());
-        RouteUtils.pop();
+        // RouteUtils.pop();
       } else {
         emit(Error());
         log('Posted Address data Failed with Status code ${response.statusCode}');

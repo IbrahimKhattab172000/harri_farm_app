@@ -1,6 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:harri_farm_app/core/app_event.dart';
 import 'package:harri_farm_app/features/home/view/home_view.dart';
+import 'package:harri_farm_app/features/shipping_address/bloc/shipping_address_bloc.dart';
 import 'package:harri_farm_app/features/shipping_address/view/view.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
@@ -35,6 +37,7 @@ class CartButtons extends StatelessWidget {
             titleColor: AppColors.white,
             padding: const EdgeInsets.symmetric(horizontal: 10),
             onTap: () {
+              ShippingAddressBloc.of(context).add(Get());
               RouteUtils.navigateTo(const ShippingAddressView());
             },
           ),
