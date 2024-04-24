@@ -33,8 +33,7 @@ class SectionGridItems extends StatelessWidget {
               itemCount: bloc.subcategoryOffersModel.data?.offer?.length ?? 0,
               itemBuilder: (context, index) {
                 return AppProductCard(
-                    similarProduct:
-                        bloc.subcategoryOffersModel.data!.offer![index],
+                    product: bloc.subcategoryOffersModel.data!.offer![index],
                     isFavorite:
                         bloc.subcategoryOffersModel.data!.offer![index].like ??
                             false);

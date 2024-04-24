@@ -26,6 +26,7 @@ import 'package:harri_farm_app/features/rate_service/bloc/rate_service_bloc.dart
 import 'package:harri_farm_app/features/register/bloc/register_bloc.dart';
 import 'package:harri_farm_app/features/reset_password/bloc/reset_password_bloc.dart';
 import 'package:harri_farm_app/features/return_and_exchange_policy/bloc/return_and_exchange_bloc.dart';
+import 'package:harri_farm_app/features/search/bloc/search_bloc.dart';
 import 'package:harri_farm_app/features/sections/bloc/sections_bloc.dart';
 import 'package:harri_farm_app/features/sections/bloc/section_items_bloc.dart';
 import 'package:harri_farm_app/features/shipping_address/bloc/shipping_address_bloc.dart';
@@ -105,6 +106,9 @@ class _MyAppState extends State<MyApp> {
             ),
             BlocProvider(
               create: (context) => FaqBloc(),
+            ),
+            BlocProvider(
+              create: (context) => SearchBloc(),
             ),
             BlocProvider(
               create: (context) => PrivacyPolicyBloc(),

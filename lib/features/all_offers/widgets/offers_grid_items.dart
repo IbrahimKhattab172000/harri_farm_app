@@ -38,7 +38,7 @@ class OffersGridItems extends StatelessWidget {
                 itemCount: bloc.allOffersData.data!.offers!.length,
                 itemBuilder: (context, index) {
                   return AppProductCard(
-                    similarProduct: bloc.allOffersData.data!.offers![index],
+                    product: bloc.allOffersData.data!.offers![index],
                     isFavorite:
                         bloc.allOffersData.data!.offers![index].like ?? false,
                   );

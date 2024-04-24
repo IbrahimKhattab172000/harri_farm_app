@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:harri_farm_app/core/app_event.dart';
 import 'package:harri_farm_app/features/cart/view/cart_view.dart';
+import 'package:harri_farm_app/features/product_details/bloc/product_details_bloc.dart';
+import 'package:harri_farm_app/features/product_details/view/product_details_view.dart';
 import 'package:harri_farm_app/features/search/models/search_model.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
@@ -10,12 +13,10 @@ import 'package:harri_farm_app/widgets/app_text.dart';
 
 class SearchProductCard extends StatefulWidget {
   final bool isFavorite;
-  final VoidCallback onTap;
   final Function(bool)? onFavoriteChanged;
   final SearchItem searchItem;
   const SearchProductCard({
     Key? key,
-    required this.onTap,
     this.isFavorite = false,
     this.onFavoriteChanged,
     required this.searchItem,
@@ -37,7 +38,11 @@ class _AppProductCardState extends State<SearchProductCard> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: widget.onTap,
+      onTap: () {
+        ProductDetailsBloc.of(context)
+            .add(Get(arguments: widget.searchItem.id.toString()));
+        RouteUtils.navigateTo(const ProductDetailsView());
+      },
       child: Container(
         // constraints: BoxConstraints(minHeight: 220.height),
         width: 146.width,

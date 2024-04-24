@@ -39,7 +39,7 @@ class FavoriteGridItems extends StatelessWidget {
                 return AppProductCard(
                   isFavorite:
                       bloc.favouriteData.data?.product?[index].like ?? false,
-                  similarProduct: bloc.favouriteData.data?.product?[index] ??
+                  product: bloc.favouriteData.data?.product?[index] ??
                       ProductModel(),
                   onFavoriteChanged: (isFav) {
                     FavouriteBloc.of(context).add(

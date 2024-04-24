@@ -21,7 +21,7 @@ class HomeOffersCards extends StatelessWidget {
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: AppProductCard(
-              similarProduct: bloc.homeData.offer?[index],
+              product: bloc.homeData.offer?[index],
               isFavorite: bloc.homeData.offer![index].like ?? false,
             ),
           );
