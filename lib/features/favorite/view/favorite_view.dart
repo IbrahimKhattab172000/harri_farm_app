@@ -6,6 +6,7 @@ import 'package:harri_farm_app/features/favorite/bloc/favorite_bloc.dart';
 import 'package:harri_farm_app/features/favorite/widgets/favorite_grid_item.dart';
 import 'package:harri_farm_app/helpers/routes.dart';
 import 'package:harri_farm_app/widgets/app_appbar.dart';
+import 'package:harri_farm_app/widgets/app_empty_screen.dart';
 import 'package:harri_farm_app/widgets/app_text.dart';
 
 class FavoriteView extends StatelessWidget {
@@ -29,22 +30,23 @@ class FavoriteView extends StatelessWidget {
       ),
       body: BlocBuilder<FavouriteBloc, AppState>(
         builder: (context, state) {
-          final bloc = FavouriteBloc.of(context);
-
           if (state is Loading) {
             return const Center(child: CircularProgressIndicator());
           } else if (state is Error) {
             return Center(
               child: AppText(title: 'error_loading_data'.tr()),
             );
-          } else if (bloc.favouriteData.data!.product!.isEmpty) {
-            return const Center(
-              child: AppText(title: 'empty'),
-            );
-          } else {
+          } else if (state is UnAuthorized) {
+            return const AppEmptyScreen(title: "sign_up_to_access_this_data");
+          } else if (state is Empty) {
+            return const AppEmptyScreen(
+                title: "add_some_products_to_your_cart");
+          } else if (state is Done) {
             return const SafeArea(
               child: FavoriteGridItems(),
             );
+          } else {
+            return const SizedBox();
           }
         },
       ),

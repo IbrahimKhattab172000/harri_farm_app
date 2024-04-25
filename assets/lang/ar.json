@@ -168,5 +168,7 @@
      "uncooked" :"ذبيحه غير مطبوخه",
      "nothing" :"لا  شئ",
      "error_loading_data" : "خطأ في تحميل البيانات",
-     "add_some_products_to_your_cart" : "أضف بعض المنتجات الي السله"
+     "add_some_products_to_your_cart" : "أضف بعض المنتجات الي السله",
+     "sign_up_to_access_this_data" : "لا توجد بيانات هنا الان, سجل وأضف البعض",
+     "no_data" : "لا توجد بيانات هنا"
     }

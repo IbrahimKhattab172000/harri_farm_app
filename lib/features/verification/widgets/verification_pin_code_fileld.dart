@@ -11,7 +11,7 @@ class VerificationPinCodeField extends StatelessWidget {
   Widget build(BuildContext context) {
     final bloc = VerificationBloc.of(context);
     return Form(
-      key: bloc.formKey,
+      key: bloc.verificationFormKey,
       child: AppPinCodeField(
         controller: bloc.codeController,
         onChanged: (code) {},

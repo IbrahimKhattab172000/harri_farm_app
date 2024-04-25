@@ -25,16 +25,14 @@ class RegisterBloc extends Bloc<AppEvent, AppState> {
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
   TextEditingController passwordConfirmation = TextEditingController();
-
-  var formKey = GlobalKey<FormState>();
+  bool consent = false;
+  var registerFormKey = GlobalKey<FormState>(debugLabel: "registerFormKey");
 
   //============================================================================
   //============================================================================  Functions
   //============================================================================
 
   _addUser(AppEvent event, Emitter<AppState> emit) async {
-    if (!formKey.currentState!.validate()) return;
-
     emit(Loading());
     Map<String, dynamic> body = {
       "name": name.text,
@@ -51,12 +49,11 @@ class RegisterBloc extends Bloc<AppEvent, AppState> {
         RouteUtils.navigateTo(const VerificationView(isVerified: true));
         log(response.statusCode.toString());
         showSnackBar(response.data['message'], errorMessage: false);
-        RegisterBloc bloc = RegisterBloc.of(RouteUtils.context);
-        bloc.name.clear();
-        bloc.phone.clear();
-        bloc.email.clear();
-        bloc.password.clear();
-        bloc.passwordConfirmation.clear();
+        name.clear();
+        phone.clear();
+        email.clear();
+        password.clear();
+        passwordConfirmation.clear();
       } else {
         emit(Error());
         log("FROM ELSE ${response.statusCode}");

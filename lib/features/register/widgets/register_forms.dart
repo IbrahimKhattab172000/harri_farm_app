@@ -21,7 +21,7 @@ class _RegisterFormsState extends State<RegisterForms> {
   Widget build(BuildContext context) {
     final bloc = RegisterBloc.of(context);
     return Form(
-      key: bloc.formKey,
+      key: bloc.registerFormKey,
       child: Column(
         children: [
           AppTextField(

@@ -5,6 +5,7 @@ import 'package:harri_farm_app/core/app_event.dart';
 import 'package:harri_farm_app/core/app_state.dart';
 import 'package:harri_farm_app/features/register/bloc/register_bloc.dart';
 import 'package:harri_farm_app/widgets/app_button.dart';
+import 'package:harri_farm_app/widgets/app_snack_bar.dart';
 
 class RegisterButton extends StatelessWidget {
   const RegisterButton({
@@ -25,7 +26,12 @@ class RegisterButton extends StatelessWidget {
           return AppButton(
             title: "signup".tr(),
             onTap: () {
-              bloc.add(Click());
+              if (!bloc.registerFormKey.currentState!.validate() ||
+                  bloc.consent == false) {
+                showSnackBar("empty_fields".tr(), errorMessage: false);
+              } else {
+                bloc.add(Click());
+              }
             },
           );
         }

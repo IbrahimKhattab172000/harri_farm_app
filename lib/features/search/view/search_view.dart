@@ -56,6 +56,7 @@ class SearchView extends StatelessWidget {
                           itemBuilder: (context, index) {
                             return SearchProductCard(
                               searchItem: bloc.searchData.data![index],
+                              isFavorite: bloc.searchData.data![index].like,
                             );
                           },
                         ),

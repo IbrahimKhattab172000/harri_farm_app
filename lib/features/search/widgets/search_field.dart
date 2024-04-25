@@ -14,7 +14,7 @@ class SearchSearchField extends StatelessWidget {
   Widget build(BuildContext context) {
     final bloc = SearchBloc.of(context);
     return Form(
-      key: bloc.formKey,
+      key: bloc.searchFormKey,
       child: AppTextField(
         controller: bloc.searchController,
         onChanged: (value) {

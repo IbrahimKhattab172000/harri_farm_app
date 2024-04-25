@@ -10,13 +10,13 @@ class AppDrawerTile extends StatelessWidget {
   final String imagePath;
   final String title;
   final VoidCallback onTap;
-  final bool isLogout;
+  final bool noArrow;
   const AppDrawerTile({
     Key? key,
     required this.imagePath,
     required this.title,
     required this.onTap,
-    this.isLogout = false,
+    this.noArrow = false,
   }) : super(key: key);
 
   @override
@@ -38,7 +38,7 @@ class AppDrawerTile extends StatelessWidget {
             fontWeight: FontWeight.w700,
           ),
           const Spacer(),
-          isLogout
+          noArrow
               ? const SizedBox()
               : const Icon(Icons.arrow_forward_ios, size: 20),
         ],

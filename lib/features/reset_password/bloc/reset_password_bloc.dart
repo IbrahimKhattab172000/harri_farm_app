@@ -22,7 +22,8 @@ class ResetPasswordBloc extends Bloc<AppEvent, AppState> {
   TextEditingController password = TextEditingController();
   TextEditingController confirmPassword = TextEditingController();
 
-  var formKey = GlobalKey<FormState>();
+  var resetPasswordFormKey =
+      GlobalKey<FormState>(debugLabel: "resetPasswordFormKey");
 
   // @override
   // Future<void> close() {
@@ -32,7 +33,7 @@ class ResetPasswordBloc extends Bloc<AppEvent, AppState> {
   // }
 
   _resetPassword(AppEvent event, Emitter<AppState> emit) async {
-    if (!formKey.currentState!.validate()) return;
+    if (!resetPasswordFormKey.currentState!.validate()) return;
 
     final code = VerificationBloc.of(RouteUtils.context).codeController.text;
     emit(Loading());
@@ -53,9 +54,8 @@ class ResetPasswordBloc extends Bloc<AppEvent, AppState> {
 
         showSnackBar(response.data['message'], errorMessage: false);
 
-        ResetPasswordBloc bloc = ResetPasswordBloc.of(RouteUtils.context);
-        bloc.password.clear();
-        bloc.confirmPassword.clear();
+        password.clear();
+        confirmPassword.clear();
       } else {
         log("Error ${response.statusCode}");
         showSnackBar(response.data['message'], errorMessage: true);

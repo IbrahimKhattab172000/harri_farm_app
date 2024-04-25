@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:harri_farm_app/core/app_event.dart';
 import 'package:harri_farm_app/features/cart/view/cart_view.dart';
+import 'package:harri_farm_app/features/favorite/bloc/favorite_bloc.dart';
 import 'package:harri_farm_app/features/product_details/bloc/product_details_bloc.dart';
 import 'package:harri_farm_app/features/product_details/view/product_details_view.dart';
 import 'package:harri_farm_app/features/search/models/search_model.dart';
@@ -160,14 +161,21 @@ class _AppProductCardState extends State<SearchProductCard> {
                 onPressed: () {
                   setState(() {
                     _isFavorite = !_isFavorite;
-
-                    if (widget.onFavoriteChanged != null) {
-                      widget.onFavoriteChanged!(_isFavorite);
-                    }
+                    FavouriteBloc.of(context).add(
+                      Click(
+                        arguments: {
+                          "product_id": widget.searchItem.id,
+                          "like": _isFavorite,
+                        },
+                      ),
+                    );
+                    // if (widget.onFavoriteChanged != null) {
+                    //   widget.onFavoriteChanged!(_isFavorite);
+                    // }
                   });
                 },
               ),
-            )
+            ),
           ],
         ),
       ),

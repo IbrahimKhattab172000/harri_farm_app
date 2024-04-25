@@ -1,6 +1,9 @@
 // ignore_for_file: sort_child_properties_last
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:harri_farm_app/features/login/view/login_view.dart';
+import 'package:harri_farm_app/widgets/app_button.dart';
 import 'package:harri_farm_app/widgets/app_text.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
@@ -8,21 +11,30 @@ import 'package:harri_farm_app/helpers/utils.dart';
 import 'package:harri_farm_app/helpers/routes.dart';
 
 class AppDialog extends StatelessWidget {
+  final Widget child;
+  final bool dismissible;
+  final String title;
+  final bool hasButton;
+  final String buttonTitle;
+  final VoidCallback buttonOnTap;
+
   const AppDialog({
     super.key,
     required this.child,
     required this.dismissible,
     required this.title,
+    required this.hasButton,
+    required this.buttonTitle,
+    required this.buttonOnTap,
   });
-
-  final Widget child;
-  final bool dismissible;
-  final String title;
 
   static Future<dynamic> show({
     required Widget child,
     String? title,
     bool dismissible = true,
+    bool hasButton = true,
+    String? buttonTitle,
+    VoidCallback? buttonOnTap,
   }) {
     return showDialog(
       context: RouteUtils.context,
@@ -32,7 +44,13 @@ class AppDialog extends StatelessWidget {
         return AppDialog(
           child: child,
           dismissible: dismissible,
-          title: title ?? "",
+          title: title ?? "no_data".tr(),
+          hasButton: hasButton,
+          buttonTitle: buttonTitle ?? "login".tr(),
+          buttonOnTap: buttonOnTap ??
+              () {
+                RouteUtils.navigateAndPopAll(const LoginView());
+              },
         );
       },
     );
@@ -46,6 +64,11 @@ class AppDialog extends StatelessWidget {
       child: UnconstrainedBox(
         constrainedAxis: Axis.horizontal,
         child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(28),
+            color: AppColors.white,
+            border: Border.all(width: 4, color: AppColors.white),
+          ),
           margin: EdgeInsets.only(
             left: 20,
             right: 20,
@@ -56,10 +79,10 @@ class AppDialog extends StatelessWidget {
               Stack(
                 children: [
                   Container(
-                    height: 54.height,
+                    height: 60.height,
                     width: double.infinity,
                     decoration: const BoxDecoration(
-                      color: AppColors.primary,
+                      color: AppColors.white,
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(25),
                         topRight: Radius.circular(25),
@@ -67,9 +90,11 @@ class AppDialog extends StatelessWidget {
                     ),
                     alignment: Alignment.center,
                     child: AppText(
+                      textAlign: TextAlign.center,
                       title: title,
-                      color: AppColors.white,
+                      color: AppColors.primary,
                       fontSize: 20,
+                      fontWeight: FontWeight.w700,
                     ),
                   ),
                   if (dismissible)
@@ -82,15 +107,15 @@ class AppDialog extends StatelessWidget {
                         child: InkWell(
                           onTap: () => Navigator.pop(context),
                           child: Container(
-                            height: 32.height,
+                            height: 32.width,
                             width: 32.width,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(25),
-                              color: AppColors.white,
+                              color: AppColors.primary,
                             ),
                             child: const Icon(
                               Icons.close,
-                              color: AppColors.primary,
+                              color: AppColors.white,
                               size: 20,
                             ),
                           ),
@@ -99,12 +124,20 @@ class AppDialog extends StatelessWidget {
                     ),
                 ],
               ),
-              child,
+              Column(
+                children: [
+                  child,
+                  if (hasButton)
+                    Padding(
+                      padding: const EdgeInsets.all(12),
+                      child: AppButton(
+                        title: buttonTitle,
+                        onTap: buttonOnTap,
+                      ),
+                    ),
+                ],
+              ),
             ],
-          ),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(28),
-            color: AppColors.white,
           ),
         ),
       ),

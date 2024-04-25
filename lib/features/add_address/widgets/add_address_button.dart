@@ -7,6 +7,7 @@ import 'package:harri_farm_app/features/add_address/bloc/add_address_bloc.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/routes.dart';
 import 'package:harri_farm_app/widgets/app_button.dart';
+import 'package:harri_farm_app/widgets/app_snack_bar.dart';
 
 class AddAddressButton extends StatelessWidget {
   const AddAddressButton({
@@ -24,11 +25,19 @@ class AddAddressButton extends StatelessWidget {
             ),
           );
         } else {
+          final bloc = AddAddressBloc.of(context);
+
           return AppButton(
             title: "save".tr(),
             onTap: () {
-              AddAddressBloc.of(context).add(Click());
-              RouteUtils.pop();
+              if (!bloc.addAddresKey.currentState!.validate() ||
+                  bloc.cityId == null ||
+                  bloc.countryId == null) {
+                showSnackBar("empty_fields", errorMessage: false);
+              } else {
+                AddAddressBloc.of(context).add(Click());
+                RouteUtils.pop();
+              }
             },
           );
         }

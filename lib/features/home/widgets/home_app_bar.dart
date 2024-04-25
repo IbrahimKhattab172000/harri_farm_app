@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:harri_farm_app/core/app_event.dart';
 import 'package:harri_farm_app/features/cart/view/cart_view.dart';
 import 'package:harri_farm_app/features/notifications/bloc/notifications_bloc.dart';
-import 'package:harri_farm_app/features/notifications/view/view.dart';
+import 'package:harri_farm_app/features/notifications/view/notification_view.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/helpers/routes.dart';

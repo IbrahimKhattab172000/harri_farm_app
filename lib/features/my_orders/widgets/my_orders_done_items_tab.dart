@@ -10,6 +10,7 @@ import 'package:harri_farm_app/features/my_orders_details/view/view.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/helpers/routes.dart';
+import 'package:harri_farm_app/widgets/app_empty_screen.dart';
 import 'package:harri_farm_app/widgets/app_text.dart';
 
 class MyOrdersDoneItemsTab extends StatelessWidget {
@@ -19,12 +20,15 @@ class MyOrdersDoneItemsTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<MyOrdersBloc, AppState>(
       builder: (context, state) {
+        final bloc = MyOrdersBloc.of(context);
+
         if (state is Loading) {
           return const Center(child: CircularProgressIndicator());
+        } else if (bloc.myOrdersData.data?.newOrder == null) {
+          return const AppEmptyScreen(title: "add_some_products_to_your_cart");
         } else if (state is Error) {
           return Center(child: AppText(title: 'error_loading_data'.tr()));
-        } else {
-          final bloc = MyOrdersBloc.of(context);
+        } else if (state is Done) {
           return Expanded(
             child: ListView.separated(
               physics: const BouncingScrollPhysics(),
@@ -68,6 +72,8 @@ class MyOrdersDoneItemsTab extends StatelessWidget {
               },
             ),
           );
+        } else {
+          return const SizedBox();
         }
       },
     );

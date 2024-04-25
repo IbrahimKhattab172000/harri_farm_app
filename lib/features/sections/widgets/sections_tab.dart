@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:harri_farm_app/helpers/colors.dart';
-import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/widgets/app_text.dart';
 
 class SectionsTab extends StatelessWidget {
@@ -20,8 +19,8 @@ class SectionsTab extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Container(
-        width: 80.width,
         alignment: Alignment.center,
+        padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
           color: isSelected ? AppColors.primary : AppColors.lightGray,
           borderRadius: BorderRadius.circular(8),

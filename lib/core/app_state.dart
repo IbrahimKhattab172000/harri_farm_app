@@ -114,3 +114,9 @@ class Empty extends AppState {
 
   Empty({this.initial});
 }
+
+class UnAuthorized extends AppState {
+  dynamic arguments;
+
+  UnAuthorized({this.arguments});
+}

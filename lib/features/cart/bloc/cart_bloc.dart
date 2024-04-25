@@ -2,13 +2,19 @@
 
 import 'dart:developer';
 import 'package:dio/dio.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:harri_farm_app/core/app_event.dart';
 import 'package:harri_farm_app/core/app_state.dart';
 import 'package:harri_farm_app/features/cart/models/cart_model.dart';
 import 'package:harri_farm_app/features/cart/repository/cart_repository.dart';
 import 'package:harri_farm_app/features/cart/view/cart_view.dart';
+import 'package:harri_farm_app/helpers/colors.dart';
+import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/helpers/routes.dart';
+import 'package:harri_farm_app/widgets/app_dialog.dart';
+import 'package:harri_farm_app/widgets/app_text.dart';
 
 class CartBloc extends Bloc<AppEvent, AppState> {
   CartBloc() : super(Start()) {
@@ -34,8 +40,27 @@ class CartBloc extends Bloc<AppEvent, AppState> {
           emit(Empty());
         }
       } else {
-        emit(Error());
-        log('Get cart data Failed with Status code ${response.statusCode}');
+        if ("${response.data['message']}" == "Unauthenticated.") {
+          emit(UnAuthorized());
+          // showSnackBar(response.data['message'], errorMessage: true);
+          AppDialog.show(
+            child: Center(
+              child: Column(
+                children: [
+                  SizedBox(height: 40.height),
+                  AppText(
+                    title: "sign_up_to_access_this_data".tr(),
+                    color: AppColors.gray,
+                  ),
+                  SizedBox(height: 40.height),
+                ],
+              ),
+            ),
+          );
+        } else {
+          emit(Error());
+          log('Get cart data Failed with Status code ${response.statusCode}');
+        }
       }
     } catch (e) {
       emit(Error());

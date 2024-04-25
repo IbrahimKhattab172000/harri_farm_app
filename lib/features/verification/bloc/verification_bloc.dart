@@ -25,10 +25,11 @@ class VerificationBloc extends Bloc<AppEvent, AppState> {
   static VerificationBloc of(context) => BlocProvider.of(context);
 
   TextEditingController codeController = TextEditingController();
-  var formKey = GlobalKey<FormState>();
+  var verificationFormKey =
+      GlobalKey<FormState>(debugLabel: "verificationFormKey");
 
   _verifyCode(AppEvent event, Emitter<AppState> emit) async {
-    if (!formKey.currentState!.validate()) return;
+    if (!verificationFormKey.currentState!.validate()) return;
 
     emit(Loading());
     Map<String, dynamic> body = {
@@ -46,8 +47,7 @@ class VerificationBloc extends Bloc<AppEvent, AppState> {
         } else {
           RouteUtils.navigateTo(const ResetPasswordView());
         }
-        VerificationBloc bloc = VerificationBloc.of(RouteUtils.context);
-        bloc.codeController.clear();
+        codeController.clear();
       } else {
         log("Error ${response.statusCode}");
         showSnackBar(response.statusMessage.toString(), errorMessage: true);

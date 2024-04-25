@@ -9,6 +9,7 @@ import 'package:harri_farm_app/features/update_profile/widgets/update_profile_im
 import 'package:harri_farm_app/helpers/dimentions.dart';
 import 'package:harri_farm_app/helpers/utils.dart';
 import 'package:harri_farm_app/widgets/app_appbar.dart';
+import 'package:harri_farm_app/widgets/app_empty_screen.dart';
 import 'package:harri_farm_app/widgets/app_text.dart';
 
 class UpdateProfileView extends StatelessWidget {
@@ -25,9 +26,11 @@ class UpdateProfileView extends StatelessWidget {
         builder: (context, state) {
           if (state is Loading) {
             return const Center(child: CircularProgressIndicator());
+          } else if (state is UnAuthorized) {
+            return const AppEmptyScreen(title: "sign_up_to_access_this_data");
           } else if (state is Error) {
             return Center(child: AppText(title: 'error_loading_data'.tr()));
-          } else {
+          } else if (state is Done) {
             final bloc = UpdateProfileBloc.of(context);
             return SingleChildScrollView(
               physics: const BouncingScrollPhysics(),
@@ -47,6 +50,8 @@ class UpdateProfileView extends StatelessWidget {
                 ),
               ),
             );
+          } else {
+            return const SizedBox();
           }
         },
       ),

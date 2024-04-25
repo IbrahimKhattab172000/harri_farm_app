@@ -8,7 +8,6 @@ import 'package:harri_farm_app/core/app_event.dart';
 import 'package:harri_farm_app/core/app_state.dart';
 import 'package:harri_farm_app/features/contact_us/models/contact_us_model.dart';
 import 'package:harri_farm_app/features/contact_us/repository/contact_us_repository.dart';
-import 'package:harri_farm_app/helpers/routes.dart';
 
 class ContactUsBloc extends Bloc<AppEvent, AppState> {
   ContactUsBloc() : super(Start()) {
@@ -20,12 +19,12 @@ class ContactUsBloc extends Bloc<AppEvent, AppState> {
   TextEditingController phoneController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController messageController = TextEditingController();
-  var formKey = GlobalKey<FormState>();
+  var contactUsFormKey = GlobalKey<FormState>(debugLabel: "contactUsFormKey");
 
   ContactUsModel contactUsModel = ContactUsModel();
 
   _addData(AppEvent event, Emitter<AppState> emit) async {
-    if (!formKey.currentState!.validate()) return;
+    if (!contactUsFormKey.currentState!.validate()) return;
 
     emit(Loading());
     Map<String, dynamic> body = {
@@ -40,11 +39,10 @@ class ContactUsBloc extends Bloc<AppEvent, AppState> {
         log('Posted Contact Us data Successfuly ');
         emit(Done());
 
-        ContactUsBloc bloc = ContactUsBloc.of(RouteUtils.context);
-        bloc.nameController.clear();
-        bloc.phoneController.clear();
-        bloc.emailController.clear();
-        bloc.messageController.clear();
+        nameController.clear();
+        phoneController.clear();
+        emailController.clear();
+        messageController.clear();
       } else {
         emit(Error());
         log('Posted Contact Us data Failed with Status code ${response.statusCode}');

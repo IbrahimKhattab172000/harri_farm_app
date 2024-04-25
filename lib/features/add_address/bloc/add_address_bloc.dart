@@ -25,6 +25,7 @@ class AddAddressBloc extends Bloc<AppEvent, AppState> {
   TextEditingController notesController = TextEditingController();
   String? cityId;
   String? countryId;
+  var addAddresKey = GlobalKey<FormState>(debugLabel: "addAddresKey");
 
   // TextEditingController locationController = TextEditingController();
 

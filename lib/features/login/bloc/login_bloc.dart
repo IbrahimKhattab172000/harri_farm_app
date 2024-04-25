@@ -24,10 +24,10 @@ class LoginBloc extends Bloc<AppEvent, AppState> {
   TextEditingController emailOrPhone = TextEditingController();
   TextEditingController password = TextEditingController();
 
-  var formKey = GlobalKey<FormState>();
+  var loginFormKey = GlobalKey<FormState>(debugLabel: "loginFormKey");
 
   _login(AppEvent event, Emitter<AppState> emit) async {
-    if (!formKey.currentState!.validate()) return;
+    if (!loginFormKey.currentState!.validate()) return;
 
     emit(Loading());
 
@@ -43,9 +43,8 @@ class LoginBloc extends Bloc<AppEvent, AppState> {
         // await AppStorage.cacheUser(UserModel.fromJson(response.data));
         AppStorage.cacheToken(response.data['data']['token']);
         RouteUtils.navigateTo(const HomeView());
-        LoginBloc bloc = LoginBloc.of(RouteUtils.context);
-        bloc.emailOrPhone.clear();
-        bloc.password.clear();
+        emailOrPhone.clear();
+        password.clear();
 
         emit(Done());
         showSnackBar(response.data['message'], errorMessage: false);
@@ -67,4 +66,10 @@ class LoginBloc extends Bloc<AppEvent, AppState> {
       emit(Error());
     }
   }
+
+  // @override
+  // Future<void> close() {
+  //   loginFormKey.currentState?.dispose();
+  //   return super.close();
+  // }
 }

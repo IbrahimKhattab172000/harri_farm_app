@@ -25,7 +25,7 @@ class PaymentBloc extends Bloc<AppEvent, AppState> {
   TextEditingController noteController = TextEditingController();
   String? paymentType;
 
-  var paymentKey = GlobalKey<FormState>();
+  var paymentFormKey = GlobalKey<FormState>(debugLabel: "paymentFormKey");
 
   _addPaymentOrder(AppEvent event, Emitter<AppState> emit) async {
     // if ( ||
@@ -46,12 +46,11 @@ class PaymentBloc extends Bloc<AppEvent, AppState> {
       if (response.statusCode == 200) {
         log('Add payment order Successfuly ');
         emit(Done());
-        PaymentBloc bloc = PaymentBloc.of(RouteUtils.context);
-        bloc.nameController.clear();
-        bloc.phoneController.clear();
-        bloc.extraPhoneController.clear();
-        bloc.emailController.clear();
-        bloc.noteController.clear();
+        nameController.clear();
+        phoneController.clear();
+        extraPhoneController.clear();
+        emailController.clear();
+        noteController.clear();
 
         showSnackBar(response.data['message'], errorMessage: false);
         RouteUtils.navigateTo(const DoneView());

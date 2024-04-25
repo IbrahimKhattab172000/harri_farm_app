@@ -37,7 +37,7 @@ class _ShippingAddressFormsState extends State<ShippingAddressForms> {
     final bloc = PaymentBloc.of(context);
 
     return Form(
-      key: bloc.paymentKey,
+      key: bloc.paymentFormKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

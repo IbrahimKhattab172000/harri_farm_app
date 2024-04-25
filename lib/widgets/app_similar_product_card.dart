@@ -2,9 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:harri_farm_app/core/app_event.dart';
-import 'package:harri_farm_app/core/app_state.dart';
 import 'package:harri_farm_app/features/all_offers/models/all_offers_model.dart';
 import 'package:harri_farm_app/features/cart/view/cart_view.dart';
 import 'package:harri_farm_app/features/favorite/bloc/favorite_bloc.dart';
@@ -54,88 +52,81 @@ class _AppProductCardState extends State<AppSimilarProductCard> {
         color: AppColors.background,
         child: Stack(
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                vertical: 34,
-                horizontal: 8,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    child: Center(
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(20),
-                        child: Image.network(
-                          widget.similarProduct?.image ??
-                              Utils.dummyProductImage,
-                          // height: 106.height,
-                          // width: 146.width,
-                          fit: BoxFit.cover,
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  alignment: Alignment.center,
+                  clipBehavior: Clip.antiAlias,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Image.network(
+                    widget.similarProduct?.image ?? Utils.dummyProductImage,
+                    height: 120.height,
+                    width: double.infinity,
+                    fit: BoxFit.fill,
+                  ),
+                ),
+
+                // Image.asset(
+                //   Utils.getAssetPNGPath("offer_meat"),
+                //   height: 116.height,
+                //   width: 136.width,
+                // ),
+                SizedBox(height: 6.height),
+                AppText(
+                  title: widget.similarProduct?.category ?? "test",
+                  fontSize: 14,
+                ),
+                SizedBox(height: 6.height),
+                AppText(
+                  title: widget.similarProduct?.name ?? "test",
+                  maxLines: 1,
+                  fontSize: 14,
+                  color: AppColors.black,
+                  fontWeight: FontWeight.w600,
+                ),
+                SizedBox(height: 6.height),
+                Row(
+                  children: [
+                    Row(
+                      children: [
+                        AppText(
+                          title: widget.similarProduct?.price ?? "test",
+                          fontSize: 14,
+                          color: AppColors.lightGray,
+                          fontWeight: FontWeight.w600,
+                          decoration: TextDecoration.lineThrough,
                         ),
+                        SizedBox(width: 4.width),
+                        AppText(
+                          title: widget.similarProduct?.offerPrice ?? "test",
+                          fontSize: 14,
+                          color: AppColors.primary,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ],
+                    ),
+                    const Spacer(),
+                    GestureDetector(
+                      onTap: () {
+                        RouteUtils.navigateTo(const CartView());
+                      },
+                      child: Image.asset(
+                        Utils.getAssetPNGPath("shopping_icon"),
+                        width: 22.width,
+                        height: 22.height,
                       ),
                     ),
-                  ),
-
-                  // Image.asset(
-                  //   Utils.getAssetPNGPath("offer_meat"),
-                  //   height: 116.height,
-                  //   width: 136.width,
-                  // ),
-                  SizedBox(height: 6.height),
-                  AppText(
-                    title: widget.similarProduct?.category ?? "test",
-                    fontSize: 14,
-                  ),
-                  SizedBox(height: 6.height),
-                  AppText(
-                    title: widget.similarProduct?.name ?? "test",
-                    maxLines: 1,
-                    fontSize: 14,
-                    color: AppColors.black,
-                    fontWeight: FontWeight.w600,
-                  ),
-                  SizedBox(height: 6.height),
-                  Row(
-                    children: [
-                      Row(
-                        children: [
-                          AppText(
-                            title: widget.similarProduct?.price ?? "test",
-                            fontSize: 14,
-                            color: AppColors.lightGray,
-                            fontWeight: FontWeight.w600,
-                            decoration: TextDecoration.lineThrough,
-                          ),
-                          SizedBox(width: 4.width),
-                          AppText(
-                            title: widget.similarProduct?.offerPrice ?? "test",
-                            fontSize: 14,
-                            color: AppColors.primary,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ],
-                      ),
-                      const Spacer(),
-                      GestureDetector(
-                        onTap: () {
-                          RouteUtils.navigateTo(const CartView());
-                        },
-                        child: Image.asset(
-                          Utils.getAssetPNGPath("shopping_icon"),
-                          width: 22.width,
-                          height: 22.height,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+                  ],
+                ),
+              ],
             ),
             Positioned(
-              left: Utils.isAR ? 0 : null,
-              right: Utils.isAR ? null : 0,
-              top: 0,
+              left: Utils.isAR ? 6 : null,
+              right: Utils.isAR ? null : 6,
+              top: 6,
               child: Container(
                 height: 35.height,
                 width: 35.height,
@@ -161,43 +152,35 @@ class _AppProductCardState extends State<AppSimilarProductCard> {
                 ),
               ),
             ),
-            BlocBuilder<FavouriteBloc, AppState>(
-              builder: (context, state) {
-                if (state is Loading) {
-                  return const Center(child: CircularProgressIndicator());
-                } else {
-                  return Positioned(
-                    left: Utils.isAR ? null : 0,
-                    right: Utils.isAR ? 0 : null,
-                    top: -10,
-                    child: IconButton(
-                      icon: Icon(
-                        _isFavorite ? Icons.favorite : Icons.favorite_border,
-                        color: AppColors.primary,
-                        size: 28,
+            Positioned(
+              left: Utils.isAR ? null : -6,
+              right: Utils.isAR ? -6 : null,
+              top: -6,
+              child: IconButton(
+                icon: Icon(
+                  _isFavorite ? Icons.favorite : Icons.favorite_border,
+                  color: AppColors.primary,
+                  size: 28,
+                ),
+                onPressed: () {
+                  setState(() {
+                    _isFavorite = !_isFavorite;
+                    FavouriteBloc.of(context).add(
+                      Click(
+                        arguments: {
+                          "product_id": widget.similarProduct?.id,
+                          "like": _isFavorite,
+                        },
                       ),
-                      onPressed: () {
-                        setState(() {
-                          _isFavorite = !_isFavorite;
-                          FavouriteBloc.of(context).add(
-                            Click(
-                              arguments: {
-                                "product_id": widget.similarProduct?.id,
-                                "like": _isFavorite,
-                              },
-                            ),
-                          );
+                    );
 
-                          // if (widget.onFavoriteChanged != null) {
-                          //   widget.onFavoriteChanged!(_isFavorite);
-                          // }
-                        });
-                      },
-                    ),
-                  );
-                }
-              },
-            )
+                    // if (widget.onFavoriteChanged != null) {
+                    //   widget.onFavoriteChanged!(_isFavorite);
+                    // }
+                  });
+                },
+              ),
+            ),
           ],
         ),
       ),

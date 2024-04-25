@@ -30,7 +30,7 @@ class _SectionsTabBarsState extends State<SectionsTabBars> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 52.height,
+      height: 62.height,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [

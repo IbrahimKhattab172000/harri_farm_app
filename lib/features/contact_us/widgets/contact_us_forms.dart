@@ -21,7 +21,7 @@ class ContactUsForms extends StatelessWidget {
           final bloc = ContactUsBloc.of(context);
 
           return Form(
-            key: bloc.formKey,
+            key: bloc.contactUsFormKey,
             child: Column(
               children: [
                 AppTextField(

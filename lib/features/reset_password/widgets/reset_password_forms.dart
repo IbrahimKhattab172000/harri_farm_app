@@ -20,7 +20,7 @@ class _ResetPasswordFormsState extends State<ResetPasswordForms> {
   Widget build(BuildContext context) {
     final bloc = ResetPasswordBloc.of(context);
     return Form(
-      key: bloc.formKey,
+      key: bloc.resetPasswordFormKey,
       child: Column(
         children: [
           AppTextField(

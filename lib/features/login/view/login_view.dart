@@ -25,7 +25,7 @@ class LoginView extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Form(
-              key: bloc.formKey,
+              key: bloc.loginFormKey,
               child: Column(
                 children: [
                   SizedBox(height: Utils.topDevicePadding + 64.height),

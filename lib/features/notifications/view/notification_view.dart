@@ -27,13 +27,15 @@ class NotificationsView extends StatelessWidget {
         builder: (context, state) {
           if (state is Loading) {
             return const Center(child: CircularProgressIndicator());
+          } else if (state is UnAuthorized) {
+            return const AppEmptyScreen(title: "sign_up_to_access_this_data");
           } else if (state is Error) {
             return Center(child: AppText(title: 'error_loading_data'.tr()));
           } else if (state is Empty) {
             return const AppEmptyScreen(
               title: "no_notifications_start_using_the_app",
             );
-          } else {
+          } else if (state is Done) {
             NotificationBloc bloc = NotificationBloc.of(context);
             return ListView.separated(
               physics: const BouncingScrollPhysics(),
@@ -52,6 +54,8 @@ class NotificationsView extends StatelessWidget {
               itemCount: bloc.notificationData.data!.length,
               padding: const EdgeInsets.all(16),
             );
+          } else {
+            return const SizedBox();
           }
         },
       ),

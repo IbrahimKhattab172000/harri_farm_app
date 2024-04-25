@@ -15,14 +15,14 @@ class AppEmptyScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        SizedBox(height: 40.height),
         Image.asset(
           Utils.getAssetPNGPath("empty_notifications"),
           height: 210.height,
           width: double.infinity,
         ),
-        SizedBox(height: 24.height),
+        SizedBox(height: 8.height),
         AppText(
           title: title.tr(),
           color: AppColors.darkGray,

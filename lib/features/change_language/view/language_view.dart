@@ -2,7 +2,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart'; // Import GetStorage package
 import 'package:harri_farm_app/features/change_language/widgets/select_language_toggle_card.dart';
+import 'package:harri_farm_app/features/splash/view/splash_view.dart';
 import 'package:harri_farm_app/helpers/dimentions.dart';
+import 'package:harri_farm_app/helpers/routes.dart';
 import 'package:harri_farm_app/helpers/utils.dart';
 import 'package:harri_farm_app/widgets/app_appbar.dart';
 import 'package:harri_farm_app/widgets/app_button.dart';
@@ -64,6 +66,7 @@ class _ChangeLanguageViewState extends State<ChangeLanguageView> {
                 final rootElement =
                     WidgetsFlutterBinding.ensureInitialized().rootElement!;
                 WidgetsBinding.instance.buildOwner!.reassemble(rootElement);
+                RouteUtils.navigateAndPopAll(const SplashView());
               },
             ),
           ],

@@ -9,7 +9,6 @@ import 'package:harri_farm_app/core/app_event.dart';
 import 'package:harri_farm_app/core/app_state.dart';
 import 'package:harri_farm_app/features/search/models/search_model.dart';
 import 'package:harri_farm_app/features/search/repository/search_repository.dart';
-import 'package:harri_farm_app/helpers/routes.dart';
 import 'package:harri_farm_app/widgets/app_snack_bar.dart';
 
 class SearchBloc extends Bloc<AppEvent, AppState> {
@@ -18,12 +17,12 @@ class SearchBloc extends Bloc<AppEvent, AppState> {
   }
   static SearchBloc of(context) => BlocProvider.of(context);
   TextEditingController searchController = TextEditingController();
-  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  var searchFormKey = GlobalKey<FormState>(debugLabel: "searchFormKey");
 
   SearchModel searchData = SearchModel();
 
   _getData(AppEvent event, Emitter<AppState> emit) async {
-    if (!formKey.currentState!.validate()) return;
+    if (!searchFormKey.currentState!.validate()) return;
 
     emit(Loading());
 
@@ -37,8 +36,7 @@ class SearchBloc extends Bloc<AppEvent, AppState> {
         searchData = SearchModel.fromJson(response.data);
 
         emit(Done());
-        SearchBloc bloc = SearchBloc.of(RouteUtils.context);
-        bloc.searchController.clear();
+        searchController.clear();
 
         // print(" First " + searchData.data![0].toString());
       } else {

@@ -14,7 +14,7 @@ class ForgotPasswordField extends StatelessWidget {
     final bloc = ForgetPasswordBloc.of(context);
 
     return Form(
-      key: bloc.formKey,
+      key: bloc.forgetPasswordFormKey,
       child: AppTextField(
         label: "email_or_phone".tr(),
         controller: bloc.emailOrPhone,

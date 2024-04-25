@@ -13,9 +13,9 @@ class SectionsSectionTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppText(
       title: title ?? "",
-      fontSize: 14,
+      fontSize: 18,
       color: AppColors.black,
-      fontWeight: FontWeight.w500,
+      fontWeight: FontWeight.w700,
     );
   }
 }

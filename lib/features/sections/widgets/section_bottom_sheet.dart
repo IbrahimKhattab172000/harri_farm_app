@@ -107,7 +107,7 @@ class _SectionBottomSheetState extends State<SectionBottomSheet> {
                   itemBuilder: (context, index) {
                     final filter = filters[index];
                     return AppToggleCard(
-                      title: filter["title"],
+                      title: Utils.isAR ? filter["title"] : filter['titleEn'],
                       isSelected: selectedIndex == filter["id"],
                       onTap: () {
                         setState(() {

@@ -3,14 +3,18 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:harri_farm_app/core/app_event.dart';
 import 'package:harri_farm_app/core/app_state.dart';
 import 'package:harri_farm_app/features/update_profile/models/update_profile_model.dart';
 import 'package:harri_farm_app/features/update_profile/repository/update_profile_repository.dart';
-import 'package:harri_farm_app/helpers/routes.dart';
+import 'package:harri_farm_app/helpers/colors.dart';
+import 'package:harri_farm_app/helpers/dimentions.dart';
+import 'package:harri_farm_app/widgets/app_dialog.dart';
 import 'package:harri_farm_app/widgets/app_snack_bar.dart';
+import 'package:harri_farm_app/widgets/app_text.dart';
 
 class UpdateProfileBloc extends Bloc<AppEvent, AppState> {
   UpdateProfileBloc() : super(Start()) {
@@ -24,8 +28,8 @@ class UpdateProfileBloc extends Bloc<AppEvent, AppState> {
   TextEditingController name = TextEditingController();
   TextEditingController phone = TextEditingController();
   TextEditingController email = TextEditingController();
-
-  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  var updateProfileFormKey =
+      GlobalKey<FormState>(debugLabel: "updateProfileFormKey");
 
   _getUser(AppEvent event, Emitter<AppState> emit) async {
     emit(Loading());
@@ -38,14 +42,32 @@ class UpdateProfileBloc extends Bloc<AppEvent, AppState> {
         emit(Done());
         log(response.statusCode.toString());
         showSnackBar(response.data['message'], errorMessage: false);
-        UpdateProfileBloc bloc = UpdateProfileBloc.of(RouteUtils.context);
-        bloc.name.clear();
-        bloc.phone.clear();
-        bloc.email.clear();
+        name.clear();
+        phone.clear();
+        email.clear();
       } else {
-        emit(Error());
-        log("FROM ELSE get profile${response.statusCode}");
-        showSnackBar(response.data['message'], errorMessage: true);
+        if ("${response.data['message']}" == "Unauthenticated.") {
+          emit(UnAuthorized());
+          // showSnackBar(response.data['message'], errorMessage: true);
+          AppDialog.show(
+            child: Center(
+              child: Column(
+                children: [
+                  SizedBox(height: 40.height),
+                  AppText(
+                    title: "sign_up_to_access_this_data".tr(),
+                    color: AppColors.gray,
+                  ),
+                  SizedBox(height: 40.height),
+                ],
+              ),
+            ),
+          );
+        } else {
+          emit(Error());
+          log("FROM ELSE get profile${response.statusCode}");
+          showSnackBar(response.data['message'], errorMessage: true);
+        }
       }
     } catch (e) {
       emit(Error());

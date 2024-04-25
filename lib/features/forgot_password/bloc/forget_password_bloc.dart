@@ -21,10 +21,11 @@ class ForgetPasswordBloc extends Bloc<AppEvent, AppState> {
   static ForgetPasswordBloc of(context) => BlocProvider.of(context);
 
   TextEditingController emailOrPhone = TextEditingController();
-  var formKey = GlobalKey<FormState>();
+  var forgetPasswordFormKey =
+      GlobalKey<FormState>(debugLabel: "forgetPasswordFormKey");
 
   _sendCode(AppEvent event, Emitter<AppState> emit) async {
-    if (!formKey.currentState!.validate()) return;
+    if (!forgetPasswordFormKey.currentState!.validate()) return;
     emit(Loading());
 
     String body = emailOrPhone.text;
@@ -36,8 +37,7 @@ class ForgetPasswordBloc extends Bloc<AppEvent, AppState> {
         log("Done ${response.statusCode}");
         AppStorage.cacheId(response.data['user_id']);
         emit(Done());
-        ForgetPasswordBloc bloc = ForgetPasswordBloc.of(RouteUtils.context);
-        bloc.emailOrPhone.clear();
+        emailOrPhone.clear();
 
         RouteUtils.navigateTo(const VerificationView());
       } else {

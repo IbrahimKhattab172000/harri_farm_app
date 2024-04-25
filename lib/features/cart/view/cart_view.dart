@@ -47,10 +47,12 @@ class _CartViewState extends State<CartView> {
         builder: (context, state) {
           if (state is Loading) {
             return const Center(child: CircularProgressIndicator());
+          } else if (state is UnAuthorized) {
+            return const AppEmptyScreen(title: "sign_up_to_access_this_data");
           } else if (state is Empty) {
             return const AppEmptyScreen(
                 title: "add_some_products_to_your_cart");
-          } else {
+          } else if (state is Done) {
             var bloc = CartBloc.of(context);
 
             return Padding(
@@ -74,6 +76,8 @@ class _CartViewState extends State<CartView> {
                 ),
               ),
             );
+          } else {
+            return const SizedBox();
           }
         },
       ),

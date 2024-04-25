@@ -32,21 +32,19 @@ class ProductDetailsSimilarProducts extends StatelessWidget {
         Container(
           constraints: BoxConstraints(maxHeight: 270.height),
           child: ListView.separated(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             physics: const BouncingScrollPhysics(),
             scrollDirection: Axis.horizontal,
             itemCount: product.data?.offer?.similarProduct?.length ?? 0,
             itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: AppSimilarProductCard(
-                  similarProduct: product.data?.offer?.similarProduct?[index],
-                  isFavorite:
-                      product.data?.offer?.similarProduct?[index].like ?? false,
-                ),
+              return AppSimilarProductCard(
+                similarProduct: product.data?.offer?.similarProduct?[index],
+                isFavorite:
+                    product.data?.offer?.similarProduct?[index].like ?? false,
               );
             },
             separatorBuilder: (context, index) {
-              return SizedBox(width: 24.width);
+              return SizedBox(width: 16.width);
             },
           ),
         ),

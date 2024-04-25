@@ -17,7 +17,7 @@ class ShippingAddressButton extends StatelessWidget {
     return AppButton(
       title: "next".tr(),
       onTap: () {
-        if (!bloc.paymentKey.currentState!.validate() ||
+        if (!bloc.paymentFormKey.currentState!.validate() ||
             bloc.addressId == null) {
           showSnackBar(
               bloc.addressId == null ? "add_address".tr() : "empty_fields",
